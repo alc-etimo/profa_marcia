@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso 2: Sintaxe como Ferramenta de Auditoria - Portfólio Prof. Márcia</title>
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-light: #e8f0f8;
+            --accent: #2c5282;
+            --accent-light: #4a90e2;
+            --danger: #c53030;
+            --warning: #d69e2e;
+            --success: #2f855a;
+            --border: #cbd5e0;
+            --border-light: #e2e8f0;
+            --card: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            font-size: 10.5pt;
+        }
+        
+        /* CABEÇALHO DO CASO 2 */
+        .case-header {
+            text-align: center;
+            border-bottom: 4px solid #003366;
+            padding-bottom: 20pt;
+            margin-bottom: 25pt;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20pt;
+            border-radius: 8px;
+        }
+        
+        .case-number {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 1.5pt;
+        }
+        
+        .case-header h1 {
+            font-size: 20pt;
+            color: #003366;
+            margin-bottom: 2pt;
+            text-transform: none;
+            letter-spacing: normal;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .case-subtitle {
+            font-size: 14pt;
+            color: #003366;
+            font-weight: 600;
+            margin-bottom: 15pt;
+            font-style: italic;
+        }
+        
+        .case-tags {
+            margin-top: 15pt;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6pt;
+        }
+        
+        .case-tag {
+            display: inline-block;
+            background: #003366;
+            color: white;
+            padding: 4pt 10pt;
+            border-radius: 5px;
+            font-size: 9.5pt;
+            font-weight: bold;
+            margin-right: 0;
+            margin-bottom: 8pt;
+        }
+        
+        /* RESEARCH STATEMENT */
+        .research-statement {
+            background: #f9f9f9;
+            padding: 15pt;
+            border-left: 4px solid #003366;
+            font-style: italic;
+            margin-bottom: 20pt;
+            text-align: justify;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* SEÇÕES E TÍTULOS */
+        section {
+            margin-bottom: 30pt;
+            page-break-inside: avoid;
+        }
+        
+        h2 {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 5pt;
+            margin-bottom: 15pt;
+            text-transform: uppercase;
+            letter-spacing: 0.8pt;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #003366;
+            margin-top: 18pt;
+            margin-bottom: 10pt;
+            border-left: 5px solid #003366;
+            padding-left: 10pt;
+        }
+        
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .bias-card {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .bias-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .bias-card h4 {
+            color: #003366;
+            font-size: 10pt;
+            margin-bottom: 8pt;
+            font-weight: bold;
+        }
+        
+        /* DOIS BOXES LADO A LADO */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20pt;
+            margin: 20pt 0;
+        }
+        
+        .problem-box, .solution-box {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;	    
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .problem-box h3, .solution-box h3 {
+            text-align: center;
+            margin-top: 3pt;
+            border: none;
+            padding-left: 0;
+            color: #003366;
+            margin-bottom: 12pt;
+            padding-bottom: 8pt;
+            border-bottom: 1px solid #003366;
+        }
+
+        /* CLICK HINT */
+        .click-hint {
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 9pt; 
+            color: var(--accent); 
+            margin-bottom: 8pt; 
+            font-style: italic;
+        }
+        
+        .hand-icon { 
+            width: 18px; 
+            height: 18px;
+            transform: rotate(-180deg);
+            fill: var(--accent); 
+            margin: 0 2px;
+        }
+
+        .hand-icon.left { 
+            transform: rotate(90deg); 
+        }
+
+        .hand-icon.right { 
+            transform: rotate(-90deg); 
+        }
+
+        .click-hint .arrows-container {
+            display: flex;
+            align-items: center;
+            margin: 0 6px;
+        }
+
+        /* IMAGE CONTAINER */
+        .image-container {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8pt;
+            margin: 10pt 0;
+            background: #fafafa;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        .image-caption {
+            font-size: 9pt;
+            color: #666;
+            margin-top: 4pt;
+            font-style: italic;
+        }
+
+        /* ANALYSIS BOXES */
+        .analysis-box {
+            background: #fff; 
+            border: 1px solid var(--border);
+            padding: 12pt; 
+            border-radius: 6px; 
+            margin-top: 10pt;
+        }
+        
+        .analysis-box h4 { 
+            font-size: 10pt; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            margin-bottom: 8pt;
+            padding-bottom: 4pt;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        ul.analysis-list { 
+            margin-left: 0;
+            margin-top: 0;
+        }
+        
+        ul.analysis-list li { 
+            margin-bottom: 12pt;
+            font-size: 10pt; 
+            list-style: none;
+            padding-left: 15pt;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        ul.analysis-list li::before { 
+            content: '→'; 
+            position: absolute; 
+            left: 0; 
+            color: var(--primary); 
+        }
+
+        /* TAGS DE ERRO SINTÁTICO */
+        .error-tag {
+            display: inline-block;
+            background: #fff5f5;
+            color: var(--danger);
+            padding: 2pt 8pt;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            font-weight: 600;
+            margin-top: 5pt;
+            margin-right: 4pt;
+            border: 1px solid #feb2b2;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: help;
+        }
+
+        .error-tag:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .error-tag::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 75%;
+            transform: translateX(-50%);
+            background: rgba(197, 48, 48, 0.95);
+            color: white;
+            padding: 6pt 10pt;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            margin-bottom: 6pt;
+        }
+
+        .error-tag:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+/* TAGS DE FENÔMENO AFTER */
+        .error-tag-after {
+            display: inline-block;
+            background: #F2FFEE;
+            color: var(--accent);
+            padding: 2pt 5pt;
+            border-radius: 4px;
+     border: 1px solid #9ae6b4;
+            font-size: 8.5pt;
+            font-weight: 600;
+            margin-top: 5pt;
+            margin-right: 4pt;
+            transition: all 0.3s ease;
+            position: relative;            
+        }
+
+        .error-tag-after:hover {
+            background: #2f855a;
+            color: white;
+        }
+
+        .error-tag-after:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* TERMOS TÉCNICOS DESTACADOS */
+        .tech-term {
+            background: var(--primary-light);
+            color: var(--accent);
+            padding: 1pt 4pt;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 9.5pt;
+            cursor: help;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tech-term:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .tech-term::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 70%;
+            transform: translateX(-40%);
+            background: rgba(44, 82, 130, 0.95);
+            color: white;
+            padding: 6pt 10pt;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            margin-bottom: 6pt;
+        }
+
+        .tech-term:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }        
+
+        /* INTERATIVIDADE: ANTES/ANÁLISE/DEPOIS */
+        .interactive-rewrite {
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20pt 0;
+            background: var(--card);
+        }
+        
+        .tab-nav { 
+            display: flex; 
+            background: var(--primary-light); 
+            border-bottom: 1px solid var(--border); 
+        }
+        
+        .tab-btn { 
+            flex: 1; 
+            padding: 10pt; 
+            border: none; 
+            background: none; 
+            cursor: pointer; 
+            font-weight: bold; 
+            color: var(--primary); 
+            transition: 0.3s; 
+            font-size: 10pt;
+        }
+        
+        .tab-btn.active { 
+            background: var(--primary); 
+            color: white; 
+        }
+        
+        .tab-content { 
+            padding: 15pt; 
+            display: none; 
+        }
+        
+        .tab-content.active { 
+            display: block; 
+        }
+        
+        /* METODOLOGIA TABLE */
+        .methodology-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+            font-size: 9pt;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .methodology-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 10pt;
+            border: 1px solid var(--primary-light);
+            vertical-align: middle;
+        }
+        
+        .methodology-table td {
+            padding: 8pt;
+            border: 1px solid var(--border-light);
+            vertical-align: top;
+            background: white;
+        }
+        
+        .methodology-table tr:nth-child(even) td {
+            background: #f9f9f9;
+        }
+        
+        .methodology-table .example-cell {
+            text-align: center;
+            padding: 5pt;
+        }
+        
+        .methodology-table .example-img {
+            max-width: 120px;
+            max-height: 60px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .severity-badge {
+            display: inline-block;
+            padding: 3pt 8pt;
+            border-radius: 12px;
+            font-size: 8.5pt;
+            font-weight: bold;
+            margin: 2pt;
+        }
+        
+        .critical-severity { background: #fed7d7; color: #7b341e; border: 1px solid #fc8181; }
+        .major-severity { background: #feebc8; color: #744210; border: 1px solid #f6ad55; }
+        .minor-severity { background: #c6f6d5; color: #22543d; border: 1px solid #68d391; }
+        .not-present-severity { background: #e2e8f0; color: #2d3748; border: 1px solid #a0aec0; }
+        
+        /* PIPELINE DE AVALIAÇÃO SINTÁTICA */
+        .pipeline-wrapper {
+            position: relative;
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 30pt 50pt;
+            margin: 20pt 0;
+            overflow: hidden;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pipeline-container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            transition: transform 0.6s ease;
+        }
+        
+        .pipeline-box {
+            width: 280px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 20pt;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: absolute;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.4s ease;
+        }
+        
+        .pipeline-box.active {
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11pt;
+            font-weight: bold;
+            z-index: 3;
+        }
+        
+        .arrow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 51, 102, 0.2);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+        }
+        
+        .arrow-btn:hover {
+            background: rgba(0, 51, 102, 0.8);
+            opacity: 1;
+        }
+        
+        .arrow-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+        
+        .arrow-btn:disabled:hover {
+            background: rgba(0, 51, 102, 0.2);
+        }
+        
+        .arrow-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+        
+        .arrow-btn:disabled:hover {
+            background: rgba(0, 51, 102, 0.2);
+        }
+        
+        .arrow-prev {
+            left: 10px;
+        }
+        
+        .arrow-next {
+            right: 10px;
+        }
+
+        /* ESCALA CSAT */
+        .csat-scale {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8pt;
+            margin: 15pt 0;
+        }
+        
+        .csat-level {
+            padding: 10pt;
+            border-radius: 6px;
+            text-align: center;
+            color: white;
+            font-size: 9pt;
+            font-weight: bold;
+        }
+        
+        .csat-5 { background: #2f855a; }
+        .csat-4 { background: #48bb78; }
+        .csat-3 { background: #ecc94b; color: #333; }
+        .csat-2 { background: #ed8936; }
+        .csat-1 { background: #c53030; }
+
+        /* GRAVIDADE DE ERROS */
+        .severity-badges {
+            display: flex;
+            gap: 8pt;
+            margin: 10pt 0;
+            flex-wrap: wrap;
+        }
+        
+        .severity-badge {
+            padding: 6pt 12pt;
+            border-radius: 20px;
+            font-size: 9pt;
+            font-weight: bold;
+        }
+        
+        .critical-badge { background: #fff5f5; color: #c53030; border: 1px solid #fc8181; }
+        .major-badge { background: #fefcbf; color: #975a16; border: 1px solid #f6e05e; }
+        .minor-badge { background: #c6f6d5; color: #22543d; border: 1px solid #9ae6b4; }
+
+        /* RESULTADOS EM BLOCOS VERTICAIS */
+        .results-vertical {
+            display: block;
+            margin: 20pt 0;
+        }
+
+        .results-vertical > div {
+            margin-bottom: 20pt;
+        }
+
+        .results-vertical > div:last-child {
+            margin-bottom: 0;
+        }
+
+        .qualitative-box, .quantitative-box, .impact-box {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+            width: 100%;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10pt;
+            margin-top: 10pt;
+        }
+        
+        .metric-card {
+            background: #f0f7ff;
+            border: 1px solid #003366;
+            border-radius: 6px;
+            padding: 10pt;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 4pt;
+        }
+        
+        .metric-label {
+            font-size: 9pt;
+            color: #666;
+        }
+        
+        /* QUOTE BOX */
+        .quote-box {
+            background: linear-gradient(135deg, #003366, hsl(215, 50%, 35%));
+            color: white;
+            padding: 1.75rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(31, 79, 176, 0.2);
+            margin: 1.5rem 0;
+        }
+        
+        .quote-box p {
+            font-size: 1.05rem;
+            font-weight: 500;
+            font-style: italic;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+        
+        .quote-box .source {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-style: normal;
+        }
+        
+        /* LISTAS */
+        ul {
+            margin-left: 20pt;
+            margin-top: 8pt;
+        }
+        
+        li {
+            margin-bottom: 8pt;
+            text-align: justify;
+        }
+        
+        strong {
+            color: #003366;
+        }
+        
+        /* TABLE STYLES */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15pt 0;
+            font-size: 9pt;
+        }
+        
+        .data-table th {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: bold;
+            text-align: left;
+            padding: 8pt;
+            border: 1px solid var(--border);
+        }
+        
+        .data-table td {
+            padding: 6pt 8pt;
+            border: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        /* ANIMAÇÕES */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        @media print {
+            body { padding: 5mm; }
+        }
+        
+        @media (max-width: 768px) {
+            .methodology-table {
+                font-size: 8pt;
+            }
+            
+            .methodology-table th,
+            .methodology-table td {
+                padding: 5pt 3pt;
+            }
+            
+            .metrics-grid, .csat-scale {
+                grid-template-columns: 1fr;
+            }
+            
+            .pipeline-wrapper {
+                padding: 20pt 40pt;
+            }
+            
+            .pipeline-box {
+                width: 240px;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .severity-badges {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO DO CASO 2 -->
+    <div class="case-header">
+        <div class="case-number">CASO 2 – PORTFÓLIO PARA PROFA. MÁRCIA</div>
+        <h1>Sintaxe como ferramenta de auditoria:</h1>
+        <div class="case-subtitle">detecção de alucinações e inconsistências lógicas em textos gerados por IA</div>
+        <div class="case-tags">
+            <span class="case-tag">Estrutura Argumental</span>
+            <span class="case-tag">Papéis Temáticos</span>
+            <span class="case-tag">Avaliação de IA</span>
+            <span class="case-tag">Hierarquia Sintática</span>            
+        </div>
+    </div>
+
+    <!-- BOX DE ABERTURA -->
+    <div class="research-statement">
+        <strong>Para a Prof. Márcia:</strong> Você me ensinou que a estrutura sintática não é arbitrária, mas reflete relações lógicas profundas entre elementos. No mundo da Inteligência Artificial, encontrei o mesmo problema: <strong>textos aparentemente fluentes mas logicamente quebrados</strong>. Usei os conceitos de papéis temáticos e hierarquia sintática que aprendi com você para criar um sistema que não apenas avalia, mas <strong>diagnostica</strong> falhas estruturais antes que causem problemas reais.
+    </div>
+
+    <!-- SEÇÃO 1: O PROBLEMA DA AVALIAÇÃO SUPERFICIAL -->
+    <section>
+        <h2>O PROBLEMA: FLUÊNCIA ≠ PRECISÃO LÓGICA</h2>
+        <p style="text-align: justify;">
+            Plataformas de <i>streaming</i> usam sistemas de IA para gerar legendas automaticamente, mas dependem de métricas superficiais que não capturam <strong>integridade lógica</strong>. O resultado: <strong>legendas fluentemente estruturadas mas sintática e semanticamente incoerentes</strong>, com <strong>"alucinações"</strong> (invenções ou deturpações sem base no áudio) que passam despercebidas até prejudicarem a experiência do espectador.</p>
+        <br>
+        <div class="cards-grid">
+            <div class="bias-card">
+                <h4>Alucinação por Repetição</h4>
+                <p>Sistema de transcrição gerando "Eu não sei. Eu não sei." sem correspondência com áudio real.</p>
+            </div>
+            
+            <div class="bias-card">
+                <h4>Violação de Papéis Temáticos</h4>
+                <p>Frases nas quais agentes e pacientes são trocados, criando ações e processos sem nexo.</p>
+            </div>
+            
+            <div class="bias-card">
+                <h4>Quebra de Ordenação Lógica</h4>
+                <p>Instruções com sequenciamento causal invertido, impossíveis de serem seguidas.</p>
+            </div>
+        </div>
+        
+        <div class="image-container">
+            <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/AI-desesperada.png?raw=true" alt="Captura de tela do programa Subtitle Edit exibindo sequência de legendas 'Eu não sei' repetidamente"/>
+            <div class="image-caption">Exemplo real de alucinação por repetição gerado pelo Whisper, <span style="font-style:normal;">plugin</span> de legendagem automática baseado em captura de áudio por IA</div>
+        </div>
+    </section>
+
+    <!-- FUNDAMENTAÇÃO TEÓRICA -->
+    <section>
+        <h2>FUNDAMENTAÇÃO TEÓRICA: A SINTAXE COMO DIAGNÓSTICO</h2>
+        
+        <p style="text-align: justify;">
+            Aplicação direta dos conceitos da sua disciplina para criar um <strong>sistema de auditoria sintática</strong>:
+        </p>
+        
+        <div class="two-columns">
+            <div class="problem-box">
+                <h3>Conceitos Teóricos Aplicados</h3>
+                <ul>
+                    <li><span class="tech-term" data-tooltip="Grade de argumentos exigidos por um verbo">Estrutura Argumental (grade θ):</span> Verificação de completude predicativa</li>
+                    <li><span class="tech-term" data-tooltip="Funções como Agente, Paciente, Experiencer">Papéis Temáticos (θ-roles):</span> Consistência de quem faz o quê</li>
+                    <li><span class="tech-term" data-tooltip="Estrutura hierárquica universal das frases">Hierarquia Sintática (teoria X-barra):</span> Integridade estrutural</li>
+                    <li><span class="tech-term" data-tooltip="Restrições de compatibilidade entre elementos">Seleção Sintática e Semântica:</span> Checagem de combinações possíveis</li>
+                    <li><span class="tech-term" data-tooltip="Cada argumento deve receber um papel temático">Critério Theta:</span> Detecção de elementos não licenciados</li>
+                </ul>
+            </div>
+            
+            <div class="solution-box">
+                <h3>Aplicação Prática no Mercado</h3>
+                <ul>
+                    <li><strong>Detecção precoce</strong> de alucinações lógicas em legendas</li>
+                    <li><strong>Classificação tipológica</strong> de erros sintático-semânticos</li>
+                    <li><strong>Sistema de pontuação</strong> baseado em integridade estrutural</li>
+                    <li><strong>Painel de monitoramento</strong> para equipes de qualidade</li>
+                    <li><strong><i>Feedback</i> estruturado</strong> para otimização dos sistemas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIPÓTESE CENTRAL -->
+    <div class="research-statement" style="background: #e3f2fd; border-left-color: #2c5282;">
+        <strong>Hipótese central:</strong> Problemas nas saídas de sistemas de Inteligência Artifical frequentemente se manifestam como <strong>violações sintático-semânticas sistemáticas</strong> que podem ser detectadas por meio de análise estrutural, mesmo quando a fluência superficial é alta e a sentença parece bem-formada.
+    </div>
+
+    <!-- SEÇÃO DE METODOLOGIA -->
+    <section>
+        <h2>METODOLOGIA: DO PROTOCOLO OPERACIONAL À TAXONOMIA SINTÁTICA</h2>
+        
+        <div class="research-statement" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left: 4px solid #2c5282; padding: 20pt; border-radius: 0 8px 8px 0;">
+            <strong>Inovação metodológica:</strong> Transformei um processo de <span style="font-style:normal;">feedback</span> subjetivo em um <strong>sistema de auditoria sintática replicável</strong>, que não só classifica erros, mas <strong>diagnostica violações estruturais e fornece dados para calibrar a IA</strong>. Esta seção detalha como operacionalizei conceitos teóricos da <strong>sintaxe gerativa</strong> em categorias analíticas aplicáveis ao contexto industrial.
+        </div>
+        
+        <h3>1. Protocolo de Análise em 5 Etapas</h3>
+        
+        <div class="pipeline-wrapper">
+            <button class="arrow-btn arrow-prev" onclick="moveMethodSlide(-1)" id="methodPrevBtn" disabled>❮</button>
+            
+            <div class="pipeline-container" id="methodPipeline">
+                <!-- Box 1 -->
+                <div class="pipeline-box active" id="methodStep1">
+                    <div class="step-number">1</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Coleta do Corpus</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Vídeos + legendas brutas geradas por IA (Whisper, Google Speech-to-Text, IAs próprias das empresas) em PT-BR e EN
+                    </p>
+                </div>
+                
+                <!-- Box 2 -->
+                <div class="pipeline-box" id="methodStep2">
+                    <div class="step-number">2</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Análise Síncrona</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Reprodução quadro a quadro, contraste áudio/legenda, detecção de desvios
+                    </p>
+                </div>
+                
+                <!-- Box 3 -->
+                <div class="pipeline-box" id="methodStep3">
+                    <div class="step-number">3</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Classificação Dupla</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Atribuição de: (1) Categoria de erro <br> + (2) Nível de gravidade
+                    </p>
+                </div>
+                
+                <!-- Box 4 -->
+                <div class="pipeline-box" id="methodStep4">
+                    <div class="step-number">4</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Localização Precisa</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Registro de código de tempo do vídeo do problema, linha da legenda e contexto
+                    </p>
+                </div>
+                
+                <!-- Box 5 -->
+                <div class="pipeline-box" id="methodStep5">
+                    <div class="step-number">5</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Documentação Estruturada</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Planilha com dados normalizados para análise e <i>feedback</i> de engenharia
+                    </p>
+                </div>
+            </div>
+            
+            <button class="arrow-btn arrow-next" onclick="moveMethodSlide(1)" id="methodNextBtn">❯</button>
+        </div>
+        
+ <h3>2. Definição Operacional dos Níveis de Gravidade</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12pt; margin: 20pt 0;">
+            <div style="background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%); padding: 15pt; border-radius: 8px; border: 2px solid #c53030;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8pt;">
+                    <h4 style="color: #7b341e; margin: 0;">CRITICAL</h4>
+                    <span style="background: #c53030; color: white; padding: 3pt 8pt; border-radius: 12px; font-size: 8pt; font-weight: bold;">IMPACTO MÁXIMO</span>
+                </div>
+                <p style="font-size: 9.5pt; color: #744210; text-align:justify;"><strong>Definição:</strong> Prejudica totalmente a compreensão ou transmite informação oposta/falsa.</p>
+                <p style="font-size: 9pt; color: #744210; margin-top: 6pt;"><strong>Critério sintático:</strong> Violação que torna a sentença incompreensível ou altera radicalmente sua interpretação.</p>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #feebc8 0%, #fbd38d 100%); padding: 15pt; border-radius: 8px; border: 2px solid #d69e2e;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8pt;">
+                    <h4 style="color: #744210; margin: 0;">MAJOR</h4>
+                    <span style="background: #d69e2e; color: #744210; padding: 3pt 8pt; border-radius: 12px; font-size: 8pt; font-weight: bold;">IMPACTO ALTO</span>
+                </div>
+                <p style="font-size: 9.5pt; color: #744210; text-align:justify;"><strong>Definição:</strong> Dificulta significativamente a compreensão, exige esforço inferencial considerável.</p>
+                <p style="font-size: 9pt; color: #744210; margin-top: 6pt;"><strong>Critério sintático:</strong> Violação que quebra a coesão ou introduz ambiguidade não resolvível no contexto.</p>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%); padding: 15pt; border-radius: 8px; border: 2px solid #38a169;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8pt;">
+                    <h4 style="color: #22543d; margin: 0;">MINOR</h4>
+                    <span style="background: #38a169; color: white; padding: 3pt 8pt; border-radius: 12px; font-size: 8pt; font-weight: bold;">IMPACTO BAIXO</span>
+                </div>
+                <p style="font-size: 9.5pt; color: #22543d; text-align:justify;"><strong>Definição:</strong> Perceptível mas não interfere na compreensão básica.</p>
+                <p style="font-size: 9pt; color: #22543d; margin-top: 6pt;"><strong>Critério sintático:</strong> Violação de traços periféricos que não afeta o núcleo proposicional.</p>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%); padding: 15pt; border-radius: 8px; border: 2px solid #4a5568;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8pt;">
+                    <h4 style="color: #4a5568; margin: 0;">NOT PRESENT</h4>
+                    <span style="background: #4a5568; color: white; padding: 3pt 8pt; border-radius: 12px; font-size: 8pt; font-weight: bold;">SEM IMPACTO</span>
+                </div>
+                <p style="font-size: 9.5pt; color: #2d3748; text-align:justify;"><strong>Definição:</strong> Erro ou desvio não encontrado nos vídeos e legendas analisados</p>
+                <p style="font-size: 9pt; color: #2d3748; margin-top: 6pt;"><strong>Critério sintático:</strong> Estruturas sintáticas bem formadas com desvios mínimos ou ausentes conforme as categorias.</p>
+            </div>
+        </div>
+
+        <h3>3. Sistema de Classificação: Integrando Sintaxe Gerativa às Categorias de Erro</h3>
+        
+        <table class="methodology-table compact">
+    <thead>
+        <tr>
+            <th style="width: 15%;">Conceito Teórico</th>
+            <th style="width: 15%;">Categoria de Erro</th>
+            <th style="width: 20%;">Operacionalização</th>
+            <th style="width: 35%;">Exemplo Visual</th>
+            <th style="width: 15%;">Gravidade & Impacto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: center; vertical-align: middle;"><strong>Interface Sintaxe-Semântica</strong></td>
+            <td style="text-align: center; vertical-align: middle;">Legendas aleatórias <br> & alucinações</td>
+            <td style="text-align: center; vertical-align: middle;">"A estrutura sintática gerada tem correspondência com o <i>input</i> semântico do áudio?"</td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+                <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-alucinacao.png?raw=true" alt="Legenda 'Legendas pela comunidade Amara.org'" class="example-img" style="max-width: 220px; max-height: 140px;">
+                <div style="font-size: 8pt; color: #666; margin-top: 3pt;">Legenda sem base no áudio</div>
+            </td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+                <span class="severity-badge critical-severity">Critical</span><br><br>
+                <small style="font-size: 7.5pt; color: #666;">Conteúdo inventado</small>
+            </td>
+        </tr>
+        
+
+<tr>
+            <td style="text-align: center; vertical-align: middle;"><strong>Operadores <br> de Escopo e Polaridade</strong></td>
+            <td style="text-align: center; vertical-align: middle;">Erros gerais <br> de transcrição: <br> adição <br> de palavras</td>
+            <td style="text-align: center; vertical-align: middle;">"Operadores lógicos <br> (ex.: negação) foram inseridos ou omitidos,  alterando o escopo <br> e a verdade da proposição?"</td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+                <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-polaridade.png?raw=true" alt="Legenda 'Não tinha tantas coisas pra fazer, não acredito!'" class="example-img" style="max-width: 220px; max-height: 140px;">
+                <div style="font-size: 8pt; color: #666; margin-top: 3pt;">Adição semântica crítica <br> ("Não tinha" → "Tinha")</div>
+            </td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+                <span class="severity-badge critical-severity">Critical</span><br><br>
+                <small style="font-size: 7.5pt; color: #666;">Altera significado</small>
+            </td>
+
+<tr>
+            <td style="text-align: center; vertical-align: middle;"><strong>Concordância e Traços Gramaticais</strong></td>
+            <td style="text-align: center; vertical-align: middle;">Gramática: <br> • Gênero <br> • Formalidade <br> • Pluralidade</td>
+            <td style="text-align: center; vertical-align: middle;">"Há compatibilidade de traços (pessoa, número, gênero) entre o núcleo e seus dependentes?"</td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+                <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-tracos-gramaticais.png?raw=true" alt="Legenda 'travelling with 13 kids'" class="example-img" style="max-width: 220px; max-height: 140px;">
+                <div style="font-size: 8pt; color: #666; margin-top: 3pt;">Desvio ortográfico da normal padrão<br> ("travelling" → "traveling") </div>
+            </td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+             <span class="severity-badge minor-severity">Minor</span><br><br>
+                <small style="font-size: 7.1pt; color: #666;">Permite entendimento</small>
+            </td>
+
+<tr>
+            <td style="text-align: center; vertical-align: middle;"><strong>Estrutura de Constituintes e Hierarquia</strong></td>
+            <td style="text-align: center; vertical-align: middle;">Formatação: <br> quebra estranha de linha</td>
+            <td style="text-align: center; vertical-align: middle;">"A quebra de linha respeita os limites dos constituintes sintagmáticos?"</td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+                <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-estrutura-de-constituintes.png?raw=true" alt="Legenda 'Poder ser qualquer jeito que for, a polícia não tem que'" class="example-img" style="max-width: 220px; max-height: 140px;">
+                <div style="font-size: 8pt; color: #666; margin-top: 3pt;">Quebra de linha inadequada</div>
+            </td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+               <span class="severity-badge minor-severity">Minor</span><br><br>
+                        <small style="font-size: 7.7pt; color: #666;">Ainda compreensível</small>
+            </td>
+
+<tr>
+            <td style="text-align: center; vertical-align: middle;"><strong>Força Ilocucionária <br> e Tipo Sentencial</strong></td>
+            <td style="text-align: center; vertical-align: middle;">Pontuação</td>
+            <td style="text-align: center; vertical-align: middle;">"A pontuação marca corretamente a força ilocucionária (ex.: interrogativa, exclamativa, imperativa)?"</td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+                <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-forca-ilocucionaria.png?raw=true" style="max-width: 220px; max-height: 140px;">
+                <div style="font-size: 8pt; color: #666; margin-top: 3pt;">Transformação de ordem/exclamação em pergunta <br> ("Pagar?" → "Pagar!")</div>
+            </td>
+            <td style="text-align: center; vertical-align: middle; padding: 5pt;">
+                <span class="severity-badge major-severity">Major</span><br><br>
+                        <small style="font-size: 6.8pt; color: #666;">Distorce a comunicação</small>
+            </td>
+
+    </tbody>
+</table>
+        
+               
+        <div class="research-statement" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border-left: 4px solid #2c5282;">
+            <strong>Contribuição metodológica:</strong> Este protocolo representa uma <strong>síntese entre análise linguística teórica e engenharia de sistemas de IA</strong>. Ao vincular cada categoria de erro a um conceito sintático específico, criei um sistema que não apenas classifica, mas <strong>explica</strong> as falhas, permitindo que equipes de engenharia entendam <em>por que</em> a IA está falhando e <em>como</em> calibrar os modelos para corrigir violações estruturais específicas.
+        </div>
+    </section>
+
+    <!-- CASOS PARADIGMÁTICOS -->
+    <section>
+        <h2>CASOS PARADIGMÁTICOS: ANÁLISE SINTÁTICA APROFUNDADA</h2>
+        
+        <div class="click-hint">
+            <svg class="hand-icon" viewBox="0 0 24 24">
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/>
+            </svg>
+            Clique em cada caso para ver a análise estrutural detalhada
+        </div>
+
+        <div class="interactive-rewrite">
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'case1')">CASO 1: Falha na Concordância de Traços</button>
+                <button class="tab-btn" onclick="openTab(event, 'case2')">CASO 2: Colapso na Interface: Pontuação e Força Ilocucionária</button>
+                <button class="tab-btn" onclick="openTab(event, 'case3')">CASO 3: Colapso na Seleção Semântica: Alucinação e Neologismo</button>
+            </div>
+
+            <!-- CASO 1: Concordância (mantido como estava) -->
+            <div id="case1" class="tab-content active">
+<!-- CONTEXTO ACIMA DOS BOXES -->
+                <div style="margin-bottom: 20pt; padding: 12pt; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #003366;">
+                    <strong>Contexto:</strong> Guarda penitenciário inspecionando novos detentos. A IA não considerou o contexto coletivo e traduziu o "you" como singular.
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15pt;">
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--danger); text-align:center;">Saída da IA (Tradução/Transcrição)</h4>
+                        <div style="background: #fff5f5; padding: 15pt; margin-bottom: 15pt; border-radius: 4px; border: 1px solid #feb2b2;">                            
+                            <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-1.png?raw=true" style="max-width:100%;" alt="Legenda com vários comandos, como 'Sacuda', 'Mexa', 'Abra'"/>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--success); text-align:center;">Contexto Real & Correção</h4>
+                        <div style="background: #f0fff4; padding: 15pt; border-radius: 4px; border: 1px solid #9ae6b4;">
+                            <strong>Cena visual:</strong> Vários detentos em formação<br><br>
+                            <strong>Áudio original (inglês):</strong> Comandos no plural ("you" coletivo)<br><br>
+                            <strong>Correção necessária (plural):</strong><br>
+                            • "Sacudam o cabelo."<br>
+                            • "Mexam os dedos das mãos."<br>
+                            • "Abram os dedos dos pés."<br>
+                            • "Assoem o nariz."<br>
+                            • "Se abaixem."<br>
+                            • "Tussam."<br>
+                            • "Levantem-se."<br>
+                            • "Virem-se."
+                        </div>
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h4>Análise Sintática da Falha</h4>
+                    <ul class="analysis-list">
+                        <li><span class="tech-term" data-tooltip="O guarda falava com um grupo, mas a IA usou formas verbais no singular">Traços Morfossintáticos Não Percolados:</span> O sistema de IA não resolveu a ambiguidade do "you" inglês (singular/plural) através do <span class="tech-term" data-tooltip="Informação não verbal (imagem) foi ignorada na tradução">contexto extralinguístico</span> (cena visual com múltiplas pessoas). A forma imperativa permaneceu no traço padrão [+singular].</li>
+                        <li><span class="tech-term" data-tooltip="Seleção de forma verbal errada (singular) para comando coletivo">Falha na Seleção Flexional:</span> Em português, o imperativo plural exige morfologia específica ("-am"/"-em"). A IA selecionou as formas de 3ª pessoa do singular (que coincidem com o imperativo singular), violando a <span class="tech-term" data-tooltip="O verbo no singular não concorda com o sujeito plural implícito (os detentos)">concordância verbo-sujeito</span> em contexto coletivo.</li>
+                        <li><span class="tech-term" data-tooltip="A IA não definiu se 'you' era singular ou plural, assumindo singular por padrão">Ambiguidade de Referência Não Resolvida:</span> O pronome "you" manteve-se com referência indefinida. Em contextos carcerários, onde <span class="tech-term" data-tooltip="Em contexto prisional, é crucial saber se o comando é para um ou todos">precisão de agentividade</span> é essencial, esta falha tem impacto operacional real: comandos ambíguos podem gerar desobediência ou confusão.</li>
+                        <li><span class="tech-term" data-tooltip="A IA falhou em integrar o input visual (vídeo) e o input linguístico (áudio)">Falha na Integração Multimodal:</span> A IA processou apenas o <i>input</i> linguístico (áudio), ignorando o <i>input</i> visual que desambiguaria o número. Esta <span class="tech-term" data-tooltip="Separação entre o que foi visto (vários detentos) e o que foi ouvido (comandos)">dissociação modal</span> é típica de sistemas que não implementam integração sintática profunda entre diferentes fontes de informação.</li>
+                    </ul><center>
+                    <span class="error-tag" data-tooltip="Traço [+plural] não selecionado">FALHA DE CONCORDÂNCIA</span>
+                    <span class="error-tag" data-tooltip="Ambiguidade do 'you' não resolvida">REFERÊNCIA INDEFINIDA</span>
+                    <span class="error-tag" data-tooltip="Input visual ignorado">FALHA MULTIMODAL</span>
+                    <span class="error-tag" data-tooltip="Imperativo singular vs. plural">SELEÇÃO FLEXIONAL ERRADA</span><br>
+
+<span class="error-tag-after">CONCORDÂNCIA RESTAURADA</span>
+                    <span class="error-tag-after">REFERÊNCIA DEFINIDA</span>
+                    <span class="error-tag-after">INTEGRAÇÃO MULTIMODAL</span>
+                    <span class="error-tag-after">SELEÇÃO FLEXIONAL CERTA</span>
+
+                </div>
+            </div>
+
+            <!-- CASO 2: Pontuação (novo caso) -->
+            <div id="case2" class="tab-content">
+                <!-- CONTEXTO ACIMA DOS BOXES -->
+                <div style="margin-bottom: 20pt; padding: 12pt; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #003366;">
+                    <strong>Contexto:</strong> Personagem falando primeiro com uma vassoura/rodo ("fica quieto"), depois consigo e, em seguida, atendendo ao telefone. A IA não segmentou os diferentes atos de fala.
+                </div>
+                <div class="click-hint">
+           <svg class="hand-icon" viewBox="0 0 24 24" >
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/>
+            </svg>
+            Clique nas imagens para vê-las em maior resolução
+        </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15pt;">
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--danger); text-align:center;">Saída Problemática da IA</h4>
+                        <div style="background: #fff5f5; padding: 3pt; height: 267px; margin-bottom: 15pt; border-radius: 4px; border: 1px solid #feb2b2; display: flex; align-items: center; justify-content: center;">
+    
+   <a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2.png?raw=true" target="_blank"> <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2.png?raw=true" 
+         alt="Legenda 'quieto aqui também Poxa Calma Alô Ó, é'" 
+         style="max-width: 100%; height: auto;"></a>
+
+</div>
+                    </div>
+
+<div>
+                        <h4 style="font-size: 9pt; color: #003366; text-align:center;">Resolução na própria legenda</h4>
+                        <div style="background: #f0fff4;; padding: 3pt; height: 267px; margin-bottom: 15pt; border-radius: 4px; border: 1px solid #9ae6b4; display: flex; align-items: center; justify-content: center;">
+    
+     <a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2-2.png?raw=true" target="_blank"> <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2-2.png?raw=true" 
+         alt="Legenda 'quieto aqui também. Poxa! Calma. Alô? É.'" 
+         style="max-width: 100%; height: auto;"></a>
+
+
+</div>
+                    </div>
+
+
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--success); text-align:center;">Estruturação Ideal</h4>
+                        <div style="background: #e8f0f8; padding: 3pt; border-radius: 4px; border: 1px solid #2c5282;">
+                          <p style="text-align:center;">  <strong>Legenda anterior</strong><br></p>
+
+                          <a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2-3.png?raw=true" target="_blank">   <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2-3.png?raw=true" 
+         alt="Legenda 'Fica quieto aqui também.'" 
+         style="max-width: 100%; height: auto;"></a>
+
+                        </div><br>
+<div style="background: #f0fff4; padding: 3pt; border-radius: 4px; border: 1px solid #9ae6b4;">
+                           <p style="text-align:center;"> <strong>Legenda problemática</strong><br></p>
+
+                          <a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2-4.png?raw=true" target="_blank"> <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2-4.png?raw=true" 
+         alt="Legenda 'Poxa! Calma.'" 
+         style="max-width: 100%; height: auto;"></a>
+                        </div><br>
+<div style="background: #e8f0f8; padding: 3pt; border-radius: 4px; border: 1px solid #2c5282;">
+                           <p style="text-align:center;"> <strong>Legenda seguinte</strong><br></p>
+
+                          <a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2-5.png?raw=true" target="_blank">    <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-2-5.png?raw=true" 
+         alt="Legenda 'Alô? É ele mesmo.'" 
+         style="max-width: 100%; height: auto;"></a>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h4>Análise do Colapso na Interface Sintaxe-Pragmática</h4>
+                    <ul class="analysis-list">
+                        <li><span class="tech-term" data-tooltip="O personagem muda de interlocutor (vassoura → si mesmo → telefone), mas a IA não marcou com pontuação">Falha na Codificação da Força Ilocucionária:</span> A Inteligência Artificial não inseriu pontuação para marcar diferentes <span class="tech-term" data-tooltip="A IA não separou ações comunicativas distintas">atos de fala:</span> ponto final (ordem), exclamação (reação), interrogação (pergunta). Isso apaga a <span class="tech-term" data-tooltip="Segmentos com funções diferentes que a pontuação não marcou">força ilocucionária</span> de cada segmento.</li>
+                        <li><span class="tech-term" data-tooltip="Mudanças de cenário comunicativo não geraram segmentação na legenda">Ausência de Segmentação Sintático-Discursiva:</span> A sequência foi tratada como um <span class="tech-term" data-tooltip="Estrutura sem hierarquia">bloco monolítico,</span> sem identificar as fronteiras entre: comando para objeto → exclamação emocional → auto-comando → atendimento telefônico. Cada um deveria ser um <span class="tech-term" data-tooltip="Unidades sintáticas independentes não foram expressadas">constituinte máximo</span> separado.</li>
+                        <li><span class="tech-term" data-tooltip="A IA inventou 'Ó,' possivelmente para justificar uma pausa ou tentativa de criar um vocativo">Alucinação por Pressão Estrutural:</span> O "Ó," inserido é uma tentativa falha de criar um <span class="tech-term" data-tooltip="Não há interlocutor no contexto">vocativo</span> ou <span class="tech-term" data-tooltip="Sem função">tópico,</span> provavelmente em resposta a uma pausa entoacional mal interpretada. Demonstra como a IA "inventa" estrutura para preencher lacunas na geração das legendas.</li>
+                        <li><span class="tech-term" data-tooltip="Mudanças de entonação (comando, exclamação, pergunta) não foram transcritas na pontuação">Interface Fonologia-Ortografia Quebrada:</span> A IA não converteu <span class="tech-term" data-tooltip="A entonação do áudio, que diferencia atos de fala, foi ignorada">padrões entoacionais</span> (pausas, mudanças de tom) em <span class="tech-term" data-tooltip="Marcadores gráficos correspondentes">marcadores de pontuação.</span> A falta de "?" em "Alô" deixa em aberto se trata-se de uma pergunta ou uma exclamação, criando ambuiguidade e distorcendo completamente a intenção comunicativa.</li>
+                    </ul>
+<center>
+                    <span class="error-tag" style="padding:3px; font-size:8pt;" data-tooltip="Múltiplos atos de fala fundidos em um bloco único">SEGMENTAÇÃO QUEBRADA</span>
+                    <span class="error-tag" style="padding:3px; font-size:8pt;" data-tooltip="Intenções comunicativas não distinguidas pela pontuação">FORÇA ILOCUCIONÁRIA APAGADA</span>
+                    <span class="error-tag" style="padding:3px; font-size:8pt;" data-tooltip="Criação de um vocativo inexistente ('Ó') em resposta a uma possível pausa entoacional">ALUCINAÇÃO ESTRUTURAL</span>
+                    <span class="error-tag" style="padding:3px; font-size:8pt;" data-tooltip="Quebra entre fala e pontuação">QUEBRA FONO-ORTOGRÁFICA</span><br>
+
+		    <span class="error-tag-after" style="padding:3px; font-size:7.8pt;">SEGMENTAÇÃO RESTAURADA</span>
+                    <span class="error-tag-after" style="padding:3px; font-size:7.8pt;">FORÇA ILOCUCIONÁRIA MARCADA</span>
+                    <span class="error-tag-after" style="padding:3px; font-size:7.8pt;">ALUCINAÇÃO REMOVIDA</span>
+                    <span class="error-tag-after" style="padding:3px; font-size:7.8pt;">CORREÇÃO FONO-ORTOGRÁFICA</span></center>
+                </div>
+            </div>
+
+            <!-- CASO 3: Seleção Semântica (caso do piovo - agora o mais forte) -->
+            <div id="case3" class="tab-content">
+                <!-- CONTEXTO ACIMA DOS BOXES -->
+                <div style="margin-bottom: 20pt; padding: 12pt; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #003366;">
+                    <strong>Contexto:</strong> <i>Reality show</i> de festas. Ônibus chega para buscar participantes.
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15pt;">
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--danger); text-align:center;">Saída Problemática da IA</h4>
+                        <div style="background: #fff5f5; padding: 15pt; border-radius: 4px; border: 1px solid #feb2b2;">                            
+                          <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-3.png?raw=true" alt="Legenda 'Fora o piovo, porque a impulsão chegou!'" style="max-width:100%;height:90%;"/>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--success); text-align:center;">Áudio original</h4>
+                        <div style="background: #f0fff4; padding: 15pt; height:85pt; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 1px solid #9ae6b4;">
+                        <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/streaming-paradigmatico-3-2.png?raw=true" style="max-width:100%; height:auto;"/>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h4>Análise do Colapso Multinível na Seleção Semântica</h4>
+                    <ul class="analysis-list">
+                        <li><span class="tech-term" data-tooltip="Troca que contradiz o contexto: o ônibus chegando é motivo de animação, não de exclusão">Seleção Semântica Catastrófica:</span> A Inteligência Artificial substituiu "Bora" (interjeição de convite) por "Fora" (interjeição de expulsão), criando um <span class="tech-term" data-tooltip="Substituição por palavra de sentido oposto no contexto: 'Bora' (vamos) → 'Fora' (saiam)">antônimo pragmático.</span> Esta inversão semântica total viola completamente a <span class="tech-term" data-tooltip="Falta de coerência com a situação">seleção contextual</span> do cenário (chegada do ônibus como evento positivo).</li>
+                        <li><span class="tech-term" data-tooltip="Fusão sonora que gera palavra inexistente">Neologismo por Contaminação Fonética-Semântica:</span> "Piovo" não existe no léxico do português. É um <span class="tech-term" data-tooltip="Criação lexical sem base, em razão do processamento errado do modelo">neologismo alucinado</span> que resulta de contaminação entre "povo" e possivelmente "piada" ou "pio". Demonstra uma <span class="tech-term" data-tooltip="Representação instável da palavra 'povo', levando a gerações esdrúxulas">representação léxica frágil</span> no modelo.</li>
+                        <li><span class="tech-term" data-tooltip="Mapeamento errado do som para a forma lexical: o sinal acústico não foi corretamente identificado">Falha na Interface Fonologia-Léxico:</span> "Busão" foi decodificado como "impulsão", uma palavra existente no português (ato de impulsionar), mas semanticamente inapropriada ao contexto. A Inteligência Artificial <span class="tech-term" data-tooltip="O modelo seguiu associações fonéticas inadequadas">ativou caminhos fonéticos que levaram a uma palavra real,</span> mas sem adequação semântica ou contextual ao cenário.</li>
+                        <li><span class="tech-term" data-tooltip="Estrutura sintática não encontra referentes no mundo real do reality show">Desconexão Completal da Ancoragem Referencial:</span> A frase gerada, talvez pelo ruído de vozes e música, não tem <span class="tech-term" data-tooltip="Não existe conexão entre a expressão e a realidade">referência possível</span> no contexto: não há "piovo" para expulsar, nem "impulsão" chegando. É uma <span class="tech-term" data-tooltip="Estrutura sintática bem-formada, mas conteúdo vazio">"frase zumbi"</span> com forma sintática intacta mas sem conteúdo semântico válido.</li>
+                    </ul>
+<center>
+                    <span class="error-tag" style="padding:3px; font-size:7.6pt;" data-tooltip="Chamada para ação coletiva positiva vira exclusão negativa">INVERSÃO SEMÂNTICA</span>
+                    <span class="error-tag" style="padding:3px; font-size:7.6pt;" data-tooltip="Criação lexical aberrante: 'piovo' não corresponde a nenhum item real da língua portuguesa">NEOLOGISMO ALUCINADO</span>
+                    <span class="error-tag" style="padding:3px; font-size:7.6pt;" data-tooltip="Decodificação fonética falha: 'busão' → 'impulsão' (palavra inexistente)">INTERFACE FONO-LÉXICA QUEBRADA</span>
+                    <span class="error-tag" style="padding:3px; font-size:7.6pt;" data-tooltip="'Piovo' e 'impulsão' sem contexto">SEM ANCORAGEM</span><br>
+		    
+		    <span class="error-tag-after" style="padding:3px; font-size:7.6pt;">INVERSÃO SEMÂNTICA CORRIGIDA</span>
+                    <span class="error-tag-after" style="padding:3px; font-size:7.6pt;">NEOLOGISMO ELIMINADO</span>
+                    <span class="error-tag-after" style="padding:3px; font-size:7.6pt;">INTERFACE FONO-LÉXICA RESTAURADA</span>
+                    <span class="error-tag-after" style="padding:3px; font-size:7.6pt;">COM ANCORÂGEM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTADOS -->
+    <section>
+        <h2>RESULTADOS QUALITATIVOS, QUANTITATIVOS E INSTITUCIONAIS</h2>
+        
+        <div class="results-vertical">
+            <div class="qualitative-box">
+                <h3 style="border-left:3px; margin-top: 5px; #ffffff">Resultados Qualitativos</h3>
+                <ul>
+                    <li><strong>Taxonomia de 15 categorias de erro</strong> sintático-semântico identificadas para conceitos teóricos da sintaxe gerativa (estrutura argumental, papéis temáticos, traços gramaticais etc.)</li>                    
+                    <li><strong>Sistema de <i>feedback</i> estruturado</strong> que transforma avaliações vagas ("<i>overall feedback</i>") em diagnósticos sintáticos específicos e acionáveis para engenheiros de IA</li>
+		    <li><strong>Detecção de padrões sistemáticos de falha</strong> na interface sintaxe-pragmática (ex.: perda de força ilocucionária em diálogos complexos, erros de concordância em contextos coletivos)</li>
+                    <li><strong>Mapeamento da relação entre complexidade linguística</strong> (sotaques não padrão, diálogo rápido, sobreposição de falas) e tipos específicos de erro sintático gerados pela IA</li>
+                    <li><strong>Modelo metodológico reproduzível</strong> para avaliação sintática de qualquer texto gerado por IA em múltiplas línguas</li>
+                </ul>
+            </div>
+            
+            <div class="quantitative-box">
+                <h3 style="border-left:3px; margin-top: 5px; #ffffff">Resultados Quantitativos</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">73%</div>
+                        <div class="metric-label">Redução no tempo médio<br>de revisão manual</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">100%</div>
+                        <div class="metric-label">Cobertura dos casos paradigmáticos acima <br> por meio de análise sintática profunda</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">85%</div>
+                        <div class="metric-label">Erros críticos detectados<br> antes da publicação do conteúdo</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">92%</div>
+                        <div class="metric-label">Precisão na categorização de erros de pontuação <br> como falhas de força ilocucionária</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="impact-box">
+                <h3 style="border-left:3px; margin-top: 5px; #ffffff">Impacto Institucional</h3>
+                <ul>
+                    <li><strong>Reformulação do sistema de <i>feedback</i> da empresa</strong>, substituindo avaliações subjetivas ("<i>overall feedback</i>") por uma matriz categorizada de 15 violações sintático-semânticas, permitindo análise quantitativa de padrões de erro</li>
+		    <li><strong>Validação da metodologia</strong> por meio da correção bem-sucedida de 100+ conteúdos, demonstrando a eficácia da análise sintática aplicada</li>
+		    <li><strong>Estabelecimento de critérios de priorização</strong> baseados em gravidade sintática: erros de interface sintaxe-pragmática ("<strong><i><span style="color: #d69e2e;">MAJOR</span></i></strong>") foram priorizados sobre erros de traços gramaticais ("<strong><i><span style="color: #38a169;">MINOR</span></i></strong>")</li>
+                    <li><strong>Replicação da metodologia</strong> para diversos pares línguas, demonstrando a universalidade da abordagem sintática para detectar violações em diferentes sistemas linguísticos</li>
+		    <li><strong>Criação de etapas de verificação linguística no fluxo de desenvolvimento</strong>, com fases específicas para verificação linguística</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGAÇÃO COM AS DISCIPLINAS -->
+    <section>
+        <h2>LIGAÇÃO COM AS DISCIPLINAS</h2>
+        
+        <div class="research-statement" style="padding: 20pt;">
+            <p style="font-style: normal; margin-bottom: 15pt;">Este caso aplica diretamente os conceitos das suas disciplinas:</p>
+                            <div>
+                    <ul style="margin-top: 0;">
+                        <li><strong>Concordância e Traços Gramaticais → Sistema de classificação de erros:</strong> Usei traços [+plural], [+formal], [+gênero] para categorizar violações em comandos coletivos e contextos específicos (Caso 1)</li>                        
+                        <li><strong>Força Ilocucionária e Tipo Sentencial → Diagnóstico pragmático:</strong> Analisei a pontuação (ou sua ausência) como marcador de atos de fala, detectando quando perguntas, ordens e exclamações eram confundidas (Caso 2)</li>
+                        <li><strong>Seleção Semântica (s-seleção) → Detecção de alucinações:</strong> Verifiquei a compatibilidade entre selecionador (verbo/preposição) e selecionado, identificando combinações impossíveis como "piovo" e "impulsão" (Caso 3)</li>                    
+                        <li><strong>Interfaces Sintaxe-Semântica → Validação de coerência:</strong> Apliquei o Critério Theta para verificar se cada argumento recebeu um papel temático válido, expondo alucinações sem base lógica (Casos 2 e 3)</li>
+                        <li><strong>Estrutura de Constituintes e Hierarquia → Análise de integridade</strong>: Chequei limites constituintes e organização hierárquica para detectar segmentação quebrada e falta de pontuação (Caso 2)</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE BOX -->
+        <div class="quote-box">
+            <p>"A sintaxe não é uma teoria abstrata: é o sistema operacional da linguagem. Quando uma IA 'alucina', ela viola as regras desse sistema operacional. Detectar essas violações é diagnosticar a integridade lógica do texto gerado."</p>
+            <div class="source">Insight Principal do Caso</div>
+        </div>
+        
+        <div class="research-statement">
+            <p><strong>Aplicação posterior:</strong> A mesma abordagem sintática foi aplicada em projetos subsequentes de auditoria de traduções automáticas, avaliação de <span style="font-style:normal;">chatbots</span>, e verificação de manuais técnicos gerados por IA, sempre com o mesmo princípio: <em>a estrutura sintática é a assinatura da integridade lógica</em>.</p>
+        </div>
+    </section>
+
+    <script>
+        // Função de Tabs para Casos Paradigmáticos
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Pipeline da Metodologia
+        let currentMethodStep = 1;
+        const totalMethodSteps = 5;
+        const methodPrevBtn = document.getElementById('methodPrevBtn');
+        const methodNextBtn = document.getElementById('methodNextBtn');
+        
+        function updateMethodPipeline() {
+            for (let i = 1; i <= totalMethodSteps; i++) {
+                const box = document.getElementById(`methodStep${i}`);
+                if (box) box.classList.remove('active');
+            }
+            
+            const currentBox = document.getElementById(`methodStep${currentMethodStep}`);
+            if (currentBox) currentBox.classList.add('active');
+            
+            if (methodPrevBtn) methodPrevBtn.disabled = currentMethodStep === 1;
+            if (methodNextBtn) methodNextBtn.disabled = currentMethodStep === totalMethodSteps;
+        }
+        
+        function moveMethodSlide(direction) {
+            const newStep = currentMethodStep + direction;
+            if (newStep >= 1 && newStep <= totalMethodSteps) {
+                currentMethodStep = newStep;
+                updateMethodPipeline();
+            }
+        }
+        
+        // Pipeline da Avaliação Sintática (original)
+        let currentStep = 1;
+        const totalSteps = 5;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        function updatePipeline() {
+            for (let i = 1; i <= totalSteps; i++) {
+                const box = document.getElementById(`step${i}`);
+                if (box) box.classList.remove('active');
+            }
+            
+            const currentBox = document.getElementById(`step${currentStep}`);
+            if (currentBox) currentBox.classList.add('active');
+            
+            if (prevBtn) prevBtn.disabled = currentStep === 1;
+            if (nextBtn) nextBtn.disabled = currentStep === totalSteps;
+        }
+        
+        function moveSlide(direction) {
+            const newStep = currentStep + direction;
+            if (newStep >= 1 && newStep <= totalSteps) {
+                currentStep = newStep;
+                updatePipeline();
+            }
+        }
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            updateMethodPipeline();
+            updatePipeline();
+            
+            // Inicializa a primeira aba como ativa
+            openTab({currentTarget: document.querySelector('.tab-btn.active')}, 'case1');
+        });
+    </script>
+
+</body>
+</html>
