@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso 1: Do Contato Linguístico à Ética em IA - Portfólio Prof. Márcia</title>
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-light: #e8f0f8;
+            --accent: #2c5282;
+            --accent-light: #4a90e2;
+            --danger: #c53030;
+            --success: #2f855a;
+            --border: #cbd5e0;
+            --border-light: #e2e8f0;
+            --card: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            font-size: 10.5pt;
+        }
+        
+        /* CABEÇALHO DO CASO 1 */
+        .case-header {
+            text-align: center;
+            border-bottom: 4px solid #003366;
+            padding-bottom: 20pt;
+            margin-bottom: 25pt;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20pt;
+            border-radius: 8px;
+        }
+        
+        .case-number {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 1.5pt;
+        }
+        
+        .case-header h1 {
+            font-size: 20pt;
+            color: #003366;
+            margin-bottom: 2pt;
+            text-transform: none;
+            letter-spacing: normal;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .case-subtitle {
+            font-size: 14pt;
+            color: #003366;
+            font-weight: 600;
+            margin-bottom: 15pt;
+            font-style: italic;
+        }
+        
+        .case-tags {
+            margin-top: 15pt;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6pt;
+        }
+        
+        .case-tag {
+            display: inline-block;
+            background: #003366;
+            color: white;
+            padding: 4pt 10pt;
+            border-radius: 5px;
+            font-size: 9.5pt;
+            font-weight: bold;
+            margin-right: 0;
+            margin-bottom: 8pt;
+        }
+        
+        /* RESEARCH STATEMENT */
+        .research-statement {
+            background: #f9f9f9;
+            padding: 15pt;
+            border-left: 4px solid #003366;
+            font-style: italic;
+            margin-bottom: 20pt;
+            text-align: justify;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* SEÇÕES E TÍTULOS */
+        section {
+            margin-bottom: 30pt;
+            page-break-inside: avoid;
+        }
+        
+        h2 {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 5pt;
+            margin-bottom: 15pt;
+            text-transform: uppercase;
+            letter-spacing: 0.8pt;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #003366;
+            margin-top: 18pt;
+            margin-bottom: 10pt;
+            border-left: 5px solid #003366;
+            padding-left: 10pt;
+        }
+        
+        /* CARDS GRID - PARA O VIÉS EM CASCATA */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .bias-card {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .bias-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .bias-card h4 {
+            color: #003366;
+            font-size: 11pt;
+            margin-bottom: 8pt;
+            font-weight: bold;
+        }
+        
+        /* DOIS BOXES LADO A LADO */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20pt;
+            margin: 20pt 0;
+        }
+        
+        .problem-box, .solution-box {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;	    
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .problem-box h3, .solution-box h3 {
+            text-align: center;
+            margin-top: 3pt;
+            border: none;
+            padding-left: 0;
+            color: #003366;
+            margin-bottom: 12pt;
+            padding-bottom: 8pt;
+            border-bottom: 1px solid #003366;
+        }
+
+        /* CLICK HINT */
+        .click-hint {
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 9pt; 
+            color: var(--accent); 
+            margin-bottom: 8pt; 
+            font-style: italic;
+        }
+        
+        .hand-icon { 
+    width: 18px; 
+    height: 18px;
+transform: rotate(-180deg);
+    fill: var(--accent); 
+    margin: 0 2px;
+}
+
+.hand-icon.left { 
+    transform: rotate(90deg); 
+}
+
+.hand-icon.right { 
+    transform: rotate(-90deg); 
+}
+
+.click-hint .arrows-container {
+    display: flex;
+    align-items: center;
+    margin: 0 6px;
+}
+
+         
+        /* RELATOS DOS OPERADORES */
+        .operator-complaints {
+            background: #fff5f5;
+            border: 2px solid var(--danger);
+            border-radius: 8px;
+            padding: 20pt;
+            margin: 20pt 0;
+        }
+        
+        .complaint-title {
+            font-weight: bold;
+            color: var(--danger);
+            margin-bottom: 15pt;
+            text-align: center;
+            font-size: 11pt;
+        }
+        
+        .complaint-images {
+            display: flex;
+            flex-direction: column;
+            gap: 10pt;
+            margin-top: 15pt;
+        }
+        
+        .img-placeholder {
+            
+            border: 2px dashed #999;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 9pt;
+            padding: 5pt;
+        }
+        
+        /* TEORIA */
+        .theory-highlight {
+            background: #e3f2fd;
+            border-left: 5px solid #003366;
+            padding: 15pt;
+            margin: 20pt 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        
+        /* INTERATIVIDADE: ANTES/ANÁLISE/DEPOIS */
+        .interactive-rewrite {
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20pt 0;
+            background: var(--card);
+        }
+        
+        .tab-nav { 
+            display: flex; 
+            background: var(--primary-light); 
+            border-bottom: 1px solid var(--border); 
+        }
+        
+        .tab-btn { 
+            flex: 1; 
+            padding: 10pt; 
+            border: none; 
+            background: none; 
+            cursor: pointer; 
+            font-weight: bold; 
+            color: var(--primary); 
+            transition: 0.3s; 
+            font-size: 10pt;
+        }
+        
+        .tab-btn.active { 
+            background: var(--primary); 
+            color: white; 
+        }
+        
+        .tab-content { 
+            padding: 15pt; 
+            display: none; 
+        }
+        
+        .tab-content.active { 
+            display: block; 
+        }
+        
+        .analysis-box {
+            background: #fff; 
+            border: 1px solid var(--border);
+            padding: 12pt; 
+            border-radius: 6px; 
+            margin-top: 10pt;
+        }
+        
+        .analysis-box h4 { 
+            font-size: 10pt; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            margin-bottom: 8pt;
+            padding-bottom: 4pt;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        ul.analysis-list { 
+            margin-left: 0;
+            margin-top: 0;
+        }
+        
+        ul.analysis-list li { 
+            margin-bottom: 12pt;
+            font-size: 10pt; 
+            list-style: none;
+            padding-left: 15pt;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        ul.analysis-list li::before { 
+            content: '→'; 
+            position: absolute; 
+            left: 0; 
+            color: var(--primary); 
+        }
+
+        /* TAGS DE FENÔMENO COM TOOLTIPS */
+        .phenom-tag {
+            display: inline-block;
+            background: #fff5f5;
+            color: var(--accent);
+            padding: 2pt 6pt;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            font-weight: 600;
+            margin-top: 5pt;
+            margin-right: 4pt;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: help;
+        }
+
+        .phenom-tag:hover {
+            background: #c53030;
+            color: white;
+        }
+
+        .phenom-tag::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 75%;
+            transform: translateX(-50%);
+            background: rgba(197, 48, 48, 0.95);
+            color: white;
+            padding: 4pt 8pt;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            margin-bottom: 6pt;
+        }
+
+        .phenom-tag:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+/* TAGS DE FENÔMENO AFTER */
+        .phenom-tag-after {
+            display: inline-block;
+            background: #F2FFEE;
+            color: var(--accent);
+            padding: 2pt 6pt;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            font-weight: 600;
+            margin-top: 5pt;
+            margin-right: 4pt;
+            transition: all 0.3s ease;
+            position: relative;            
+        }
+
+        .phenom-tag-after:hover {
+            background: #2f855a;
+            color: white;
+        }
+
+        .phenom-tag-after:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        /* TERMOS TÉCNICOS DESTACADOS */
+        .tech-term {
+            background: var(--primary-light);
+            color: var(--accent);
+            padding: 1pt 4pt;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 9.5pt;
+            cursor: help;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tech-term:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .tech-term::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 70%;
+	
+            transform: translateX(-40%);
+            background: rgba(44, 82, 130, 0.95);
+            color: white;
+            padding: 6pt 10pt;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            margin-bottom: 6pt;
+        }
+
+        .tech-term:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .analysis-content {
+            background: #e8f4ff;
+            padding: 12pt;
+            border-radius: 4px;
+            margin: 10pt 0;
+            font-size: 10pt;
+        }
+        
+        .technical-term {
+            background: #003366;
+            color: white;
+            padding: 2pt 6pt;
+            border-radius: 3px;
+            font-size: 9pt;
+            font-weight: bold;
+            margin: 0 2pt;
+        }
+        
+        /* PIPELINE DE ADAPTAÇÃO LINGUÍSTICA - CORRIGIDO */
+        .pipeline-wrapper {
+            position: relative;
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 30pt 50pt; /* Mais espaço nas laterais para as setas */
+            margin: 20pt 0;
+            overflow: hidden;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pipeline-container {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            transition: transform 0.6s ease;
+        }
+        
+        .pipeline-box {
+            width: 280px; /* Mais largo que quadrado */
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 20pt;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: absolute;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.4s ease;
+        }
+        
+        .pipeline-box.active {
+            opacity: 1;
+            transform: translateX(0);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11pt;
+            font-weight: bold;
+            z-index: 3;
+        }
+        
+        .arrow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 51, 102, 0.2);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+        }
+        
+        .arrow-btn:hover {
+            background: rgba(0, 51, 102, 0.8);
+            opacity: 1;
+        }
+        
+        .arrow-btn:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+        
+        .arrow-btn:disabled:hover {
+            background: rgba(0, 51, 102, 0.2);
+        }
+        
+        .arrow-prev {
+            left: 10px; /* Metade dentro do box */
+        }
+        
+        .arrow-next {
+            right: 10px; /* Metade dentro do box */
+        }
+
+        /* RESULTADOS EM BLOCOS VERTICAIS */
+.results-vertical {
+    display: block;
+    margin: 20pt 0;
+}
+
+.results-vertical > div {
+    margin-bottom: 20pt;
+}
+
+.results-vertical > div:last-child {
+    margin-bottom: 0;
+}
+
+.qualitative-box, .quantitative-box, .impact-box {
+    background: white;
+    border: 2px solid #003366;
+    border-radius: 8px;
+    padding: 15pt;
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+    width: 100%;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10pt;
+    margin-top: 10pt;
+}
+        
+        .metric-card {
+            background: #f0f7ff;
+            border: 1px solid #003366;
+            border-radius: 6px;
+            padding: 10pt;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 4pt;
+        }
+        
+        .metric-label {
+            font-size: 9pt;
+            color: #666;
+        }
+        
+        /* QUOTE BOX */
+        .quote-box {
+            background: linear-gradient(135deg, #003366, hsl(215, 50%, 35%));
+            color: white;
+            padding: 1.75rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(31, 79, 176, 0.2);
+            margin: 1.5rem 0;
+        }
+        
+        .quote-box p {
+            font-size: 1.05rem;
+            font-weight: 500;
+            font-style: italic;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+        
+        .quote-box .source {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-style: normal;
+        }
+        
+        /* LISTAS */
+        ul {
+            margin-left: 20pt;
+            margin-top: 8pt;
+        }
+        
+        li {
+            margin-bottom: 8pt;
+            text-align: justify;
+        }
+        
+        strong {
+            color: #003366;
+        }
+        
+        /* ANIMAÇÕES */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        @media print {
+            body { padding: 5mm; }
+        }
+        
+      @media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+            
+            .pipeline-wrapper {
+                padding: 20pt 40pt;
+            }
+            
+            .pipeline-box {
+                width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO DO CASO 1 -->
+    <div class="case-header">
+        <div class="case-number">CASO 1 – PORTFÓLIO PARA PROFA. MÁRCIA</div>
+        <h1>Do contato linguístico à ética em inteligência artificial:</h1>
+        <div class="case-subtitle">como a crioulística fundamenta a mitigação de viés em sistemas corporativos</div>
+        <div class="case-tags">
+            <span class="case-tag">Crioulística</span>
+            <span class="case-tag">Linguística de Contato</span>
+            <span class="case-tag">Viés Linguístico</span>
+            <span class="case-tag">Ética em IA</span>
+            <span class="case-tag">Sintaxe Computacional</span>
+        </div>
+    </div>
+
+    <!-- BOX DE ABERTURA -->
+    <div class="research-statement">
+        <strong>Para a Prof. Márcia:</strong> Você me ensinou que as línguas crioulas não são "erros" do português, mas sistemas linguísticos legítimos, nascidos do contato, resistência e criatividade humana. No mercado, encontrei o mesmo preconceito: sistemas de Inteligência Artificial tratavam variedades linguísticas periféricas como "ruído", excluindo falantes reais. Usei a lente que aprendi com você para transformar esse problema em solução.
+    </div>
+
+    <!-- SEÇÃO 1: O PROBLEMA TRIPLO -->
+    <section>
+        <h2>O PROBLEMA TRIPLO: O VIÉS EM CASCATA</h2>
+        <p style="text-align: justify;">
+            O <i>chatbot</i> de uma multinacional de telecomunicações não conversava diretamente com clientes, mas gerava <i>scripts</i> rígidos para operadores de <i>telemarketing</i>. Estes <i>scripts</i> impunham uma gramática normativa institucional artificial, alienando operadores e clientes.
+        </p>
+        <br>
+        <div class="cards-grid">
+            <div class="bias-card">
+                <h4>Máquina → Operador</h4>
+                <p><i>Scripts</i> formais e impessoais que ignoram a identidade do falante.</p>
+            </div>
+            
+            <div class="bias-card">
+                <h4>Operador → Cliente</h4>
+                <p>Perda de naturalidade, empatia e confiança na comunicação.</p>
+            </div>
+            
+            <div class="bias-card">
+                <h4>Cliente → Sistema</h4>
+                <p>Abandono da chamada e insatisfação com o "robô" humano.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RELATOS DOS OPERADORES -->
+    <div class="operator-complaints">
+        <div class="complaint-title">Relatos dos operadores</div>
+        <div class="complaint-images">
+            <div class="img-placeholder"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/comentario-operador-critica-1.png?raw=true" width="100%;" alt="comentário de operador falando que não entendeu nada" /></div>
+            <div class="img-placeholder"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/comentario-operador-critica-2.png?raw=true" width="100%;" alt="comentário de operador falando que não está explicativo, e sim, confuso"/></div>
+            <div class="img-placeholder"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/comentario-operador-critica-3.png?raw=true" width="100%;" alt="comentário de operador falando que achou que ha espaco para uma linguagem menos técnica"/></div>
+        </div>
+    </div>
+
+    <!-- O QUE FALHAVA vs O QUE PRECISAVA -->
+    <div class="two-columns">
+        <div class="problem-box">
+            <h3>O que falhava</h3>
+            <ul>
+                <li>Uso sistemático do subjuntivo</li>
+                <li>Jargão técnico interno incompreensível</li>
+                <li>Voz passiva e locuções verbais complexas</li>
+                <li>Ignorava a identidade linguística do operador</li>
+            </ul>
+        </div>
+        
+        <div class="solution-box">
+            <h3>O que precisava</h3>
+            <ul>
+                <li>Respeito à variação linguística</li>
+                <li>Clareza sintática e pragmática</li>
+                <li>Opções adaptadas ao perfil do cliente</li>
+                <li>Governança ética contínua</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FUNDAMENTAÇÃO TEÓRICA -->
+    <section>
+        <h2>FUNDAMENTAÇÃO TEÓRICA: PERSPECTIVAS SOCIOLINGUÍSTICAS </h2>
+        <p style="text-align: justify;">
+            Linguística de contato e processos de crioulização:
+        </p>
+        <ul>
+            <li>Legitimidade das variantes não padrão</li>
+            <li>Variação linguística como sistema, não como erro</li>
+            <li>Relação entre norma, poder institucional e exclusão</li>
+            <li>Sensibilidade ética para línguas e variedades marginalizadas</li>
+        </ul>
+        
+        <div class="theory-highlight">
+           <p style="text-align:justify;"> <strong>Hipótese central:</strong> A imposição de uma norma linguística artificial via <span style="font-style:normal;">chatbot</span> gerava exclusão digital e operacional, replicando hierarquias sociais no atendimento.</p>
+        </div>
+        
+        <h3>Conceitos-chave aplicados</h3>
+        <div style="margin-bottom: 10pt; text-align: center;">        
+        <span class="case-tag" style="background: #e2e8f0; color: #003366; margin-top: 5pt; margin-right: 3pt;">Legitimidade (Hagemeijer)</span>
+        <span class="case-tag" style="background: #e2e8f0; color: #003366; margin-top: 5pt; margin-right: 3pt;">Variação Sistemática (Labov)</span>
+        <span class="case-tag" style="background: #e2e8f0; color: #003366; margin-top: 5pt; margin-right: 3pt;">Contato e Adaptação</span>
+        <span class="case-tag" style="background: #e2e8f0; color: #003366;  margin-top: 5pt; margin-right: 3pt;">Agência Linguística</span>
+        </div>
+    </section>
+
+    <!-- CORE DO CASE -->
+    <section>
+        <h2>CASOS PARADIGMÁTICOS: ISENÇÃO • PAGAMENTO • ENGAJAMENTO</h2>
+        <div class="theory-highlight">
+           <p style="text-align:justify;"> <strong>Crioulística como lente funcional:</strong> o termo <strong>crioulização</strong> é empregado aqui em <strong>sentido funcional e analógico, não histórico</strong>. Refere-se ao processo de simplificação estrutural, transparência sintática e revalorização do vernáculo em contextos de comunicação assimétrica, como no contato telefônico entre operadores de <span style="font-style:normal">call center</span> e clientes. Assim como em situações de contato linguístico, <strong>há uma variedade institucional legitimada</strong>, porém cognitivamente opaca, <strong>e uma variedade operacional estigmatizada</strong>, porém funcional.</p></div>
+        <div class="click-hint">
+            <svg class="hand-icon" viewBox="0 0 24 24">
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/>
+            </svg>
+            Clique em cada um dos casos para ver a análise detalhada
+        </div>
+
+        <div class="interactive-rewrite">
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'case1')">CASO 1: ISENÇÃO</button>
+                <button class="tab-btn" onclick="openTab(event, 'case2')">CASO 2: PAGAMENTO</button>
+                <button class="tab-btn" onclick="openTab(event, 'case3')">CASO 3: ENGAJAMENTO</button>
+            </div>
+
+            <div id="case1" class="tab-content active">
+            
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15pt;">
+
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--danger); text-align:center;">Antes (Norma Institucional)</h4>
+ 
+
+                        <div class="img-placeholder"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/exemplo-passiva.png?raw=true" width="100%;" alt="exemplo de sentença passiva"/></div>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--success); text-align:center;">Depois (Mediação Dialetal)</h4>
+                        <div class="img-placeholder"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/exemplo-ativa.png?raw=true" height="26" alt="exemplo de sentença ativa"/></div>
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h4>Análise Sintático-Dialetal</h4>
+                    <ul class="analysis-list">
+                        <li><span class="tech-term" data-tooltip="Verbo leve">Seleção funcional</span> e <span class="tech-term" data-tooltip="Apagamento de agentividade">esvaziamento semântico:</span> A construção institucional faz uso da cópula “ser” integrada a uma voz passiva analítica, resultando em baixo conteúdo lexical e apagamento do agente. A mediação dialetal substitui essa estrutura por um verbo pleno ("isentar"), recuperando a grade argumental original e tornando explícita a relação entre ação e responsável.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;"> <strong>Paralelo com crioulística:</strong>  preferência por verbos plenos e transparentes, em detrimento de perífrases funcionais opacas.</p>
+        </div>
+
+
+                        <li><span class="tech-term" data-tooltip="Nominalização vs. Projeção Verbal">Reconfiguração da hierarquia sintática:</span> A forma institucional organiza o evento como um sintagma nominal abstrato (a isenção da multa), exigindo uma projeção funcional adicional para modalização (deve ser). A reformulação elimina essa camada, reinstalando o evento como núcleo verbal imperativo, o que encurta a derivação sintática e reduz o custo de processamento.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;"> <strong>Em termos crioulísticos:</strong>   tendência à linearização direta evento → ação, sem encaixes estruturais desnecessários.</p>
+        </div>
+
+                        <li><span class="tech-term" data-tooltip="Economia derivacional">Desnominalização e realinhamento sintaxe–pragmática:</span> O processo de desnominalização converte um predicado abstrato em comando operacional. A sintaxe passa a refletir diretamente a pragmática da interação telefônica: há pouco tempo, pouco contexto compartilhado e alta pressão cognitiva.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;"> O processo de desnominalização converte um predicado abstrato em comando operacional. A sintaxe passa a refletir diretamente a pragmática da interação telefônica: há pouco tempo, pouco contexto compartilhado e alta pressão cognitiva.</p>
+        </div>
+
+			 <li><span class="tech-term" data-tooltip="Relexificação funcional / Registro">Relexificação funcional (não histórica):</span> Não se trata de relexificação no sentido clássico de contato entre línguas, mas de uma substituição intraidiomática de itens de baixa frequência institucional por formas verbais de alta frequência no vernáculo falado, comuns ao repertório ativo de operadores e clientes.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;"> O paralelo com a crioulística está na deslegitimação do vernáculo, não na sua inexistência estrutural.</p>
+        </div>
+
+<li><span class="tech-term" data-tooltip="Imperativo e Papéis Temáticos">Modo verbal e atribuição de agência:</span> A mudança para o modo imperativo restaura a atribuição clara de papéis temáticos: o operador é o agente implícito, e a multa é o tema afetado. Essa explicitação é crucial em contextos operacionais, nos quais ambiguidades sintáticas se traduzem diretamente em erro procedimental.</li>
+
+                    </ul>
+<center>
+                    <span class="phenom-tag" data-tooltip="Origem da opacidade">NOMINALIZAÇÃO</span>
+		    <span class="phenom-tag" data-tooltip="Apagamento de agência">VOZ PASSIVA</span>
+		    <span class="phenom-tag" data-tooltip="Distância pragmática">MODALIDADE INSTITUCIONAL</span>                    
+                    <br>
+		    <span class="phenom-tag-after">IMPERATIVO VERBAL</span>
+		    <span class="phenom-tag-after">VOZ ATIVA</span>
+		    <span class="phenom-tag-after">RECUPERAÇÃO DA AGENTIVIDADE</span> </center>
+                </div>
+            </div>
+
+            <div id="case2" class="tab-content">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15pt;">
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--danger); text-align:center;">Antes (Norma Institucional)</h4>
+                        <div class="img-placeholder"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/exemplo-rebuscado.png?raw=true" width="100%" alt="exemplo de sentença rebuscada"/></div>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--success); text-align:center;">Depois (Mediação Dialetal)</h4>
+                        <div class="img-placeholder"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/exemplo-simples.png?raw=true" height="25" width="100%" alt="exemplo de sentença simples"/></div>
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h4>Análise Sintático-Dialetal</h4>
+                    <ul class="analysis-list">
+                        <li><span class="tech-term" data-tooltip="Exigências categoriais do núcleo">C-seleção</span> e reconfiguração do complemento: A locução conjuntiva <strong>"a fim de que"</strong> seleciona obrigatoriamente uma <strong>oração finita no modo subjuntivo</strong>, projetando uma estrutura subordinada mais profunda e abstrata. A reescrita substitui essa locução por <strong>"para"</strong>, que seleciona um <strong>infinitivo não flexionado</strong>, reduzindo a complexidade da projeção funcional.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;"> <strong>Paralelo com crioulística:</strong> preferência por <strong>estruturas infinitivas e transparentes</strong>, em detrimento de complementação finita marcada por traços morfológicos pouco salientes.</p>
+        </div>
+
+
+                        <li><span class="tech-term" data-tooltip="Modo verbal e carga morfológica">Redução de marcação modal (subjuntivo → infinitivo):</span> O modo <strong>subjuntivo</strong>, embora normativamente associado à formalidade, introduz <strong>baixa informatividade pragmática</strong> em contextos operacionais. A construção infinitiva elimina a marcação modal redundante, preservando a relação finalística sem exigir processamento morfossintático adicional.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;"> Em termos de contato linguístico, trata-se de <strong>desmarcação morfológica</strong>, fenômeno amplamente documentado em línguas crioulas e variedades de contato.</p>
+        </div>
+                        <li><span class="tech-term" data-tooltip="Controle implícito do sujeito">Recuperação do controle de agente:</span> Na formulação institucional, o sujeito da ação ("verificar") permanece <strong>indeterminado</strong>, exigindo inferência contextual. A reformulação infinitiva permite <strong>controle implícito claro</strong>, atribuindo pragmaticamente a ação ao operador, de forma imediata e não ambígua.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;"> O princípio funcional aqui não é "simplificação vulgar", mas <strong>explicitação de agentividade</strong>, central em sistemas linguísticos orientados à tomada de ação.</p>
+        </div>
+
+<li><span class="tech-term" data-tooltip="Verbo leve vs. predicado explicativo">Reestruturação informacional do predicado:</span> A expressão institucional <strong>"o corrido"</strong> opera como item lexical opaco e pouco frequente no vernáculo falado. A reformulação prefere <strong>"o que aconteceu"</strong>, uma estrutura interrogativa encaixada de alta frequência, semanticamente transparente e alinhada ao repertório ativo do falante real.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;"> <strong>Paralelo com crioulística:</strong> substituição de <strong>itens lexicalmente marcados</strong> por construções mais acessíveis.</p>
+        </div>
+
+<li><span class="tech-term" data-tooltip="Coexistência de variedades entre um polo de maior e um de menor prestígio">Continuidade no continuum acrolético–basilético:</span> A reescrita não abandona o registro formal, mas <strong>desloca o enunciado em direção ao centro do continuum</strong>, no qual a comunicação é funcional, cooperativa e não punitiva. O operador continua falando "institucionalmente", mas agora em uma variedade <strong>operacionalmente legítima</strong>.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;">O paralelo com comunidades crioulas está na <strong>diglossia funcional</strong>: uma variedade de prestígio existe, mas não é a mais eficiente para a interação real.</p>
+        </div>
+
+
+                    </ul>
+<center>
+                    <span class="phenom-tag" data-tooltip="Uso de formas que marcam hierarquia">TRATAMENTO FORMAL</span>
+                    <span class="phenom-tag" data-tooltip="Aumento da carga cognitiva">ESTRUTURA CONDICIONAL</span>
+                    <span class="phenom-tag" data-tooltip="Sobrecarga morfológica">SUBJUNTIVO</span><br>
+		    <span class="phenom-tag-after">FORMA INFINITIVA</span>
+                    <span class="phenom-tag-after">ECONOMIA SINTÁTICA</span>
+                    <span class="phenom-tag-after">RECUPERAÇÃO DA AGENTIVIDADE</span>
+
+</center>
+                </div>
+            </div>
+
+            <div id="case3" class="tab-content">
+<div class="click-hint">
+           <svg class="hand-icon" viewBox="0 0 24 24" >
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/>
+            </svg>
+            Clique nas imagens para vê-las em maior resolução
+        </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15pt;">
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--danger); text-align:center;">Antes (Norma Institucional)</h4>
+                        <div class="img-placeholder"><a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/exemplo-institucional.png?raw=true" target="_blank"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/exemplo-institucional.png?raw=true" width="100%" alt="exemplo de sentença simples"/></a></div>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 9pt; color: var(--success); text-align:center;">Depois (Mediação Dialetal)</h4>
+                        <div class="img-placeholder"><a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/exemplo-natural.png?raw=true" target="_blank"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/exemplo-natural.png?raw=true" height="15" width="100%" alt="exemplo de sentença simples"/></a></div>
+                    </div>
+                </div>
+                <div class="analysis-box">
+                    <h4>Análise Sintático-Dialetal</h4>
+                    <ul class="analysis-list">
+                        <li><strong> Redução de <span class="tech-term" data-tooltip="Capacidade de encaixar sintagmas do mesmo tipo indefinidamente">Recursividade em Sintagmas Preposicionais:</span></strong> A formulação institucional apresenta uma <strong>cadeia recursiva de sintagmas preposicionais</strong> ("de incentivo <strong>à</strong> ativação <strong>ao</strong> débito automático <strong>para</strong> os clientes da base”), típica de registros burocráticos. A reescrita rompe essa recursividade excessiva, redistribuindo o conteúdo semântico em uma <strong>estrutura verbal linear</strong>, alinhada ao princípio, observado em gramáticas de contato, de <strong>restrição da profundidade estrutural</strong> para reduzir sobrecarga de processamento.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;">Em variedades de contato, tende-se a evitar cadeias sintagmáticas profundas em favor de estruturas mais planas, por conta do alto custo cognitivo em comunicações orais.</p>
+        </div>
+                        <li><span class="tech-term" data-tooltip="Mudança do elemento central da construção sintática">Mudança de Núcleo Categorial (Nominal → Verbal):</span> O enunciado original é estruturado como um <strong>Sintagma Nominal abstrato</strong>, sem agente explícito e sem eixo temporal claro ("ação de incentivo…"). A mediação dialetal <strong>verbaliza o núcleo</strong>, convertendo o SN em um <strongSintagma Verbal imperativo</strong>, o que reintroduz <strong>agentividade</strong>, <strong>direcionalidade</strong> e <strong>dinamismo discursivo</strong>, traços recorrentes em variedades de contato que privilegiam verbos plenos como organizadores da estrutura informacional.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+           <p style="text-align:justify; font-size:13px;">A preferência por verbos plenos como organizadores da sentença é amplamente documentada em crioulos, nos quais a verbalização garante transparência semântica e pragmática.</p>
+              </div>
+                        <li><span class="tech-term" data-tooltip="Coexistência de variedades entre um polo de maior e um de menor prestígio">Reconfiguração da Agentividade e da Força Ilocucionária:</span> Na norma institucional, a agentividade é <strong>difusa ou apagada</strong>, típica de construções que evitam endereçamento direto. Na reescrita, o imperativo ("Incentive…") estabelece uma <strong>relação interacional explícita</strong>, mais próxima da oralidade, deslocando o enunciado para um ponto do <span class="tech-term" data-tooltip="Coexistência de variedades entre um polo de maior e um de menor prestígio">continuum acrolético–basilético</span> em que a eficácia comunicativa supera a neutralidade formal.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+<p style="text-align:justify; font-size:13px;">Gramáticas de contato privilegiam a agentividade explícita, reduzindo construções impessoais típicas de registros administrativos.</p>
+              </div>
+
+ <li><span class="tech-term" data-tooltip="Reconstrução que explicita relações de ação, agência e finalidade">Desnominalização</span> <strong>e Supressão de Voz Passiva Implícita:</strong> A expressão "ação de incentivo" funciona como uma <strong>nominalização deverbal</strong> que enconde quem age, quando ou como. A reescrita tira essa nominalização, recuperando uma <strong>estrutura ativa</strong>, mais transparente do ponto de vista sintático e pragmático, sem perda de conteúdo institucional.</li>
+<div class="theory-highlight" style="margin-top:-5px;">
+<p style="text-align:justify; font-size:13px;">A redução de nominalizações abstratas é recorrente em contextos de contato linguístico, em que processos são expressos como eventos, não como entidades estáticas.</p>
+              </div>
+ <li><span class="tech-term" data-tooltip="Organização em que o tema introduz o ponto de partida discursivo e o rema concentra a informação nova">Reorganização da Estrutura Informacional (Tema → Rema):</span> No enunciado institucional, a informação nova está <strong>enterrada no final de uma cadeia nominal longa</strong>, dificultando a identificação rápida do objetivo do texto. A mediação dialetal reorganiza a estrutura, trazendo o <strong>predicado relevante</strong> ("descobrir os benefícios do débito automático") para a posição de destaque pragmático, compatível com padrões de oralidade funcional e com gramáticas de contato que favorecem <strong>progressão temática direta.</strong></li>
+<div class="theory-highlight" style="margin-top:-5px;">
+<p style="text-align:justify; font-size:13px;">Crioulos e variedades de contato tendem a minimizar inferência e favorecer a recuperação imediata do propósito da comunicação.</p>
+              </div>
+
+                    </ul>
+<center>
+                    <span class="phenom-tag" data-tooltip="Uso de nomes abstratos derivados de verbos que ocultam quem faz o quê">NOMINALIZAÇÃO</span>
+                    <span class="phenom-tag" data-tooltip="Encadeamento de sintagmas preposicionais que aumenta o custo de processamento mental">RECURSIVIDADE PREPOSICIONAL</span>
+                    <span class="phenom-tag" data-tooltip="Estrutura em que o agente não é explícito">APAGAMENTO DA AGENTIVIDADE</span><br>
+		    <span class="phenom-tag-after">VERBALIZAÇÃO FUNCIONAL</span>
+                    <span class="phenom-tag-after">PROGRESSÃO INFORMACIONAL CLARA</span>
+                    <span class="phenom-tag-after">AGENTIVIDADE EXPLÍCITA</span>
+</center>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLUXO DE TRANSFORMAÇÃO SINTÁTICO-PRAGMÁTICA -->
+    <section>
+        <h2>FLUXO DE TRANSFORMAÇÃO SINTÁTICO-PRAGMÁTICA</h2>
+        
+        <p style="font-size: 10pt; margin-bottom: 10pt; text-align: center;">O sistema não corrige o "erro", ele <b>traduz registros</b> para garantir equidade linguística.</p>
+    
+        <div class="click-hint">
+        <div class="arrows-container">
+            <svg class="hand-icon left" viewBox="0 0 24 24">
+                <path d="M10,9V5h4v4h5l-7,7l-7-7H10z"/>
+            </svg>
+            <svg class="hand-icon right" viewBox="0 0 24 24">
+                <path d="M10,9V5h4v4h5l-7,7l-7-7H10z"/>
+            </svg>
+        </div>
+        Clique nas setas para navegar entre as etapas
+    </div>
+
+        <div class="pipeline-wrapper">
+            <button class="arrow-btn arrow-prev" onclick="moveSlide(-1)" id="prevBtn" disabled>❮</button>
+            
+            <div class="pipeline-container" id="pipelineContainer">
+                <!-- Box 1 - Ativo por padrão -->
+                <div class="pipeline-box active" id="step1">
+                    <div class="step-number">1</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Análise de Perfil Pragmático</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Mapeamento sociolinguístico do cliente e do operador com base em registros históricos e marcadores discursivos
+                    </p>
+                </div>
+                
+                <!-- Box 2-5 inicialmente escondidos -->
+                <div class="pipeline-box" id="step2">
+                    <div class="step-number">2</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Adaptação de Registro</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Equilíbrio entre formal, neutro ou coloquial baseado em análise de contexto comunicativo
+                    </p>
+                </div>
+                
+                <div class="pipeline-box" id="step3">
+                    <div class="step-number">3</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Transformação Sintática</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+		    Definição de princípios de reescrita, como transparência sintática, verbalização de núcleos e explicitação de agência</p>
+                </div>
+                
+                <div class="pipeline-box" id="step4">
+                    <div class="step-number">4</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Validação de Naturalidade</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Teste A/B com operadores para garantir que a adaptação mantém autenticidade comunicativa
+                    </p>
+                </div>
+                
+                <div class="pipeline-box" id="step5">
+                    <div class="step-number">5</div>
+                    <strong style="font-size: 11pt; color: var(--primary);">Curadoria e Retroalimentação</strong>
+                    <p style="font-size: 9.5pt; margin-top: 8pt; color: #555;">
+                        Documentação editorial de desvios e vieses para embasar treinamentos e ajustes de diretrizes e manuais
+                    </p>
+                </div>
+            </div>
+            
+            <button class="arrow-btn arrow-next" onclick="moveSlide(1)" id="nextBtn">❯</button>
+        </div>
+    </section>
+
+    <!-- RESULTADOS QUALITATIVOS, QUANTITATIVOS E INSTITUCIONAIS -->
+    <section>
+       <section>
+        <h2>Resultados Qualitativos, Quantitativos e Institucionais</h2>
+        
+        <div class="results-vertical">
+            <div class="qualitative-box">
+                <h3 style="border-left:3px; margin-top: 5px; #ffffff">Resultados Qualitativos</h3>
+                <ul>
+                    <li><strong>Redução</strong> de ambiguidade operacional</li>
+                    <li><strong>Aumento</strong> da clareza sintática para operadores</li>
+                    <li><strong>Reconhecimento</strong> de padrões linguísticos como dados válidos</li>
+                    <li><strong>Mudança</strong> de mentalidade em equipes técnicas</li>
+                    <li><strong>Empoderamento</strong> linguístico dos operadores</li>
+                </ul>
+            </div>
+            
+            <div class="quantitative-box">
+                <h3 style="border-left:3px; margin-top: 5px; #ffffff">Resultados Quantitativos</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">+12 pts</div>
+                        <div class="metric-label">Aumento na safistação do cliente</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">-18%</div>
+                        <div class="metric-label">Redução de escalações</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">+22%</div>
+                        <div class="metric-label">Satisfação dos operadores</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">30s</div>
+                        <div class="metric-label">Redução no tempo médio de atendimento</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="impact-box">
+                <h3 style="border-left:3px; margin-top: 5px; #ffffff">Impacto Institucional</h3>
+                <ul>
+                    <li><strong>Governança e Padronização Ética:</strong> Proposta adotada como política de IA Responsável</li>
+                    <li><strong>Capacitação e Letramento Sociolinguístico:</strong> Treinamento de 200+ agentes em equidade linguística</li>
+                    <li><strong>Escalabilidade de Dados:</strong> Replicação para WhatsApp e SMS</li>
+                    <li><strong>Validação Estratégica:</strong> Reconhecimento da Vice-Presidência de CX</li>
+                    <li><strong>Liderança e Disseminação de Conhecimento:</strong> Apresentação de Treinamentos sobre Ética em IA</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGAÇÃO COM AS DISCIPLINAS -->
+    <section>
+        <h2>Ligação com as Disciplinas</h2>
+        
+        <div class="research-statement">
+            <p style="font-style: normal;">Este caso aplica diretamente os conceitos das suas disciplinas:</p>
+            <ul style="margin-top: 10pt;">
+                <li><strong>Crioulística → Legitimidade:</strong> Tratei variedades não padrão como sistemas válidos</li>
+                <li><strong>Linguística de Contato → Adaptação:</strong> Entendi a variação como resultado de contato e necessidade</li>
+                <li><strong>Ética Linguística → Governança:</strong> Implementei monitoramento contínuo de viés</li>
+                <li><strong>Análise Sintática → Reescrita:</strong> Transformei estruturas complexas em acessíveis</li>
+                <li><strong>S-seleção/C-seleção → Otimização:</strong> Ajustei seleções verbais para maior clareza</li>
+                <li><strong>Variação Linguística → Inclusão:</strong> Respeitei a diversidade linguística como riqueza, não como erro</li>
+                <li><strong>Gramática Gerativa → Estruturação:</strong> Apliquei testes de constituência para simplificação</li>
+            </ul>
+        </div>
+
+        <!-- QUOTE BOX -->
+        <div class="quote-box">
+            <p>"O problema nunca foi 'dado ruim', mas a incapacidade do sistema de reconhecer gramática onde o poder só via erro."</p>
+            <div class="source">Insight Final do Caso</div>
+        </div>
+        
+        <div class="research-statement">
+            <p><strong>Aplicação posterior:</strong> A mesma abordagem foi aplicada em projetos como otimização de legendas para acessibilidade para plataformas de <span style="font-style:normal;">streaming</span> e revisão de fluxos multilíngues de localização, sempre com o mesmo princípio: enxergar a variação linguística como sistemática e legítima.</p>
+        </div>
+    </section>
+
+    <script>
+        // Função de Tabs
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Função do Pipeline
+        let currentStep = 1;
+        const totalSteps = 5;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        function updatePipeline() {
+            // Esconde todos os boxes
+            for (let i = 1; i <= totalSteps; i++) {
+                const box = document.getElementById(`step${i}`);
+                box.classList.remove('active');
+            }
+            
+            // Mostra apenas o box atual
+            const currentBox = document.getElementById(`step${currentStep}`);
+            currentBox.classList.add('active');
+            
+            // Atualiza estado dos botões
+            prevBtn.disabled = currentStep === 1;
+            nextBtn.disabled = currentStep === totalSteps;
+        }
+        
+        function moveSlide(direction) {
+            const newStep = currentStep + direction;
+            if (newStep >= 1 && newStep <= totalSteps) {
+                currentStep = newStep;
+                updatePipeline();
+            }
+        }
+        
+        // Inicializa o pipeline
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePipeline();
+            
+            // Inicializa a primeira aba como ativa
+            openTab({currentTarget: document.querySelector('.tab-btn.active')}, 'case1');
+        });
+    </script>
+
+</body>
+</html>
