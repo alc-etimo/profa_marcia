@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Ariane Lesnyak Castelló | Para a Prof. Márcia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            font-size: 10.5pt;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 4px solid #003366;
+            padding-bottom: 15pt;
+            margin-bottom: 25pt;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20pt;
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 1.5pt;
+        }
+        
+        .header .tagline {
+            font-size: 12pt;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 10pt;
+        }
+        
+        .contact-info {
+            font-size: 9.5pt;
+            color: #666;
+            margin-top: 8pt;
+        }
+        
+        .contact-info a {
+            color: #003366;
+            text-decoration: none;
+        }
+        
+        section {
+            margin-bottom: 25pt;
+            page-break-inside: avoid;
+        }
+        
+        h2 {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 5pt;
+            margin-bottom: 15pt;
+            text-transform: uppercase;
+            letter-spacing: 0.8pt;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #003366;
+            margin-top: 18pt;
+            margin-bottom: 10pt;
+            border-left: 5px solid #003366;
+            padding-left: 10pt;
+        }
+        
+        .note-box {
+            background: #e3f2fd;
+            border-left: 5px solid #003366;
+            padding: 15pt;
+            margin: 20pt 0;
+            font-size: 10pt;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        
+        .summary-box {
+            background: #f0f7ff;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+            margin: 20pt 0;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15pt;
+            margin: 20pt 0;
+        }
+        
+        .achievement-card {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .achievement-number {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 8pt;
+        }
+        
+        .achievement-desc {
+            font-size: 10pt;
+            color: #555;
+        }
+        
+        .theory-practice-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12pt;
+            margin: 15pt 0;
+        }
+        
+        .theory-card {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 6px;
+            padding: 12pt;
+            box-shadow: 0 2px 6px rgba(0, 51, 102, 0.1);
+        }
+        
+        .theory-card .concept {
+            font-weight: bold;
+            color: #003366;
+            font-size: 10.5pt;
+            margin-bottom: 5pt;
+        }
+        
+        .theory-card .course {
+            font-size: 9.5pt;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 5pt;
+        }
+        
+        .theory-card .arrow {
+            color: #003366;
+            font-size: 14pt;
+            margin: 5pt 0;
+            text-align: center;
+        }
+        
+        .theory-card .application {
+            font-size: 10pt;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5pt;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            color: #003366;
+            font-size: 11pt;
+        }
+        
+        .date {
+            font-style: italic;
+            color: #666;
+            font-size: 9.5pt;
+        }
+        
+        .company {
+            color: #555;
+            font-size: 10pt;
+            margin-bottom: 6pt;
+        }
+        
+        .company-description {
+            font-style: italic;
+            color: #666;
+            font-size: 9.5pt;
+            margin-bottom: 8pt;
+        }
+        
+        ul {
+            margin-left: 20pt;
+            margin-top: 5pt;
+        }
+        
+        li {
+            margin-bottom: 6pt;
+            text-align: justify;
+        }
+        
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        
+        .education-item {
+            margin-bottom: 15pt;
+        }
+        
+        .degree {
+            font-weight: bold;
+            color: #003366;
+            font-size: 11pt;
+        }
+        
+        .institution {
+            font-size: 10pt;
+            color: #555;
+            margin-bottom: 5pt;
+        }
+        
+        .grade-badge {
+            display: inline-block;
+            background: #003366;
+            color: white;
+            padding: 2pt 8pt;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            font-weight: bold;
+            margin-right: 8pt;
+            margin-top: 5pt;
+        }
+        
+        .grade-badge.gold {
+            background: linear-gradient(135deg, #d4af37 0%, #f9d423 100%);
+            color: #1a1a1a;
+        }
+        
+        /* NOVA TABELA PARA HABILIDADES PRINCIPAIS */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+            table-layout: fixed;
+        }
+        
+        .skills-table th {
+            font-size: 11pt;
+            font-weight: bold;
+            color: #003366;
+            text-transform: uppercase;
+            letter-spacing: 1pt;
+            padding: 10pt;
+            border-bottom: 2px solid #003366;
+            text-align: center;
+            width: 33.33%;
+        }
+        
+        .skills-table td {
+            vertical-align: top;
+            padding: 12pt;
+            border: 1px solid #ddd;
+            background-color: white;
+            width: 33.33%;
+        }
+        
+        .skills-list {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        
+        .skills-list li {
+            margin-bottom: 8pt;
+            text-align: center;
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            padding: 4pt 10pt;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            font-weight: bold;
+            margin: 2pt;
+            border: 1px solid;
+        }
+        
+        .skill-badge.blue-dark {
+            background-color: #003366;
+            color: white;
+            border-color: #003366;
+        }
+        
+        .skill-badge.blue-light {
+            background-color: #e3f2fd;
+            color: #003366;
+            border-color: #003366;
+        }
+        
+        .skill-badge.blue-lighter {
+            background-color: #f0f7ff;
+            color: #003366;
+            border-color: #003366;
+        }
+        
+        /* FERRAMENTAS E PLATAFORMAS ATUALIZADO */
+        .tools-container {
+            text-align: center;
+            margin: 15pt 0;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
+            border: 1px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+        }
+        
+        .tool-tag {
+            display: inline-block;
+            border: 1px solid #003366;
+            padding: 5pt 10pt;
+            margin: 5pt;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            background-color: white;
+        }
+        
+        .languages-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 10pt;
+        }
+        
+        .lang-chart {
+            text-align: center;
+            position: relative;
+            width: 80px;
+            transition: transform 0.3s;
+            cursor: default;
+        }
+        
+        .lang-chart:hover {
+            transform: scale(1.1);
+        }
+        
+        .pie {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 auto 5pt;
+        }
+        
+        .lang-name {
+            font-size: 8.5pt;
+            font-weight: bold;
+        }
+        
+        .lang-level {
+            font-size: 7.5pt;
+            color: #666;
+        }
+        
+        .pt { background: conic-gradient(#003366 0% 100%); }
+        .en { background: conic-gradient(#004a8d 0% 100%); }
+        .libras { background: conic-gradient(#0066cc 0% 85%, #eee 85% 100%); }
+        .fr { background: conic-gradient(#3399ff 0% 70%, #eee 70% 100%); }
+        .es { background: conic-gradient(#99ccff 0% 60%, #eee 60% 100%); }
+        
+        .closing-box {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
+            border: 3px solid #003366;
+            padding: 20pt;
+            border-radius: 10px;
+            margin: 25pt 0;
+            text-align: center;
+        }
+        
+        /* SEÇÃO DE COLABORAÇÕES */
+        .collaborations-container {
+            margin: 20pt 0;
+            overflow: hidden;
+        }
+        
+        .collab-row {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+        
+        .collab-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: slideRightToLeft 30s linear infinite;
+        }
+        
+        @keyframes slideRightToLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .collab-logo {
+            width: 120px;
+            height: 60px;
+            background: white;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        
+        .collab-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(300%);
+            opacity: 0.8;
+        }
+        
+        .collab-logo:hover {
+            border-color: #003366;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        @media print {
+            body { padding: 5mm; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. CABEÇALHO -->
+    <div class="header">
+        <h1>Ariane Lesnyak Castelló</h1>
+        <div class="tagline">Linguista | Especialista em Ciência de Dados Linguísticos<br>
+<span style="font-size:14px;">Candidata ao EMLDS | Foco: Sintaxe, Crioulística e Ética em Tecnologia da Informação</span></div>
+        <div class="contact-info">
+            São Paulo, SP | +55 (11) 94388-2913 | ariane.castello@alumni.usp.br<br>
+            <a href="linkedin.com/in/ariane-lesnyak">LinkedIn</a> | <a href="xxxxxxx">Portfólio</a>
+        </div>
+    </div>
+
+    <!-- 2. BOX DE NOTA PARA PROF. MÁRCIA -->
+    <div class="note-box" style="text-align:justify";>
+        <strong>Para a Prof. Márcia:</strong> Este currículo foi elaborado especificamente para contextualizar minha trajetória profissional e demonstrar como os fundamentos teóricos que aprendi nas suas disciplinas na USP (2017-2019) se tornaram a base da minha atuação em Linguística Aplicada e Ciência de Dados no mercado de trabalho.<br><br>
+        <strong>Nota importante:</strong> Este currículo está apresentado em português para fins de contextualização acadêmica. Toda a documentação formal do processo seletivo (CV final, cartas de recomendação, motivação e submissão ao programa) será apresentada integralmente em <strong>inglês</strong>.
+    </div>
+
+    <!-- 3. RESUMO PROFISSIONAL -->
+    <section>
+        <h2>Perfil Profissional: "Bilinguismo Disciplinar"</h2>
+        <div class="summary-box" style="text-align:justify";>
+            <p>Profissional com trajetória híbrida e 15+ anos de experiência aplicando teoria linguística a desafios de <strong>Ciência de Dados</strong> em ambientes corporativos. Especializada na interseção entre <strong>Linguística</strong> e <strong>Tecnologia da Informação</strong>, com foco em <strong>sintaxe gerativa</strong> e <strong>linguística de contato</strong> para mitigar vieses em textos, traduções e localizações, bem como uso de <strong>linguagens de programação</strong> para validação de modelos de Inteligência Artifical, otimização de sistemas e desenvolvimento de projeções arbóreas para projetos.</p><br>
+            <p><strong>Objetivo atual:</strong> Candidatura ao <strong>European Master in Language Data Science (EMLDS)</strong> para formalizar academicamente esta interseção e contribuir para o desenvolvimento ético de tecnologias linguísticas.</p>
+        </div>
+    </section>
+
+    <!-- 4. KEY ACHIEVEMENTS -->
+    <section>
+        <h2>Impactos e Colaborações</h2>
+        <div class="achievement-grid">
+            <div class="achievement-card">
+                <div class="achievement-number">15.000+</div>
+                <div class="achievement-desc">Ativos linguísticos curados, anotados e codificados para treinamento de modelos de IA</div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-number">700+</div>
+                <div class="achievement-desc">Termos validados em taxonomia corporativa por meio de análise sintático-semântica</div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-number">30.000+</div>
+                <div class="achievement-desc">Operadores satisfeitos por implementação de <i>chatbot</i> feito com árvores sintáticas</div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-number">50+</div>
+                <div class="achievement-desc">Redatores treinados em aplicação de teorias criouslísticas para reduzir preconceitos linguísticos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. DA USP E TI À INDÚSTRIA: TEORIA EM PRÁTICA -->
+    <section>
+        <h2>Da USP e TI à Indústria: Teoria em Prática</h2>
+        <p style="font-size: 10pt; color: #555; font-style: italic; margin-bottom: 12pt;">Exemplos de como os conceitos teóricos aprendidos nas disciplinas da Prof. Márcia e na graduação em TI fundamentam minha atuação profissional:</p>
+        
+        <div class="theory-practice-grid" style="text-align:justify";>
+            <div class="theory-card">
+                <div class="concept">📐 Estrutura Argumental (C-Seleção e S-Seleção)</div>
+                <div class="course">Disciplina: FLC0277 - Sintaxe do Português I (2017)</div>
+                <div class="arrow">↓</div>
+                <div class="application"><strong>Aplicação profissional:</strong> Validação de respostas de <i>chatbots</i> e assistentes virtuais testados com 30.000+ operadores. Identificação de <em>argumentos ausentes</em> ou <em>papéis temáticos mal-atribuídos</em> em respostas automatizadas, garantindo completude sintática e semântica das interações.</div>
+            </div>
+            
+            <div class="theory-card" >
+                <div class="concept">🌳 Análise Sintática e Testes de Constituência</div>
+                <div class="course">Disciplina: FLC0277 - Sintaxe do Português I (2017)</div>
+                <div class="arrow">↓</div>
+                <div class="application"><strong>Aplicação profissional:</strong> Segmentação de legendas em <em>constituintes sintáticos</em> (e não em palavras aleatórias) para 1M+ de horas de conteúdo audiovisual, respeitando estrutura informacional (tópico-comentário) e facilitando leitura. Também usado na análise de textos gerados por IA para identificar calques estruturais do inglês.</div>
+            </div>
+            
+            <div class="theory-card">
+                <div class="concept">⚖️ Variação Linguística e Continuum PB/PVB</div>
+                <div class="course">Disciplina: FLC1258 - Introdução aos Estudos das Línguas Crioulas de Base Portuguesa e do Português na África (2019)</div>
+                <div class="arrow">↓</div>
+                <div class="application"><strong>Aplicação profissional:</strong> Mitigação de viés linguístico em conteúdo corporativo de uma multinacional de telecomunicações, propondo substituição do masculino genérico ("pergunte a ele") por alternativas inclusivas. Identificação de vieses em corpora de calibragem de modelos de processamento de linguagem natura (NLP).</div>
+            </div>
+
+            <div class="theory-card">
+                <div class="concept">🔧 Programação e Estruturas de Dados</div>
+                <div class="course">Curso Superior em Tecnologia da Informação (2007-2009)</div>
+                <div class="arrow">↓</div>
+                <div class="application"><strong>Aplicação profissional:</strong> Automação de processos de legendagem com <i>plugins</i> como Whisper; estruturação de bancos de dados terminológicos; manipulação de arquivos SRT, XML e JSON para extração e análise de dados linguísticos em larga escala.</div>
+            </div>
+
+            <div class="theory-card">
+                <div class="concept">🌐 Desenvolvimento Web e HTML</div>
+                <div class="course">Curso Superior em Tecnologia da Informação (2007-2009)</div>
+                <div class="arrow">↓</div>
+                <div class="application"><strong>Aplicação profissional:</strong> Customização do editor Salesforce com HTML/CSS para otimização do fluxo de trabalho de redatores; prototipagem de interfaces para <i>chatbots</i>; validação técnica de <i>tags</i> e <i>placeholders</i> em projetos de experiência do usuário.</div>
+            </div>
+
+            <div class="theory-card">
+                <div class="concept">📊 Gestão de Projetos e Liderança Técnica</div>
+                <div class="course">Curso Superior em Tecnologia da Informação + Experiência</div>
+                <div class="arrow">↓</div>
+                <div class="application"><strong>Aplicação profissional:</strong> Gestão de equipes multidisciplinares (50+ linguistas/redatores); comunicação com equipes técnicos e de negócio; governança de dados linguísticos com visão sistêmica; tradução de requisitos complexos entre áreas.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. EXPERIÊNCIA PROFISSIONAL -->
+    <section>
+        <h2>Experiência Profissional</h2>
+        
+        <!-- MONISA -->
+        <div class="job-header">
+            <div>
+                <h3 class="job-title">Especialista em Linguística Computacional e Avaliação de LLMs</h3>
+                <div class="company"><a href="https://monisaenterprise.com/">Monisa</a></div>
+                <div class="company-description"><em>Empresa especializada em treinamento e avaliação de modelos de IA, focada em otimização de linguagem natural.</em></div>
+            </div>
+            <div class="date">Dez 2025–Presente</div>
+        </div>
+        <ul>
+            <li><strong>Treinamento e Avaliação de Modelos:</strong> Curadoria de conjuntos de dados e avaliação de Grandes Modelos de Linguagem (LLMs) para otimização da coerência discursiva e mitigação de alucinações semânticas</li>
+            <li><strong>Reescrita de <i>Prompts</i>:</strong> Engenharia de <i>prompts</i> focada em refinamento pragmático para incremento da precisão e relevância das saídas de IA</li>
+            <li><strong>Anotação Linguística:</strong> Anotação de dados sob critérios linguísticos rigorosos para o treinamento supervisionado de sistemas de Processamento de Linguagem Natural (NLP)</li>
+            <li><strong>Avaliação Comparativa:</strong> Análise comparativa de desempenho entre arquiteturas de modelos, focando em métricas de qualidade linguística e eficiência comunicativa</li>
+        </ul>
+
+        <!-- TEAMWORKER/CLARO -->
+        <div class="job-header" style="margin-top: 15pt;">
+            <div>
+                <h3 class="job-title">Coordenadora de Governança de Dados Linguísticos e Taxonomia</h3>
+                <div class="company"><a href="https://www.teamworker.com.br/content-business.html">TeamWorker Content Business</a> | <a href="https://www.claro.com.br/">Claro Brasil</a></div>
+                <div class="company-description"><em>Agência de conteúdo digital e telecomunicações. Trabalhei na governança de conteúdo para sistemas de atendimento e experiência do cliente.</em></div>
+            </div>
+            <div class="date">Out 2020–Nov 2025</div>
+        </div>
+        <ul>
+            <li><span class="highlight">Governança Terminológica:</span> Desenvolvimento de de ontologias e bases terminológicas multifuncionais (700+ termos validados), assegurando a consistência conceitual interdepartamental</li>
+            <li><span class="highlight">Curadoria de Dados:</span> Liderança em projetos de higienização e padronização de corpora multilíngues (15.000+ ativos)</li>
+            <li><span class="highlight">Validação de <i>Chatbots</i>:</span> Desenvolvimento de estruturas de validação baseados em critérios linguísticos (sintáticos e pragmáticos) para agentes conversacionais</li>
+            <li><span class="highlight">Anotação Linguística:</span> Design e implementação de sistemas granulares de etiquetagem baseados em taxonomias de erros linguísticos</li>
+            <li><span class="highlight">Treinamento de Equipe:</span> Gestão acadêmica e capacitação de 50+ linguistas na aplicação de guias de estilo e métricas de qualidade linguística</li>
+        </ul>
+
+                <!-- FREELANCER -->
+        <div class="job-header" style="margin-top: 15pt;">
+            <div>
+                <h3 class="job-title">Consultora de Localização e Investigadora em Pós-Edição de Tradução Automática</h3>
+                <div class="company"><a href="https://voxmundi.com.br/">VOX MUNDI</a> | <a href="https://www.acclaro.com/">Acclaro</a> | <a href="https://moshimedia.com.br/">Moshi Media</a> | Outros</div>
+                <div class="company-description"><em>Agências de localização e empresas de tecnologia. Trabalhei em projetos de tradução, pós-edição e anotação linguística.</em></div>
+            </div>
+            <div class="date">2015–Presente</div>
+        </div>
+        <ul>
+            <li><strong>Localização e Anotação:</strong> Anotação de metadados complexos em larga escala (10.000+ arquivos), incluindo variáveis de pragmática, identificação de locutor e análise de registro</li>
+            <li><strong>MTPE e Análise de Calques:</strong>Atuação em fluxos de Pós-Edição de Tradução Automática (MTPE), com foco na identificação e correção de calques sintáticos e interferências linguísticas do inglês (EN > PT-BR)</li>
+            <li><strong>Tradução STEM:</strong>Tradução técnica e acadêmica de artigos STEM, garantindo rigor terminológico e adequação ao gênero textual</li>
+            <li><strong>Refinamento de Estruturas:</strong>Utilização de ferramentas de auxílio à tradução (CAT Tools) com foco na correção sistemática de estruturas sintáticas inadequadas e preservação da norma culta</li>
+        </ul>
+    </section>
+
+    <!-- 7. EDUCAÇÃO -->
+    <section>
+        <h2>Formação Acadêmica</h2>
+        
+        <div class="education-item">
+            <div class="job-header">
+                <div>
+                    <div class="degree">Bacharelado e Licenciatura em Letras — Português/Inglês</div>
+                    <div class="institution">Universidade de São Paulo (USP)</div>
+                </div>
+                <div class="date">2015–2019</div>
+            </div>
+            <div>
+                <span class="grade-badge">Média: 8.9/10</span>
+                <span class="grade-badge">Licenciatura: 10/10</span>
+            </div><br>
+            <strong><ul>Disciplinas com a Prof. Márcia:</strong> <li>Sintaxe do Português I (9.2/10)</li>
+<li>Introdução aos Estudos das Línguas Crioulas de Base Portuguesa e do Português na África (10/10 com recomendação para mestrado)</li>
+        </div>
+
+        <div class="education-item">
+            <div class="job-header">
+                <div>
+                    <div class="degree">LIBRAS (Língua Brasileira de Sinais) — Programa de 3 anos</div>
+                    <div class="institution">PUC-SP</div>
+                </div>
+                <div class="date">2016–2019</div>
+            </div>
+            <p>Gramática visual-espacial, comparação entre modalidades linguísticas</p>
+        </div>
+
+        <div class="education-item">
+            <div class="job-header">
+                <div>
+                    <div class="degree">Curso Superior em Gestão da Tecnologia da Informação</div>
+                    <div class="institution">Faculdade Marechal Rondon</div>
+                </div>
+                <div class="date">2007–2009</div>
+            </div>
+            <p>Programação, bancos de dados, algoritmos, desenvolvimento <i>web</i></p>
+        </div>
+    </section>
+
+    <!-- 8. HABILIDADES PRINCIPAIS - ATUALIZADO PARA TABELA -->
+    <section>
+        <h2>Habilidades Principais</h2>
+        
+        <table class="skills-table">
+            <tr>
+                <th>Linguística <br> & NLP</th>
+                <th>Tecnologia <br> & Ferramentas</th>
+                <th>Competências Transversais</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="skills-list">
+                        <li><span class="skill-badge blue-dark">Análise Sintática</span></li>
+                        <li><span class="skill-badge blue-dark">Linguística de Corpus</span></li>
+                        <li><span class="skill-badge blue-dark">Anotação Linguística</span></li>
+                        <li><span class="skill-badge blue-dark">Terminologia</span></li>
+                        <li><span class="skill-badge blue-dark">Validação de NLP</span></li>
+                        <li><span class="skill-badge blue-dark">Governança de Dados</span></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="skills-list">
+                        <li><span class="skill-badge blue-light">Python (Iniciante)</span></li>
+                        <li><span class="skill-badge blue-light">Salesforce</span></li>
+                        <li><span class="skill-badge blue-light">Subtitle Edit</span></li>
+                        <li><span class="skill-badge blue-light">HTML/CSS</span></li>
+                        <li><span class="skill-badge blue-light">Excel Avançado</span></li>
+                        <li><span class="skill-badge blue-light">GitHub</span></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="skills-list">
+                        <li><span class="skill-badge blue-lighter">Articulação de Saberes</span></li>
+                        <li><span class="skill-badge blue-lighter">Rigor Analítico</span></li>
+                        <li><span class="skill-badge blue-lighter">Colaboração Institucional</span></li>
+                        <li><span class="skill-badge blue-lighter">Investigação Aplicada</span></li>
+                        <li><span class="skill-badge blue-lighter" style="font-size:10.5px;">Resolução de Problemas Complexos</span></li>
+			<li><span class="skill-badge blue-lighter">Pensamento Crítico</span></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    
+
+    <!-- 10. IDIOMAS -->
+    <section>
+        <h2>Idiomas</h2>
+        <div class="languages-grid">
+            <div class="lang-chart"><div class="pie pt"></div><div class="lang-name">PT-BR</div><div class="lang-level">Nativo</div></div>
+            <div class="lang-chart"><div class="pie en"></div><div class="lang-name">Inglês</div><div class="lang-level">C2</div></div>
+            <div class="lang-chart"><div class="pie libras"></div><div class="lang-name">LIBRAS</div><div class="lang-level">Avançado</div></div>
+            <div class="lang-chart"><div class="pie fr"></div><div class="lang-name">Francês</div><div class="lang-level">B2</div></div>
+            <div class="lang-chart"><div class="pie es"></div><div class="lang-name">Espanhol</div><div class="lang-level">B1</div></div>
+        </div>
+    </section>
+
+    
+
+    <!-- 12. DESENVOLVIMENTO PROFISSIONAL CONTÍNUO -->
+    <section>
+        <h2>Desenvolvimento Profissional Contínuo</h2>
+        <ul>
+            <li><strong>Gramática Portuguesa para Editores</strong> — UNIL (2022)</li>
+            <li><strong>Cursos Rápidos e Práticos (2025-2026):</strong></li>
+            <ul style="margin-left: 30pt;">
+                <li>Google's Python Class — Fundamentos de programação para ciência de dados</li>
+                <li>Hugging Face LLM Course (2025) — Fine-tuning e ética em modelos de linguagem</li>
+                <li>Stanford CS224N Lectures — Transformers e anotação linguística</li>
+            </ul>
+            <li><strong>Cursos com Certificação (planejados para Janeiro 2026):</strong></li>
+            <ul style="margin-left: 30pt;">
+                <li>IBM AI Engineering Professional Certificate — Python/LLMs/tagging</li>
+                <li>Stanford NLP Specialization — Modelos de sequência e anotação avançada</li>
+            </ul>
+            <li><strong>Objetivo:</strong> 3-5 certificações + projetos GitHub (corpus anotado, LLM fine-tuned) até 30/01/2026</li>
+        </ul>
+    </section>
+
+    <!-- 13. INTERESSES DE PESQUISA -->
+    <section>
+        <h2>Interesses de Pesquisa e Alinhamento com o EMLDS</h2>
+        <ul>
+            <li><span class="highlight">Linked Data Linguístico e Web Semântica:</span> Aplicação de princípios de dados vinculados a recursos lexicais multilíngues e ontologias</li>
+            <li><span class="highlight">Semântica Lexical Computacional e Linguística de Corpus:</span> Anotação de corpora em larga escala e desenvolvimento de recursos lexicográficos digitais</li>
+            <li><span class="highlight">Padrões de Terminologia e Governança de Dados:</span> Estruturas terminológicas baseadas em normas ISO e gestão de vocabulários controlados</li>
+            <li><span class="highlight">NLP para Desenvolvimento de Recursos Linguísticos:</span> Construção de corpora anotados e bases de dados linguísticas interoperáveis para treinamento de modelos de IA</li>
+            <li><span class="highlight">IA Ética e Avaliação de Modelos de Linguagem:</span> Mitigação de vieses em Grandes Modelos de Linguagem e desenvolvimento ético de tecnologias voltadas a variedades linguísticas</li>
+        </ul>
+    </section>
+
+    <!-- 14. NOTA DE ENCERRAMENTO -->
+    <div class="closing-box">
+        <h3 style="color: #003366; margin-bottom: 15pt; border: none;">Trajetória Estratégica e Propósito Científico</h3>
+        
+        <p>Minha trajetória de 15 anos foi guiada pelo propósito de unir o rigor da teoria linguística às fronteiras da era digital. O intervalo entre minha graduação na USP e esta candidatura ao EMLDS representa, em essência, uma escolha estratégica de amadurecimento: um período dedicado a testar a força da ciência linguística frente às demandas da indústria de tecnologia.</p>
+        <br>
+        <p>Nesta jornada, o conhecimento teórico construído sob sua orientação foi o meu maior diferencial. Nos últimos cinco anos, tive a oportunidade de operacionalizar conceitos de suas disciplinas em cenários de alta complexidade: desde os desafios reais da análise morfossintática no processamento de linguagem natural para legendagem até o desenho de projeções arbóreas da sintaxe gerativa para ativos linguísticos em larga escala. Ver a teoria que discutimos em sala de aula reduzir ambiguidades e preconceitos em sistemas globais foi a prova definitiva de que o rigor linguístico é a espinha dorsal da Inteligência Artificial.</p>
+        <br>
+        <p>Hoje me sinto madura e preparada para integrar o programa EMLDS. Levo comigo não apenas a formação técnica em TI, mas a sensibilidade acadêmica da USP, necessária para liderar as discussões sobre o futuro ético da linguagem computacional na Europa.</p>
+        <br>
+        <p >Agradeço profundamente por sua constante inspiração e pelo apoio fundamental nesta nova etapa de minha vida acadêmica. Estou inteiramente à disposição para compartilhar quaisquer detalhes adicionais.</p>
+
+<p style="margin-top: 20pt; font-size: 11pt;">Com admiração e respeito,
+<br>
+<strong> Ariane Lesnyak Castelló</strong></p>
+    </div>
+
+</body>
+</html>
