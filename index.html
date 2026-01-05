@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossiê de Candidatura EMLDS | Para a Prof. Márcia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            font-size: 10.5pt;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 4px solid #003366;
+            padding-bottom: 15pt;
+            margin-bottom: 25pt;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20pt;
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 1.5pt;
+        }
+        
+        .header .tagline {
+            font-size: 12pt;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 10pt;
+        }
+        
+        .header .context {
+            font-size: 10pt;
+            color: #666;
+            font-style: italic;
+        }
+        
+        section {
+            margin-bottom: 25pt;
+            page-break-inside: avoid;
+        }
+        
+        h2 {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 5pt;
+            margin-bottom: 15pt;
+            text-transform: uppercase;
+            letter-spacing: 0.8pt;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #003366;
+            margin-top: 18pt;
+            margin-bottom: 10pt;
+            border-left: 5px solid #003366;
+            padding-left: 10pt;
+        }
+        
+        .highlight {
+            color: #003366;
+            font-weight: 700;
+        }
+        
+        .grade-badge {
+            display: inline-block;
+            background: #003366;
+            color: white;
+            padding: 4pt 10pt;
+            border-radius: 5px;
+            font-size: 10.5pt;
+            font-weight: bold;
+            margin-right: 10pt;
+            margin-bottom: 10pt;
+        }
+
+	.grade-badge.alone {
+            display: inline-block;
+            background: #7b98b5;
+            color: white;
+            padding: 2pt 8pt;
+            border-radius: 5px;
+            font-size: 10pt;
+            font-weight: bold;
+            margin-right: 10pt;
+            margin-bottom: 10pt;
+        }
+
+        
+        .grade-badge.gold {
+            background: linear-gradient(135deg, #d4af37 0%, #f9d423 100%);
+            color: #1a1a1a;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+        }
+        
+        .intro-box {
+            background: #f0f7ff;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+            margin: 20pt 0;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .intro-box p {
+            margin-bottom: 5pt;
+            line-height: 1.7;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 20pt;
+            margin: 20pt 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            text-align: center;
+            border: none;
+            padding-left: 0;
+        }
+        
+        .toc ol {
+            margin-left: 20pt;
+        }
+        
+        .toc li {
+            margin-bottom: 8pt;
+            line-height: 1.6;
+        }
+        
+        .toc a {
+            color: #003366;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .work-card {
+            border: 2px solid #d0d0d0;
+            border-radius: 8px;
+            padding: 15pt;
+            margin: 15pt 0;
+            background: #fafafa;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .work-card.featured {
+            border: 3px solid #d4af37;
+            background: linear-gradient(135deg, #fffaf0 0%, #fff8e1 100%);
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.2);
+        }
+        
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10pt;
+            padding-bottom: 8pt;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .work-title {
+            font-weight: bold;
+            color: #003366;
+            font-size: 11.5pt;
+        }
+        
+        .work-date {
+            color: #666;
+            font-style: italic;
+            font-size: 9.5pt;
+        }
+        
+        .work-content {
+            font-size: 10pt;
+            line-height: 1.7;
+        }
+        
+        .work-excerpt {
+            background: white;
+            border-left: 4px solid #003366;
+            padding: 12pt;
+            margin: 12pt 0;
+            font-style: italic;
+            color: #444;
+            border-radius: 4px;
+        }
+        
+        .work-excerpt.gold {
+            border-left-color: #d4af37;
+        }
+        
+        .work-excerpt strong {
+            color: #003366;
+            font-style: normal;
+        }
+        
+        .syntax-example {
+            background: #f8f9fa;
+            border: 1px solid #cce0ff;
+            padding: 12pt;
+            margin: 12pt 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 9.5pt;
+        }
+        
+        .note-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 12pt;
+            margin: 15pt 0;
+            font-size: 10pt;
+            border-radius: 4px;
+        }
+        
+        .note-box.critical {
+            background: #e3f2fd;
+            border-left-color: #003366;
+        }
+        
+        .img-placeholder {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            border: 2px dashed #999;
+            padding: 5pt;
+            text-align: center;
+            margin: 15pt 0;
+            color: #666;
+            font-style: italic;
+            border-radius: 8px;
+        }
+        
+        .img-placeholder strong {
+            display: block;
+            color: #333;
+            font-size: 11pt;
+            margin-bottom: 8pt;
+        }
+        
+        .professor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15pt;
+            margin-top: 15pt;
+        }
+        
+        .professor-card {
+            background: white;
+            padding: 15pt;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #003366;
+        }
+        
+        .professor-card h4 {
+            color: #003366;
+            margin-bottom: 8pt;
+            font-size: 11pt;
+        }
+        
+        .professor-card .research {
+            font-size: 9.5pt;
+            color: #555;
+            margin-bottom: 10pt;
+        }
+        
+        .professor-card .connection {
+            background: #f0f7ff;
+            padding: 8pt;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            margin-top: 8pt;
+        }
+        
+        .timeline {
+            margin: 20pt 0;
+            position: relative;
+            padding-left: 40pt;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 18pt;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #003366 0%, #0066cc 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20pt;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28pt;
+            top: 5pt;
+            width: 14px;
+            height: 14px;
+            background: #003366;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #003366;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #003366;
+            font-size: 11pt;
+            margin-bottom: 4pt;
+        }
+        
+        .timeline-content {
+            font-size: 10pt;
+            line-height: 1.6;
+        }
+        
+        .emlds-overview {
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            color: white;
+            padding: 20pt;
+            border-radius: 8px;
+            margin: 20pt 0;
+        }
+        
+        .emlds-overview h3 {
+            color: white;
+            border-left-color: white;
+        }
+        
+        .emlds-overview ul {
+            margin-left: 20pt;
+            margin-top: 10pt;
+        }
+        
+        .emlds-overview li {
+            margin-bottom: 6pt;
+        }
+        
+        .ti-connection {
+            background: #f5f5f5;
+            border: 2px solid #003366;
+            padding: 15pt;
+            border-radius: 8px;
+            margin: 15pt 0;
+        }
+        
+        .ti-connection ul {
+            margin-left: 20pt;
+            margin-top: 10pt;
+        }
+        
+        .ti-connection li {
+            margin-bottom: 6pt;
+        }
+        
+        .experience-summary {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
+            border: 2px solid #003366;
+            padding: 20pt;
+            border-radius: 10px;
+            margin: 20pt 0;
+        }
+        
+        .experience-summary ul {
+            margin-left: 20pt;
+            margin-top: 10pt;
+        }
+        
+        .experience-summary li {
+            margin-bottom: 8pt;
+            line-height: 1.6;
+        }
+        
+        .final-argument {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%);
+            border: 3px solid #003366;
+            padding: 20pt;
+            border-radius: 10px;
+            margin: 25pt 0;
+            text-align: center;
+        }
+        
+        .final-argument p {
+            font-size: 11pt;
+            line-height: 1.8;
+            margin-bottom: 12pt;
+        }
+        
+        .final-argument .signature {
+            font-style: italic;
+            color: #666;
+            margin-top: 20pt;
+            font-size: 10pt;
+        }
+        
+        @media print {
+            body { padding: 5mm; }
+            .work-card { page-break-inside: avoid; }
+        }
+
+/* Container para organizar o visual */
+.indice-container {
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+/* Reset da lista principal */
+ol.dotted {
+  list-style: none;
+  counter-reset: item; /* Cria o contador 'item' */
+  margin-left: 0;
+}
+
+/* Estilo para cada item da lista */
+ol.dotted li {
+  display: block;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+/* Onde a mágica acontece: o gerador de números */
+ol.dotted li::before {
+  content: counters(item, ".") ". "; /* Gera 1. , 3.1. , etc */
+  counter-increment: item;           /* Soma +1 ao contador */
+  font-weight: bold;
+  
+}
+
+/* Reset para sub-listas (ol dentro de li) */
+ol.dotted li ol {
+  list-style: none;
+  counter-reset: item; /* Reinicia o contador apenas para este nível */
+  padding-left: 0;  /* Recuo para os sub-itens */
+  margin-top: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dossiê de Candidatura ao EMLDS</h1>
+        <div class="tagline">Para a Prof. Dra. Márcia Santos Duarte de Oliveira</div>
+        <div class="context">
+            Preparado por: Ariane Lesnyak Castelló | Data: Dezembro 2025<br>
+            Contexto: Candidatura ao <a href="https://emlds.fcsh.unl.pt/" style="color: #003366; font-weight: bold;">Erasmus Mundus em Language Data Science (EMLDS)</a>
+        </div>
+    </div>
+
+    <div class="intro-box">
+        <p><strong>Professora Márcia,</strong></p>
+        <p style="text-align:justify;">Este dossiê apresenta minha trajetória acadêmica e profissional para fundamentar meu pedido de <span class="highlight">carta de recomendação</span> para o programa <span class="highlight">European Master in Language Data Science (EMLDS)</span>.</p>
+        <p>Como minha professora em disciplinas fundamentais da Linguística na USP, você testemunhou diretamente meu desempenho acadêmico e capacidade analítica. <span class="highlight">Este documento organiza as informações que podem ser úteis para sua avaliação</span>.</p>
+    </div>
+
+    <section id="toc">
+        <div class="toc">
+            <h3>📋 ÍNDICE DO DOCUMENTO</h3>
+            <p><em>Para facilitar sua navegação:</em></p><br>
+            <ol class="dotted" style="color: #003366;">
+    <li><a href="#programa">O Programa EMLDS: Contexto e Relevância</a></li>
+    <li><a href="#trajetoria">Minha Trajetória Acadêmica-Profissional</a></li>
+    <li>
+      <a href="#desempenho">Desempenho nas Suas Disciplinas</a>
+      <ol>
+        <li><a href="#sintaxe">Sintaxe do Português I (2017) – Análise Detalhada</a></li>
+        <li><a href="#crioulas">Línguas Crioulas (2019) – Destaque com Nota 10</a></li>
+      </ol>
+    </li>
+    <li><a href="#ti">Graduação em Tecnologia da Informação (2007-2009)</a></li>
+    <li><a href="#experiencia">Experiência Profissional na Claro Brasil (2020-presente)</a></li>
+    <li><a href="#conexoes">Conexões com a Equipe do EMLDS</a></li>
+    <li><a href="#etica">Da Teoria à Ética: Impacto Social da Pesquisa</a></li>
+    <li><a href="#documentos">Documentação Anexa</a></li>
+    <li><a href="#porque">Síntese e Compromisso Acadêmico</a></li>
+    
+  </ol>
+        </div>
+    </section>
+
+    <section id="programa">
+        <h2>🎯 1. O Programa EMLDS: Contexto e Relevância</h2>
+        
+        <div class="emlds-overview">
+            <h3 style="margin-top: 0;">European Master in Language Data Science (EMLDS)</h3>
+            <p><strong>O que é:</strong> Mestrado Erasmus Mundus focado na intersecção entre Linguística Teórica e Ciência de Dados.</p>
+            <p><strong>Estrutura:</strong> 2 anos (120 ECTS) • Mobilidade obrigatória entre universidades europeias.</p>
+            
+            <ul>
+                <li><strong>NOVA FCSH (Lisboa, Portugal)</strong> – Coordenação • Semestres 1 e 4</li>
+                <li><strong>Università Cattolica (Milão, Itália)</strong> – Semestre 2</li>
+                <li><strong>Universidad Zaragoza (Espanha)</strong> – Semestre 3</li>
+            </ul>
+            
+            <p style="text-align:justify;"><strong>Objetivo:</strong> Formar especialistas que integrem teoria linguística e métodos computacionais para enfrentar desafios em processamento de linguagem natural (NLP), Terminologia, Bancos de Dados Lexicais e IA Ética.</p>
+        </div>
+        
+        <div class="note-box critical">
+            <strong>Por que este programa é estratégico para mim:</strong><br><br>
+            • A pesquisa em crioulos desenvolvida em Lisboa tem <span class="highlight">conexão direta com minha formação sob sua orientação</span><br>
+            • O Prof. <span class="highlight">Tjerk Hagemeijer</span> é autoridade mundial em <span class="highlight">crioulos do Golfo da Guiné</span> – área do meu trabalho com nota 10<br>
+            • O programa representa a <span class="highlight">integração natural</span> entre minha formação linguística (USP) e técnica (TI)<br>
+            • Oportunidade de contribuir para <span class="highlight">diminuir vieses éticos</span> e <span class="highlight">aumentar representatividade</span> em tecnologias de linguagem
+        </div>
+    </section>
+
+    <section id="trajetoria">
+        <h2>📈 2. Minha Trajetória Acadêmica-Profissional</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2007–2009</div>
+                <div class="timeline-content">
+                    <strong>Graduação em Tecnologia da Informação | Faculdade Marechal Rondon (FMR)</strong><br>
+                    Base sólida em programação, bancos de dados, estruturas de dados e sistemas.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2015–2019</div>
+                <div class="timeline-content">
+                    <strong>Bacharelado e Licenciatura em Letras Português & Inglês | Universidade de São Paulo (USP) </strong><br>
+                    Média ponderada do curso: <strong>8.9/10</strong><br>
+		    Formação rigorosa sob orientação da Prof. Márcia:<br>
+                    <ul>
+		    <li style="margin-left:20px;">FLC0277 - Sintaxe do Português I: <strong>9.2/10</strong></li>
+   		    <li style="margin-left:20px;">FLC1258 - Introdução aos Estudos das Línguas Crioulas de Base Portuguesa e do Português na África: <strong>10/10</strong></li>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2016–2018</div>
+                <div class="timeline-content">
+                    <strong>Formação em Língua Brasileira de Sinais (Libras) | Pontifícia Universidade Católica de São Paulo (PUC-SP)</strong><br>
+                    Ministrado por professores surdos, o curso de 360h permitiu comunicação e acesso à comunidade Surda brasileira<br>
+                    </div>
+            </div>
+
+
+<div class="timeline-item">
+                <div class="timeline-date">2019</div>
+                <div class="timeline-content">
+                    <strong>Trabalho de Crioulas – Conexão com Lisboa</strong><br>
+                    Pesquisa de linguística de contato da língua gestual de São Tomé e Príncipe citando diretamente o Prof. Hagemeijer.<br>
+                    <span class="highlight">Nota máxima: 10</span>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2020–presente</div>
+                <div class="timeline-content">
+                    <strong>Aplicação Profissional na Claro Brasil</strong><br>
+                    Mais de cinco anos aplicando interseção Linguística + Dados em ambiente corporativo de multinacional de telecomunicações.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2026 (objetivo)</div>
+                <div class="timeline-content">
+                    <strong>EMLDS – Integração das Vertentes</strong><br>
+                    Programa que une exatamente minhas duas áreas de formação:<br>
+                    <span class="highlight">Teoria (USP) + Métodos (TI + Indústria) = Ciência de Dados Linguísticos</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="note-box">
+            <strong>Coerência da trajetória:</strong> Esta não é uma mudança de rumo, mas uma <span class="highlight">evolução natural</span> que integra formação técnica e teórica, aplicada a um campo emergente que exige exatamente essa combinação.
+        </div>
+    </section>
+
+    <section id="desempenho">
+        <h2>📊 3. Desempenho nas Suas Disciplinas</h2>
+        
+        <div style="text-align: center; margin: 20pt 0;">
+             <div class="grade-badge" style="font-size: 12pt; padding: 6pt 15pt;">
+                SINTAXE DO PORTUGUÊS I: 9,2
+            </div>
+<div class="grade-badge gold" style="font-size: 12pt; padding: 6pt 15pt;">
+                LÍNGUAS CRIOULAS: 10
+            </div>
+           
+        </div>
+        
+        <div class="intro-box">
+            <p><strong>Professora</strong>, nas próximas seções apresento trechos dos trabalhos que desenvolvi sob sua orientação para ajudar a refrescar sua memória sobre quem eu sou. Estes materiais demonstram não apenas as notas, mas a <span class="highlight">qualidade analítica e rigor metodológico</span> que hoje aplico no mercado de trabalho e <span class="highlight">espero aprofundar com o mestrado</span>.</p>
+        </div>
+    </section>
+
+    <section id="sintaxe">
+        <h2>🔍 3.1. Sintaxe do Português I (2017) – Análise Detalhada</h2>
+        
+        <p style="font-style: italic; color: #555; margin-bottom: 15pt;">
+            Esta disciplina me forneceu a base teórica em Gramática Gerativa que uso atualmente em sistemas de anotação sintática e analisadores computacionais.
+        </p>
+  <div style="text-align: center; margin: 20pt 0;">
+        <div class="grade-badge" style="font-size: 12pt; padding: 6pt 15pt;">
+                NOTA FINAL: 9,2
+            </div></div>
+
+        <h3>3.1.1. Exercício-Prova 1: Fichamento Temático – O Continuum PB/PVB</h3>
+        <div class="work-card">
+            <div class="work-header">
+                <div class="work-title">Fichamento Temático: Campos (2014) e Castilho (2015)</div>
+                <div class="work-date">Março 2017</div>
+            </div>
+            <div class="work-content">
+                <p><strong>Objeto:</strong> Análise do continuum entre Português Brasileiro (PB) e Português Vernacular Brasileiro (PVB) através dos textos de Campos (2014) e Castilho (2015).</p>
+             
+
+<div style="text-align: center; margin: 10pt 0;">
+            <div class="grade-badge alone" style="font-size: 9pt; padding: 5pt 14pt;">
+                 NOTA 1: 8,5
+            </div>
+            
+            </div>
+        </div>
+               
+        
+                <div class="img-placeholder">
+                   <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC0277-sintaxe-do-portugues-I-2017/exercicio-prova-1-de-sintaxe-comando.jpg" 
+     alt="Comando do Exercício-Prova 1 - Sintaxe do Português I"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px;" />
+    </div>
+
+                  
+                </div>
+                
+                <div class="work-excerpt">
+                    <p><strong>Minha síntese sobre o continuum PB/PVB:</strong> "PVB não como unidade, mas como conjunto de variedades populares, de características comuns [...] Contato linguístico (KROCH, 2001): (i) línguas são estáveis ou instáveis, mudam ou são estáticas? (ii) mudanças são endógenas (deriva linguística) ou exógenas (contato)."</p>
+                </div>
+                
+                <div class="img-placeholder">
+                     <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC0277-sintaxe-do-portugues-I-2017/sintaxe-exe-prova-1.jpg" 
+     alt="Comando do Exercício-Prova 1 - Sintaxe do Português I"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px; margin-bottom: 0;" />
+    </div>                <div class="note-box" style="text-align:justify;">
+                    <strong>Relevância para o mestrado:</strong> Compreensão de <span class="highlight">variação linguística e representatividade de corpora</span> – essencial para construir conjuntos de dados que não reproduzam vieses de "língua padrão" em sistemas de NLP.
+                </div>
+            </div>
+        </div>
+
+        <h3>3.1.2 Exercício-Prova 2: Resenha Crítica – Gramática Gerativa</h3>
+        <div class="work-card">
+            <div class="work-header">
+                <div class="work-title">Análise da vídeo-aula de Jürgen Handke</div>
+                <div class="work-date">Abril 2017</div>
+            </div>
+            <div class="work-content">
+                <p><strong>Objeto:</strong> Resenha crítica completa sobre gramática gerativa incluindo análise dos três objetivos de Chomsky: (1) Processamento da Linguagem; (2) Aquisição de Linguagem; e (3) Variação da Linguagem.</p>
+<div style="text-align: center; margin: 10pt 0;">
+            <div class="grade-badge alone" style="font-size: 9pt; padding: 5pt 14pt;">
+                 NOTA 2: 10
+            </div>
+
+                <div class="img-placeholder">
+                  <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC0277-sintaxe-do-portugues-I-2017/exercicio-prova-2-de-sintaxe-comando.jpg" 
+     alt="Comando do Exercício-Prova 1 - Sintaxe do Português I"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px;" />
+  
+                </div>
+                <div class="work-excerpt">
+                    <p><strong>Minha análise da recursividade:</strong> "A recursividade, o outro aspecto responsável pela infinidade das sentenças, trata da ocorrência repetida da disposição de certos elementos. Mais precisamente, a coordenação, a interação de adjetivos e a anexação de sintagmas preposicionais."</p>
+                </div>
+                
+                <div class="img-placeholder">
+                     <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC0277-sintaxe-do-portugues-I-2017/sintaxe-exe-prova-2.jpg" 
+     alt="Resposta do Exercício-Prova 1 - Sintaxe do Português I"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px;" /></div></div>
+  <div class="note-box" style="text-align:justify;">
+                    <strong>Relevância para o mestrado:</strong> O estudo da gramática gerativa fornece a base estrutural e teórica para o <span class="highlight">Processamento de Linguagem Natural (NLP)</span>, essencial na minha área de interesse. A compreensão dos princípios de <span class="highlight">recursividade</span> e da <span class="highlight">estrutura hierárquica da linguagem</span> é diretamente aplicável ao desenvolvimento de modelos computacionais e algoritmos, que são o cerne da análise de dados textuais em larga escala. Essa formação teórica rigorosa em sintaxe é um diferencial fundamental para fazer a ponte entre linguística e ciência de dados em projetos de <span class="highlight">modelagem de linguagem</span> e <span class="highlight">inteligência artificial</span>.
+                </div>
+
+               </div>
+        </div>
+
+        <h3>3.1.3. Exercício-Prova 3: Análise de Ambiguidade Estrutural</h3>
+        <div class="work-card">
+            <div class="work-header">
+                <div class="work-title">Estrutura Argumental e Testes Sintáticos</div>
+                <div class="work-date">Maio 2017</div>
+            </div>
+            <div class="work-content">
+  <p><strong>Objeto:</strong> Análise da sentença ambígua: </p> <p style="text-align:center">"Aquela moça bonita de olhos amendoados conheceu um professor de balé russo."</p></div>
+<div style="text-align: center; margin: 10pt 0;">
+            <div class="grade-badge alone" style="font-size: 9pt; padding: 5pt 14pt;">
+                 NOTA 3: 8,6
+            </div>
+
+                <div class="img-placeholder">
+                     <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC0277-sintaxe-do-portugues-I-2017/exercicio-prova-3-de-sintaxe-comando.jpg" 
+     alt="Comando do Exercício-Prova 2 - Sintaxe do Português I"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px;" />
+
+                  
+                </div>
+                
+                <div class="work-excerpt">
+                    <p><strong>Minha identificação da ambiguidade:</strong><br>
+                    "Interpretação 1 – o professor de balé é russo, de nacionalidade russa<br>
+                    Interpretação 2 – o balé ensinado é da modalidade russa, tem características da Rússia<br><br>
+                    A ambiguidade é causada pelo núcleo sintagmático 'russo', mostrando que <em>uma sequência linear pode corresponder a diversas estruturas sintagmáticas</em>."</p>
+                </div>
+                
+                <div class="img-placeholder">
+                   
+                     <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC0277-sintaxe-do-portugues-I-2017/sintaxe-exe-prova-3.jpg" 
+     alt="Resposta do Exercício-Prova 3 - Sintaxe do Português I"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px;" /></div>
+ <div class="note-box" style="text-align:justify;"> <strong>Relevância para o mestrado:</strong> O exercício demonstra competência avançada em <span class="highlight">análise estrutural da linguagem</span>, um pilar crítico para a computação linguística. A capacidade de decompor uma sentença em seus <span class="highlight">constituintes sintáticos</span>, identificar <span class="highlight">ambiguidades estruturais</span> (como a de adjunção) e aplicar <span class="highlight">testes de movimento e substituição</span> é exatamente a base lógica usada para desenvolver <span class="highlight">algoritmos sintáticos</span> e desambiguar sentenças em <span class="highlight">processamento de linguagem natural</span>. A prática de construir árvores sintáticas distintas para diferentes interpretações treina o pensamento hierárquico e formal necessário para modelar sistemas de <span class="highlight">Inteligência Artificial</span>, tornando essa habilidade de análise linguística rigorosa uma ferramenta direta e valiosa para a <span class="highlight">Ciência de Dados</span> aplicada a dados textuais</span>.
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>3.1.4. Exercício-Prova 4: Classificação Verbal e Papéis Temáticos</h3>
+        <div class="work-card">
+            <div class="work-header">
+                <div class="work-title">C-Seleção, S-Seleção e Projeções Arbóreas</div>
+                <div class="work-date">Junho 2017</div>
+            </div>
+            <div class="work-content">
+<div class="work-content">
+  <p><strong>Objeto:</strong>
+Classificação da estrutura sintático-semântica do português através da análise de predicados verbais, com foco em: (1) Tipos de Sujeito; (2) Restrições Lexicais Verbais; (3) Classificação Verbal; e (4) Projeção Arbórea.</p>
+<div style="text-align: center; margin: 10pt 0;">
+<div class="grade-badge alone" style="font-size: 9pt; padding: 5pt 14pt;">
+                 NOTA 4: 9,6
+            </div>
+                <div class="img-placeholder">
+                           
+                   
+                     <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC0277-sintaxe-do-portugues-I-2017/exercicio-prova-4-de-sintaxe-comando.jpg" alt="Comando do Exercício-Prova 4 - Sintaxe do Português I"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px;" /></div>
+         
+                </div>
+                
+                 <div class="work-excerpt">
+                    <p><strong>Minha análise de estrutura argumental (exemplo):</strong></p><br>
+                    "a. Os meus melhores amigos vivem longe<br>
+                    &nbsp;&nbsp;&nbsp;C-Seleção: DP/NP + ADJP<br>
+                    &nbsp;&nbsp;&nbsp;S-Seleção: Experienciador + Locativo<br><br>
+                    
+                    c. O público ovacionou o conferencista<br>
+                    &nbsp;&nbsp;&nbsp;C-Seleção: DP/NP + DP/NP<br>
+                    &nbsp;&nbsp;&nbsp;S-Seleção: Agente + Tema"
+                </div>
+
+                   
+                
+                <div class="img-placeholder">
+                     <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC0277-sintaxe-do-portugues-I-2017/sintaxe-exe-prova-4.jpg" alt="Resposta do Exercício-Prova 4 - Sintaxe do Português I"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px;" /></div>
+
+                                   </div>
+               <div class="note-box" style="text-align:justify;"> <strong>Relevância para o mestrado:</strong> A prática de análise sintática formal, com <span class="highlight">classificação de verbos</span>, <span class="highlight">papéis temáticos</span> (como Agente e Tema) e <span class="highlight">construção de árvores</span>, fornece a base teórica para a <span class="highlight">Linguística Computacional</span>. Esta análise da <span class="highlight">estrutura argumental</span> é essencial para desenvolver sistemas que interpretem automaticamente a função das palavras nas sentenças, como os recursos usados em <span class="highlight">anotadores semânticos</span>. São essas competências em <span class="highlight">modelagem da língua</span> que unem a gramática gerativa às aplicações centrais do <span class="highlight">mestrado EMLDS</span>.
+
+
+                </div>
+
+
+                        </div>
+        </div>
+    </section>
+
+    <section id="crioulas" style="text-align:justify;">
+        <h2>🌟 3.2. Línguas Crioulas (2019) – Destaque com Nota 10</h2>
+        <p style="font-style: italic; color: #555; margin-bottom: 15pt;">
+            Esta disciplina me forneceu formação sólida em Linguística de Contato, crioulização e variação linguística. Meu trabalho final sobre a Língua Gestual de São Tomé e Príncipe (LGSTP) analisou a emergência de uma língua sob pressão de hegemonia, paralela à minha formação em Libras. Essa expertise é crucial para o mestrado, pois me capacita a identificar vieses linguísticos e construir corpora e sistemas de processamento de linguagem mais equitativos, evitando exclusões baseadas em "padrão" ou "prestígio".
+        </p>
+
+        <div class="work-card featured">
+            <div class="work-header">
+                <div class="work-title" style="color: #b8860b;">A Língua Gestual de São Tomé e Príncipe e a Linguística de Contato</div>
+                <div class="work-date">Novembro 2019</div>
+            </div>
+            
+            <div class="work-content">
+                <div style="text-align: center; margin-bottom: 15pt;">
+                    <div class="grade-badge gold">NOTA FINAL: 10</div>
+                </div>
+                
+                <div class="work-excerpt gold">
+                    <p><strong>Abertura do trabalho – Sensibilidade ética:</strong></p>
+                    <p>"Encontrar-se desprovido de contato e comunicação efetiva talvez seja uma das experiências mais solitárias pelas quais um ser humano possa passar. [...] Tratar da emergência de uma língua de sinais num contexto de línguas crioulas é falar de uma <em>dupla violência</em>: da colonização portuguesa [...] e do <em>isolamento, preconceito e estigmatização</em> pela qual passam os surdos dentro de comunidades prioritariamente ouvintes."</p>
+                </div>
+                
+                <div class="img-placeholder">
+                     <img src="https://raw.githubusercontent.com/alc-etimo/profa_marcia/main/FLC1258-introducao-aos-estudos-das-linguas-crioulas-de-base-portuguesa-e-do-portugues-na-africa-2019/a-lingua-gestual-de-sao-tome-e-principe-e-a-linguistica-de-contato-resultado-com-comentário.png" alt="Trabalho A língua gestual de São Tomé e Príncipe e a Linguística de Contato"  style="max-width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px; margin-left: 1px;" /></div>
+
+                </div>
+                
+                <div class="work-excerpt gold">
+                    <p><strong>Citação direta do Prof. Tjerk Hagemeijer no meu trabalho:</strong></p>
+                    <p>"Segundo Hagemeijer (2009), se, no passado, o mundo português e o mundo crioulo se encontravam num contexto de diglossia clássica, favorável à manutenção dos crioulos, a independência alterou o rumo dos acontecimentos. A maior mobilidade social, o acesso generalizado ao ensino e aos meios de comunicação na língua oficial, a <em>ausência de políticas orientadas para as línguas crioulas</em>, assim remetidas à informalidade e à oralidade, são factores que têm desfavorecido cada vez mais as línguas minoritárias das ilhas."</p>
+                </div>
+                
+                <div class="note-box critical">
+                    <strong>Por que este trabalho é estratégico para o EMLDS:</strong><br><br>
+                    
+                    ✅ <strong>Conexão direta com o Prof. Hagemeijer:</strong> Meu trabalho cita e analisa exatamente sua área de especialização (crioulos do Golfo da Guiné). Ele é membro da equipe do EMLDS em Lisboa.<br><br>
+                    
+                    ✅ <strong>Demonstra interdisciplinaridade:</strong> Intersecção entre crioulística, linguística de sinais e linguística de contato – exatamente o perfil que o EMLDS busca.<br><br>
+                    
+                    ✅ <strong>Sensibilidade ética:</strong> Consciência crítica sobre <span class="highlight">relações de poder linguístico</span>, <span class="highlight">sub-representação e exclusão</span> – questões centrais no desenvolvimento de IA linguística ética.<br><br>
+                    
+                    ✅ <strong>Excelência comprovada:</strong> Nota máxima (10) em disciplina ministrada por você.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ti">
+        <h2>💻 4. Graduação em Tecnologia da Informação (2007–2009)</h2>
+        
+        <div class="ti-connection">
+            <h3 style="margin-top: 0; color: #003366;">Por que a formação em TI é essencial para o EMLDS?</h3>
+            
+            <p>O programa busca profissionais que dominem <strong>tanto a teoria linguística quanto métodos computacionais</strong>. Minha formação técnica me preparou para as disciplinas mais avançadas do EMLDS:</p><br>
+            
+            <p><strong>🔹 Minhas competências técnicas (Graduação em TI):</strong></p>
+            <ul>
+                <li style="margin-left:10px;"><strong>Programação:</strong> Lógica de programação, estruturas de dados, algoritmos</li>
+                 <li style="margin-left:10px;"><strong>Bancos de Dados:</strong> Modelagem, SQL, administração de bancos de dados</li>
+                 <li style="margin-left:10px;"><strong>Desenvolvimento Web:</strong> HTML, CSS, JavaScript</li>
+                 <li style="margin-left:10px;"><strong>Sistemas:</strong> Redes, arquitetura de informação, gestão de sistemas</li>
+            </ul>
+            <br>
+            <p><strong>🔹 Conexão com disciplinas do EMLDS:</strong></p>
+            <ul>
+                 <li style="margin-left:10px;"><strong>"Data Science & Statistics"</strong> → Base em estruturas de dados e algoritmos</li>
+                 <li style="margin-left:10px;"><strong>"Linguistic Databases"</strong> → Experiência em modelagem e administração de bancos de dados</li>
+                 <li style="margin-left:10px;"><strong>"Computational Lexical Semantics"</strong> → Ponte entre léxico e estruturas computacionais</li>
+                <li style="margin-left:10px;"><strong>"NLP & Text Mining"</strong> → Fundamentos de processamento de texto e <i>parsing</i> (análise sintática)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="experiencia">
+        <h2>🏢 5. Experiência Profissional na Claro Brasil (2020–presente)</h2>
+        
+        <div class="experience-summary" style="text-align:justify;">
+            <h3 style="margin-top: 0;">Aplicação Prática da Interseção Linguística + Dados</h3>
+            
+            <p>Nos últimos cinco anos, atuei como Especialista em Linguagem na <strong>Claro Brasil</strong>, aplicando na prática a interseção entre teoria linguística e tecnologia:</p>
+            
+            <ul>
+                <li><strong>Governança Terminológica:</strong> Aplicação de relações semânticas (hierarquia/sinonímia) em taxonomias de larga escala (700+ termos validados).</li>
+                <li><strong>LQA (Language Quality Assurance):</strong> Criação de estruturas para medir precisão gramatical em assistentes virtuais e sistemas de <i>chatbot</i>.</li>
+                <li><strong>Curadoria de Dados Linguísticos:</strong> Higienização e organização de 15.000+ conteúdos processuais, aplicando princípios de linguística de corpus.</li>
+                <li><strong>Sistemas de Anotação:</strong> Desenvolvimento de fluxos de trabalho para anotação e categorização de dados linguísticos.</li>
+                <li><strong>Validação de NLP:</strong> Teste e refinamento de modelos de processamento de linguagem natural em produção.</li>
+            </ul>
+        </div>
+        
+        <div class="note-box" style="text-align:justify;">
+            <strong>Ponte teoria-prática:</strong> Esta experiência me permitiu <span class="highlight">operacionalizar conceitos teóricos</span> (como estrutura argumental, papéis temáticos, variação linguística) em <span class="highlight">soluções escaláveis de dados</span> – precisamente o tipo de habilidade que o EMLDS valoriza.
+        </div>
+    </section>
+
+    <section id="conexoes">
+        <h2>🔗 6. Conexões com a Equipe do EMLDS</h2>
+        
+        <p style="font-style: italic; color: #555; margin-bottom: 20pt;">
+            Minha formação dupla (TI + Linguística) e minha experiência profissional me conectam diretamente com as linhas de pesquisa dos professores do programa:
+        </p>
+        
+        <div class="professor-grid">
+            <div class="professor-card">
+                <h4>Prof. Tjerk Hagemeijer</h4>
+                <p style="font-size: 9.5pt; color: #666; margin-bottom: 8pt;">
+                    Universidade de Lisboa | Centro de Linguística (CLUL)<br>
+                    <a href="https://www.clul.ulisboa.pt/en/pessoa/tjerk-hagemeijer" style="font-size: 8.5pt; color: #003366;">Perfil acadêmico ↗</a>
+                </p>
+                
+                <div class="research">
+                    <strong>Pesquisa:</strong><br>
+                    • Crioulos de base portuguesa do Golfo da Guiné<br>
+                    • Fonologia, sintaxe, mudança linguística<br>
+                    • Documentação e descrição de línguas crioulas
+                </div>
+                
+                <div class="connection">
+                    <strong>⚡ CONEXÃO DIRETA COM MEU TRABALHO:</strong><br>
+                    <p style="text-align:justify;">Meu trabalho de crioulas analisou <span class="highlight">contato linguístico em São Tomé e Príncipe</span>, exatamente a área geográfica e temática da pesquisa do Prof. Hagemeijer. Citei diretamente seu artigo "As Línguas de S. Tomé e Príncipe" (2009).</p>
+                </div>
+            </div>
+            
+            <div class="professor-card">
+                <h4>Prof. Raquel Amaro</h4>
+                <p style="font-size: 9.5pt; color: #666; margin-bottom: 8pt;">
+                    NOVA FCSH | Centro de Linguística (CLUNL)<br>
+                    <a href="https://www.fcsh.unl.pt/faculdade/docentes/raquelamaro/" style="font-size: 8.5pt; color: #003366;">Perfil acadêmico ↗</a>
+                </p>
+                
+                <div class="research">
+                    <strong>Pesquisa:</strong><br>
+                    • Linguística Computacional e NLP<br>
+                    • Análise Sintática e Gramática Formal<br>
+                    • Recursos lexicográficos digitais
+                </div>
+                
+                <div class="connection">
+                    <strong>⚡ MINHA BASE TEÓRICA:</strong><br>
+                    <p style="text-align:justify;">Formação sólida em <span class="highlight">Sintaxe Gerativa</span> fornecida por você foi e continua sendo fundamental para trabalhar com <i>parsers</i> (analisadores sintáticos), gramáticas formais e análise sintática computacional.</p>
+                </div>
+            </div>
+            
+            <div class="professor-card">
+                <h4>Prof. Rute Costa</h4>
+                <p style="font-size: 9.5pt; color: #666; margin-bottom: 8pt;">
+                    NOVA FCSH | Centro de Linguística (CLUNL)<br>
+                    <a href="https://www.fcsh.unl.pt/faculdade/docentes/cmrv/" style="font-size: 8.5pt; color: #003366;">Perfil acadêmico ↗</a>
+                </p>
+                
+                <div class="research">
+                    <strong>Pesquisa:</strong><br>
+                    • Terminologia e Ontologias<br>
+                    • Padrões ISO para dados linguísticos<br>
+                    • Linguística de Corpus aplicada
+                </div>
+                
+                <div class="connection">
+                    <strong>⚡ EXPERIÊNCIA PROFISSIONAL:</strong><br>
+                    <p style="text-align:justify;">Mais de cinco anos de <span class="highlight">governança terminológica</span> e curadoria de dados linguísticos em ambiente corporativo multinacional.</p>
+                </div>
+            </div>
+            
+            <div class="professor-card">
+                <h4>Prof. Marco Passarotti</h4>
+                <p style="font-size: 9.5pt; color: #666; margin-bottom: 8pt;">
+                    Università Cattolica Milano | CIRCSE Research Centre<br>
+                    <a href="https://docenti.unicatt.it/ppd2/it/docenti/14144/marco-carlo-passarotti/profilo" style="font-size: 8.5pt; color: #003366;">Perfil acadêmico ↗</a>
+                </p>
+                
+                <div class="research">
+                    <strong>Pesquisa:</strong><br>
+                    • Projeções arbóreas e anotação linguística<br>
+                    • Dados interligados para línguas clássicas<br>
+                    • Recursos lexicais computacionais
+                </div>
+                
+                <div class="connection">
+                    <strong>⚡ HABILIDADES PRÁTICAS:</strong><br>
+                    <p style="text-align:justify;">Experiência em <span class="highlight">anotação de dados linguísticos</span>, criação de sistemas de tagging e metadados para 15.000+ conteúdos.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="note-box critical" style="margin-top: 20pt; text-align: justify;">
+            <strong>A Prof. Márcia e Lisboa:</strong><br>
+            Você tem conexão acadêmica com a pesquisa desenvolvida em Portugal, especialmente na área de <span class="highlight">crioulos e variedades africanas do português</span> – mesma linha de pesquisa do Prof. Hagemeijer na ULisboa. Esta ponte institucional e temática torna <span class="highlight">sua carta de recomendação ainda mais estratégica para minha candidatura</span>.
+        </div>
+    </section>
+
+        <section id="etica" style="text-align:justify;">
+        <h2>🌍 7. Da Teoria à Ética: Impacto Social da Pesquisa</h2>
+        
+        <div class="work-card" style="border-color: #d4af37; background: linear-gradient(135deg, #fffaf0 0%, #fff8e1 100%);">
+            <h3 style="color: #b8860b; margin-top: 0;">Combatendo Vieses em IA Linguística</h3>
+            
+            <p>Meu trabalho em crioulas demonstrou sensibilidade crítica para questões de <span class="highlight">poder linguístico</span>, <span class="highlight">sub-representação</span> e <span class="highlight">exclusão</span>. Esta consciência é essencial no desenvolvimento de tecnologias de linguagem:</p>
+            
+            <div class="work-excerpt" style="border-left-color: #d4af37;">
+                <p><strong>Do meu trabalho de 2019:</strong></p>
+                <p>"Assim, esses trechos deixam ver o caráter ameaçador dessa hegemonia do Português oral sobre as outras línguas oral-auditivas do território, como o Angolar, o Santomense e o Lung'ie – as quais, para o autor, podem desaparecer, a não ser que haja 'uma verdadeira política linguística e vontade popular' (HAGEMEIJER, 2009, p. 24)."</p>
+            </div>
+            
+            <div class="note-box critical">
+                <strong>Aplicação em IA:</strong><br><br>
+                Sistemas de processamento de linguagem natural treinados apenas em "línguas de prestígio" reproduzem e amplificam desigualdades linguísticas. Minha formação me preparou para:<br><br>
+                
+                ✅ Identificar vieses em corpora de treinamento<br>
+                ✅ Desenvolver recursos para línguas sub-representadas<br>
+                ✅ Garantir que tecnologias de linguagem respeitem diversidades linguísticas<br>
+                ✅ Aplicar princípios éticos no desenvolvimento de sistemas de IA
+            </div>
+            
+            <p style="margin-top: 15pt;"><strong>Este é o diferencial que pretendo levar ao EMLDS:</strong> não apenas competência técnica, mas <span class="highlight">consciência ética</span> sobre o impacto social das tecnologias de linguagem na atualidade.</p>
+        </div>
+    </section>
+
+<section id="documentos">
+        <h2>📎 8. Documentação Anexa</h2>
+        
+        <div class="note-box">
+            <strong>Professora, disponibilizo para sua consulta:</strong><br><br>
+            
+            ✅ <strong>Este dossiê completo</strong> (online com links ativos)<br>
+            ✅ <strong>Google Drive organizado (aqui)</strong> com:<br>
+            &nbsp;&nbsp;&nbsp;• <a href="https://github.com/alc-etimo/profa_marcia/blob/main/documentos/historico-escolar-ariane-lesnyak-castello-9307000-ba-e-licenciatura-em-ingles-portugues-(USP).pdf?raw=true" target="_blank" rel="noreferrer noopener">Histórico Escolar USP completo</a>;<br>
+            &nbsp;&nbsp;&nbsp;• <a href="https://github.com/alc-etimo/profa_marcia/blob/main/documentos/historico-escolar-ariane-lesnyak-castello-708100164-tecnologia-em-gestao-da-tecnologia-da-informacao-(FMR).pdf?raw=true" target="_blank" rel="noreferrer noopener">Histórico Escolar TI completo</a>;<br>
+            &nbsp;&nbsp;&nbsp;• <a href="https://github.com/alc-etimo/profa_marcia/blob/main/documentos/a-lingua-gestual-de-sao-tome-e-principe-e-a-linguistica-de-contato-aproximacoes-e-distanciamentos-com-base-em-um-estudo-de-caso.PDF?raw=true" target="_blank" rel="noreferrer noopener">Trabalho completo de Línguas Crioulas</a>;<br>
+
+
+            &nbsp;&nbsp;&nbsp;• CV atualizado com experiência profissional detalhada + portfólio;<br>
+            &nbsp;&nbsp;&nbsp;• Documento com <strong>sugestões</strong> de pontos para destacar na carta.<br>
+	    &nbsp;&nbsp;&nbsp;• Vídeos que podem ajudar na redação da carta:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◦ <a href="https://www.youtube.com/watch?v=n1thpoBGXqU">What makes a good college recommendation letter? | <strong>Bates College</strong></a>.<br>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◦ <a href="https://www.youtube.com/watch?v=nDRLs1llh2U">Tips on Letters of Reference | <strong>Stanford Graduate School of Business</strong></a>.<br>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◦ <a href="https://www.youtube.com/watch?v=Zcpwdcvz3KE">Elements of a strong recommendation letter | <strong>YouTube College Admissions</strong></a>.<br>
+            
+        </div>
+    </section>
+
+<section id="porque">
+        <h2>🎯 9. Síntese e Compromisso Acadêmico</h2>
+         
+    <div class="final-argument">
+        <h2 style="color: #003366; margin-bottom: 10pt; border: none;">Professora Márcia,</h2>
+        
+        <p><strong>Minha trajetória é a materialização da ponte que o EMLDS busca construir.</strong></p>
+	<p>Para facilitar sua percepção sobre como minha trajetória se alinha a esse programa de mestrado específico, sintetizo abaixo os pontos que considero os pilares desta candidatura:</p><br>
+        
+        <ul>
+<li style="text-align:justify; margin-left:15px;"><strong>A Interseção Prática (Linguística + Dados):</strong> Há cinco anos, transformo a teoria linguística que aprendi na USP em soluções de dados escaláveis no mercado multinacional. Eu não apenas estudo a área; eu vivo e operacionalizo a ciência da linguagem diariamente.</li><br>
+
+<li style="text-align:justify; margin-left:15px;"><strong>Excelência sob sua Orientação:</strong> Minhas notas em suas disciplinas não são apenas números, mas refletem análises arbóreas e discussões teóricas que são a base do meu pensamento lógico.</li><br>
+
+<li style="text-align:justify; margin-left:15px;"><strong>Alinhamento de Pesquisa em Lisboa:</strong> Minha pesquisa em línguas crioulas já dialoga com a especialidade do Prof. Hagemeijer, garantindo que eu chegue ao programa com um projeto de alto potencial de integração.</li><br>
+
+<li style="text-align:justify; margin-left:15px;"><strong>Perfil Híbrido Único:</strong> Minha formação une TI (2007–2009), Linguística USP (2015–2019) e aplicação profissional em escala industrial (2020-2025). Represento a hibridez exata que o comitê europeu busca.</li><br>
+
+<li style="text-align:justify; margin-left:15px;"><strong>Pausa Estratégica:</strong> O intervalo entre a graduação e o mestrado foi o período em que provei que a teoria linguística é a solução para os gargalos tecnológicos atuais.</li></ul><br>
+        
+        <p style="margin-top: 10pt;"><strong>Sua carta de recomendação será o selo de validade sobre essa trajetória. Ela atestará que essa base teórica sólida, desenvolvida sob sua mentoria, agora se une à minha experiência técnica para me tornar uma candidata de exceção ao EMLDS.</strong></p>
+        
+        <div class="signature">
+            Agradeço profundamente sua consideração e por ter sido parte fundamental da minha formação.<br>
+            Com admiração e respeito,<br>
+            <strong>Ariane Lesnyak Castelló</strong>
+        </div>
+    </div>
+</section>
+</body>
+</html>
