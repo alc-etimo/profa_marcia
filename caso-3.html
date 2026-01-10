@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso 3: Da Árvore Sintática à Árvore de Processos - Portfólio Prof. Márcia</title>
+    <style>
+        :root {
+            --primary: #003366;
+            --primary-light: #e8f0f8;
+            --accent: #2c5282;
+            --accent-light: #4a90e2;
+            --danger: #c53030;
+            --warning: #d69e2e;
+            --success: #2f855a;
+            --border: #cbd5e0;
+            --border-light: #e2e8f0;
+            --card: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm;
+            font-size: 10.5pt;
+        }
+        
+        /* CABEÇALHO DO CASO 3 */
+        .case-header {
+            text-align: center;
+            border-bottom: 4px solid #003366;
+            padding-bottom: 20pt;
+            margin-bottom: 25pt;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20pt;
+            border-radius: 8px;
+        }
+        
+        .case-number {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 1.5pt;
+        }
+        
+        .case-header h1 {
+            font-size: 18pt;
+            color: #003366;
+            margin-bottom: 2pt;
+            text-transform: none;
+            letter-spacing: normal;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .case-subtitle {
+            font-size: 12pt;
+            color: #003366;
+            font-weight: 600;
+            margin-bottom: 15pt;
+            font-style: italic;
+        }
+        
+        .case-tags {
+            margin-top: 15pt;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6pt;
+        }
+        
+        .case-tag {
+            display: inline-block;
+            background: #003366;
+            color: white;
+            padding: 4pt 10pt;
+            border-radius: 5px;
+            font-size: 9.5pt;
+            font-weight: bold;
+            margin-right: 0;
+            margin-bottom: 8pt;
+        }
+        
+        /* RESEARCH STATEMENT */
+        .research-statement {
+            background: #f9f9f9;
+            padding: 15pt;
+            border-left: 4px solid #003366;
+            font-style: italic;
+            margin-bottom: 20pt;
+            text-align: justify;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* SEÇÕES E TÍTULOS */
+        section {
+            margin-bottom: 30pt;
+            page-break-inside: avoid;
+        }
+        
+        h2 {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #003366;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 5pt;
+            margin-bottom: 15pt;
+            text-transform: uppercase;
+            letter-spacing: 0.8pt;
+        }
+        
+        h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #003366;
+            margin-top: 18pt;
+            margin-bottom: 10pt;
+            border-left: 5px solid #003366;
+            padding-left: 10pt;
+        }
+        
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .process-card {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .process-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .process-card h4 {
+            color: #003366;
+            font-size: 11pt;
+            margin-bottom: 8pt;
+            font-weight: bold;
+        }
+        
+        /* DOIS BOXES LADO A LADO */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20pt;
+            margin: 20pt 0;
+        }
+        
+        .problem-box, .solution-box {
+            background: white;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            padding: 15pt;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .problem-box h3, .solution-box h3 {
+            text-align: center;
+            margin-top: 3pt;
+            border: none;
+            padding-left: 0;
+            color: #003366;
+            margin-bottom: 12pt;
+            padding-bottom: 8pt;
+            border-bottom: 1px solid #003366;
+        }
+
+        /* CLICK HINT */
+        .click-hint {
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-size: 9pt; 
+            color: var(--accent); 
+            margin-bottom: 8pt; 
+            font-style: italic;
+        }
+        
+        .hand-icon { 
+            width: 18px; 
+            height: 18px;
+            transform: rotate(-180deg);
+            fill: var(--accent); 
+            margin: 0 2px;
+        }
+
+        .hand-icon.left { 
+            transform: rotate(90deg); 
+        }
+
+        .hand-icon.right { 
+            transform: rotate(-90deg); 
+        }
+
+        /* IMAGE CONTAINER */
+        .image-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15pt;
+            margin: 15pt 0;
+            background: #fafafa;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .image-caption {
+            font-size: 9.5pt;
+            color: #666;
+            margin-top: 8pt;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* ANALYSIS BOXES */
+        .analysis-box {
+            background: #fff; 
+            border: 1px solid var(--border);
+            padding: 15pt; 
+            border-radius: 6px; 
+            margin-top: 15pt;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .analysis-box h4 { 
+            font-size: 10pt; 
+            text-transform: uppercase; 
+            color: var(--accent); 
+            margin-bottom: 8pt;
+            padding-bottom: 4pt;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        ul.analysis-list { 
+            margin-left: 0;
+            margin-top: 0;
+        }
+        
+        ul.analysis-list li { 
+            margin-bottom: 12pt;
+            font-size: 10pt; 
+            list-style: none;
+            padding-left: 15pt;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        ul.analysis-list li::before { 
+            content: '→'; 
+            position: absolute; 
+            left: 0; 
+            color: var(--primary); 
+        }
+
+        /* TERMOS TÉCNICOS DESTACADOS */
+        .tech-term {
+            background: var(--primary-light);
+            color: var(--accent);
+            padding: 1pt 4pt;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 9.5pt;
+            cursor: help;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tech-term:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .tech-term::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 70%;
+            transform: translateX(-40%);
+            background: rgba(44, 82, 130, 0.95);
+            color: white;
+            padding: 6pt 10pt;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            margin-bottom: 6pt;
+        }
+
+        .tech-term:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* COMPARAÇÃO TABULAR - SINTAXE X PROCESSOS */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20pt 0;
+            font-size: 9pt;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #4a6fa5 0%, #3a5a8c 100%);
+            color: white;
+            padding: 10pt;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 8pt 10pt;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        /* MAPEAMENTO ESTRUTURAL 1:1 - NOVO */
+        .structural-mapping {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            padding: 20pt;
+            margin: 25pt 0;
+            box-shadow: 0 6px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .structural-mapping h3 {
+            text-align: center;
+            border: none;
+            margin-top: 0;
+            margin-bottom: 20pt;
+            color: var(--primary);
+            padding-left: 0;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10pt;
+        }
+        
+        .tree-mapping {
+            margin-top: 15pt;
+        }
+        
+        .tree-mapping h4 {
+            color: var(--accent);
+            margin-bottom: 10pt;
+            font-size: 11pt;
+            text-align: center;
+        }
+        
+        .mapping-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8pt;
+            padding: 8pt;
+            background: #f8fafd;
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s ease;
+        }
+        
+        .mapping-item:hover {
+            transform: translateX(5px);
+            border-color: var(--accent-light);
+        }
+        
+        .mapping-from {
+            flex: 1;
+            font-weight: bold;
+            color: #4a90e2;
+            text-align: right;
+            padding: 6pt 10pt;
+            border-right: 2px dashed #ccc;
+        }
+        
+        .mapping-to {
+            flex: 1;
+            font-weight: bold;
+            color: #2f855a;
+            text-align: left;
+            padding: 6pt 10pt;
+        }
+        
+        .mapping-arrow {
+            padding: 0 12pt;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 12pt;
+        }
+
+        /* INTERATIVIDADE: ANTES/DURANTE/DEPOIS */
+        .interactive-rewrite {
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20pt 0;
+            background: var(--card);
+        }
+        
+        .tab-nav { 
+            display: flex; 
+            background: var(--primary-light); 
+            border-bottom: 1px solid var(--border); 
+        }
+        
+        .tab-btn { 
+            flex: 1; 
+            padding: 10pt; 
+            border: none; 
+            background: none; 
+            cursor: pointer; 
+            font-weight: bold; 
+            color: var(--primary); 
+            transition: 0.3s; 
+            font-size: 10pt;
+        }
+        
+        .tab-btn.active { 
+            background: var(--primary); 
+            color: white; 
+        }
+        
+        .tab-content { 
+            padding: 20pt; 
+            display: none; 
+        }
+        
+        .tab-content.active { 
+            display: block; 
+        }
+
+        /* ANIMAÇÃO DE TEXTO ROLANTE */
+        .scrolling-container {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            height: 300px;
+            position: relative;
+            background: #f8fafd;
+        }
+        
+        .scrolling-text {
+            position: absolute;
+            width: 100%;
+            padding: 15pt;
+            font-size: 9.5pt;
+            line-height: 1.6;
+            animation: scrollUp 30s linear infinite;
+        }
+        
+        @keyframes scrollUp {
+            0% { top: 100%; }
+            100% { top: -300%; }
+        }
+
+        /* CHATBOT FUNCTIONAL - CORRIGIDO SEM SCROLL */
+        .chatbot-interface {
+            background: #f8fafd;
+            border-radius: 8px;
+            padding: 20pt;
+            border: 1px solid var(--border);
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chatbot-message {
+            background: white;
+            border-radius: 10px;
+            padding: 12pt;
+            margin-bottom: 15pt;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            color: #333;
+        }
+        
+        .chatbot-question {
+            background: var(--primary-light);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .chatbot-options {
+            display: flex;
+            gap: 10pt;
+            margin-top: 10pt;
+            margin-bottom: 15pt;
+        }
+        
+        .chatbot-btn {
+            flex: 1;
+            padding: 10pt;
+            border: none;
+            border-radius: 6px;
+            background: var(--primary);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 9.5pt;
+        }
+        
+        .chatbot-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .chatbot-instruction {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 6px;
+            padding: 15pt;
+            margin-top: 10pt;
+            color: #333;
+            font-size: 9.5pt;
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .chatbot-instruction.active {
+            display: block;
+        }
+        
+        .back-btn {
+            margin-top: 15pt;
+            padding: 8pt 16pt;
+            background: #4a5568;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 9.5pt;
+        }
+        
+        .back-btn:hover {
+            background: #2d3748;
+        }
+
+        /* PROVA VISUAL - ÁRVORES LADO A LADO */
+        .trees-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20pt;
+            margin: 25pt 0;
+        }
+        
+        .tree-box {
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 6px 12px rgba(0, 51, 102, 0.1);
+        }
+        
+        .tree-header {
+            background: var(--primary);
+            color: white;
+            padding: 12pt;
+            text-align: center;
+            font-weight: bold;
+            font-size: 10.5pt;
+        }
+        
+        .tree-content {
+            padding: 20pt;
+            font-family: 'Courier New', monospace;
+            font-size: 9.5pt;
+            line-height: 1.8;
+            min-height: 300px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .tree-caption {
+            padding: 12pt;
+            font-size: 9.5pt;
+            text-align: center;
+            color: var(--accent);
+            border-top: 1px solid var(--border-light);
+            background: #f8fafd;
+        }
+
+        /* DIAGRAMA DE ÁRVORE - VERTICAL (NOVO) */
+        .tree-diagram {
+            font-family: 'Courier New', monospace;
+            background: #f0f4f9;
+            padding: 5pt;
+            border-radius: 8px;
+            margin: 5pt 0;
+            line-height: 1.8;
+            border: 1px solid var(--border);
+            font-size: 9pt;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* COMPARAÇÃO PROTÓTIPO ANTES/DEPOIS */
+        .prototype-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5pt;
+            margin: 5pt 0;
+        }
+        
+        .prototype-box {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 5pt;
+            background: white;
+            text-align: center;
+	    width:300px;
+        }
+        
+        .prototype-label {
+            font-size: 9.5pt;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10pt;
+            padding-bottom: 5pt;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        /* RESULTADOS EM 3 BOXES */
+        .results-triple {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20pt;
+            margin: 25pt 0;
+        }
+        
+        .results-box {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 15pt;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+	    width: 100%;
+        }
+        
+        .results-box h3 {
+            text-align: left;
+            margin-top: 0;         
+            margin-bottom: 15pt;
+            padding-bottom: 8pt;            
+        }
+
+        /* METRICS GRID DENTRO DO BOX */
+        .metrics-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15pt;
+            margin-top: 15pt;
+        }
+        
+        .metric-card {
+            background: #f0f7ff;
+            border: 1px solid #003366;
+            border-radius: 6px;
+            padding: 12pt;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #003366;
+            margin-bottom: 4pt;
+        }
+        
+        .metric-label {
+            font-size: 9pt;
+            color: #666;
+        }
+        
+        /* QUOTE BOX */
+        .quote-box {
+            background: linear-gradient(135deg, #003366, hsl(215, 50%, 35%));
+            color: white;
+            padding: 1.75rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(31, 79, 176, 0.2);
+            margin: 1.5rem 0;
+        }
+        
+        .quote-box p {
+            font-size: 1.05rem;
+            font-weight: 500;
+            font-style: italic;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+        
+        .quote-box .source {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-style: normal;
+        }
+        
+        /* LISTAS */
+        ul {
+            margin-left: 20pt;
+            margin-top: 8pt;
+        }
+        
+        li {
+            margin-bottom: 8pt;
+            text-align: justify;
+        }
+        
+        strong {
+            color: #003366;
+        }
+        
+        /* PLACEHOLDER PARA IMAGENS */
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a5568;
+            font-style: italic;
+            font-size: 10pt;
+            margin: 10pt 0;
+        }
+        
+        /* NOTA EXPLICATIVA */
+        .theory-note {
+            background: #fffbeb;
+            border-left: 4px solid var(--warning);
+            padding: 12pt;
+            margin: 15pt 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 9pt;
+            color: #744210;
+        }
+        
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .two-columns, .trees-comparison, .prototype-comparison {
+                grid-template-columns: 1fr;
+                gap: 15pt;
+            }
+            
+            .tab-nav {
+                flex-direction: column;
+            }
+            
+            .metrics-box {
+                grid-template-columns: 1fr;
+            }
+            
+            .mapping-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .mapping-from {
+                border-right: none;
+                border-bottom: 2px dashed #ccc;
+                text-align: center;
+                padding-bottom: 8pt;
+                margin-bottom: 6pt;
+            }
+            
+            .mapping-arrow {
+                padding: 6pt 0;
+                transform: rotate(90deg);
+            }
+        }
+        
+        @media print {
+            body { padding: 5mm; }
+            .chatbot-btn, .back-btn { display: none; }
+            .scrolling-text { animation: none; }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO DO CASO 3 -->
+    <div class="case-header">
+        <div class="case-number">CASO 3 – PORTFÓLIO PARA PROFA. MÁRCIA</div>
+        <h1>Da árvore sintática à árvore de processos:</h1>
+        <div class="case-subtitle">como a hierarquia sintática organizou o atendimento corporativo</div>
+        <div class="case-tags">
+            <span class="case-tag">Teoria X-Barra</span>
+            <span class="case-tag">Hierarquia Sintática</span>
+            <span class="case-tag">Árvores de Decisão</span>
+            <span class="case-tag">Sintaxe Aplicada</span>            
+        </div>
+    </div>
+
+    <!-- BOX DE ABERTURA -->
+    <div class="research-statement">
+        <strong>Para a Prof. Márcia:</strong> Você me ensinou que a estrutura sintática não tem só a ver com frases, mas como organizamos informações complexas em níveis hierárquicos. Em uma multinacional de telecomunicações, encontrei um problema equivalente: <strong>processos de atendimento documentados como textos lineares caóticos</strong>. Usei os princípios da <strong>hierarquia X-barra</strong> para transformá-los em <strong>sistemas de decisão claros e eficientes</strong>, demonstrando que a sintaxe é, de fato, uma metalinguagem para modelar qualquer processo complexo.
+    </div>
+
+    <!-- SEÇÃO 1: O PROBLEMA -->
+    <section>
+        <h2>O PROBLEMA: TEXTOS LINEARES VS. PROCESSAMENTO COGNITIVO</h2>
+        <p style="text-align: justify;">
+            Na multinacional, os procedimentos lidos por operadores de <i>telemarketing</i> em <i>call centers</i> eram escritos em <strong>roteiros extensos e planos</strong> em um editor texto básico. Os operadores precisavam "rolar" a tela para achar informações, em um <strong>formato que não correspondia à lógica hierárquica de resolução de problemas</strong> e gerava muita frustração.
+        </p><br>
+        
+        <div class="cards-grid">
+            <div class="process-card">
+                <h4>Violência Cognitiva</h4>
+                <p>Textos longos exigiam rolagem constante <br> e perda de contexto</p>
+            </div>
+            
+            <div class="process-card">
+                <h4>Estrutura Plana</h4>
+                <p>Perguntas, respostas <br> e ações misturadas, <br> sem hierarquia visual</p>
+            </div>
+            
+            <div class="process-card">
+                <h4><i>Scrambling</i> Processual</h4>
+                <p>Etapas desordenadas: "verifique o <i>e-mail</i>" <br> antes de "tem <i>internet</i>?"</p>
+            </div>
+        </div>
+        
+        <div class="research-statement" style="background: #fff5f5; border-left-color: #dc2626;">
+            <strong>Pesquisa interna:</strong> "Os operadores demoravam para achar informações durante ligações com clientes e odiavam 'rolar' a tela. Processos com 24+ etapas geravam tempo excessivo de atendimento e erros operacionais."
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2: FUNDAMENTAÇÃO TEÓRICA -->
+    <section>
+        <h2>FUNDAMENTAÇÃO TEÓRICA: A SINTAXE COMO METALINGUAGEM</h2>
+        
+        <p style="text-align: justify;">
+            Minha formação em sintaxe proporcionada por você me permitiu identificar uma equivalência estrutural fundamental entre organização linguística e organização processual:
+        </p>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th style="text-align:center;">ESTRUTURA SINTÁTICA</th>
+                    <th style="text-align:center;">ESTRUTURA DE PROCESSO</th>
+                    <th style="text-align:center;">CORRESPONDÊNCIA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:center;"><span class="tech-term" data-tooltip="Modelo hierárquico universal: XP (nível macro), X' (nível intermediário), X (núcleo)">Árvore X-barra (XP → X' → X)</span></td>
+                    <td style="text-align:center;"><strong>Árvore de decisão</strong></td>
+                    <td style="text-align:center;">Organização hierárquica em níveis</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;"><span class="tech-term" data-tooltip="Na prática: a pergunta-raiz que projeta todo o fluxo">C° (Complementizador)</span></td>
+                    <td style="text-align:center;"><strong>Pergunta-raiz do processo</strong></td>
+                    <td style="text-align:center;">Elemento que projeta toda a estrutura</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;"><span class="tech-term" data-tooltip="Na prática: os ramos de decisão (SIM/NÃO) como complementos">IP (Sintagma de Infl)</span></td>
+                    <td style="text-align:center;"><strong>Opções de resposta (SIM/NÃO)</strong></td>
+                    <td style="text-align:center;">Bifurcação lógica que direciona o fluxo</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;"><span class="tech-term" data-tooltip="Na prática: ações terminais executáveis: os 'verbos' do processo">VP (Sintagma Verbal)</span></td>
+                    <td style="text-align:center;"><strong>Ações específicas a executar</strong></td>
+                    <td style="text-align:center;">Terminais da árvore (etapas concretas)</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;"><span class="tech-term" data-tooltip="Na prática: valores SIM/NÃO que funcionam como traços não interpretáveis">Traços [±F]</span></td>
+                    <td style="text-align:center;"><strong>Valores SIM/NÃO que dirigem a derivação</strong></td>
+                    <td style="text-align:center;">Propriedades que controlam o fluxo</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="theory-note">
+            <strong>Nota sobre nomenclatura:</strong> Embora esteja ciente da evolução para TP (Sintagma de Tempo) no Minimalismo atual, mantenho aqui a nomenclatura <strong>IP (Sintagma de Infl)</strong> que você me ensinou, por fidelidade ao arcabouço teórico em que fui formada.
+        </div>
+        
+        <div class="research-statement" style="background: #e3f2fd; border-left-color: #2c5282;">
+            <strong>Hipótese central:</strong> Se a sintaxe organiza palavras em frases por meio de princípios hierárquicos universais (X-barra), esses mesmos princípios podem organizar ações em processos de negócio eficientes e livres de ambiguidades. O que é "<span style="font-style:normal;">scrambling</span>" na sintaxe é "desordem processual" na operação.
+        </div>
+    </section>
+
+    <!-- SEÇÃO 2.5: MAPEAMENTO ESTRUTURAL 1:1 (NOVO) -->
+    <div class="structural-mapping">
+        <h3>MAPEAMENTO ESTRUTURAL 1:1</h3>
+        <p style="text-align: center; margin-bottom: 15pt; font-size: 10pt; color: #666;">
+            Como traduzi cada elemento do processo para sua contraparte sintática:
+        </p>
+        
+        <div class="tree-mapping">
+            <h4>Tradução Processo → Sintaxe</h4>
+            
+            <div class="mapping-item">
+                <div class="mapping-from">Nível máximo do processo</div>
+                <div class="mapping-arrow">→</div>
+                <div class="mapping-to">CP (Sintagma Complementizador)</div>
+            </div>
+            
+            <div class="mapping-item">
+                <div class="mapping-from">Ação principal (núcleo)</div>
+                <div class="mapping-arrow">→</div>
+                <div class="mapping-to">V° (Verbo núcleo)</div>
+            </div>
+            
+            <div class="mapping-item">
+                <div class="mapping-from">Informações obrigatórias</div>
+                <div class="mapping-arrow">→</div>
+                <div class="mapping-to">Complementos de V°</div>
+            </div>
+            
+            <div class="mapping-item">
+                <div class="mapping-from">Condições/Exceções</div>
+                <div class="mapping-arrow">→</div>
+                <div class="mapping-to">Adjuntos (CP/IP/VP)</div>
+            </div>
+            
+            <div class="mapping-item">
+                <div class="mapping-from">Ramificações SIM/NÃO</div>
+                <div class="mapping-arrow">→</div>
+                <div class="mapping-to">Estruturas coordenadas/CPs embutidos</div>
+            </div>
+            
+            <div class="mapping-item">
+                <div class="mapping-from">Agente (operador)</div>
+                <div class="mapping-arrow">→</div>
+                <div class="mapping-to">Especificador de vP</div>
+            </div>
+        </div>
+        
+        <div class="research-statement" style="background: #f0f7ff; border-left-color: #4a90e2; margin-top: 20pt;">
+            <strong>Tradução aplicada:</strong> Cada elemento do processo corporativo encontrou um equivalente sintático exato. Esta tradução sistemática permitiu aplicar <strong>toda a maquinaria teórica da sintaxe</strong> (teoria X-barra, seleção, traços, localidade) para diagnosticar e corrigir problemas de estruturação processual.
+        </div>
+    </div>
+
+    <!-- SEÇÃO 3: PROVA VISUAL - AS MESMAS ÁRVORES -->
+    <section>
+        <h2>PROVA VISUAL: AS MESMAS ÁRVORES, DOMÍNIOS DIFERENTES</h2>
+        
+        <p style="text-align: justify; margin-bottom: 15pt;">
+            Compare a estrutura da árvore sintática que você me ensinou com a árvore de processos que desenvolvi na empresa:
+        </p>
+        
+        <div class="trees-comparison">
+            <!-- ÁRVORE SINTÁTICA -->
+            <div class="tree-box">
+                <div class="tree-header" style="background: #2f855a;">
+                    SALA DE AULA: ANÁLISE SINTÁTICA
+                </div>
+                <div class="tree-content">
+                    <div class="image-placeholder" style="height: 285px;">
+                        <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/projecao-arborea-academica.png?raw=true" alt="Projeção arbórea da frase 'Maria comprou o livro de sintaxe'" style="height:120%;"/>
+
+                    </div>
+                </div>
+                <div class="tree-caption" style="border-left: 4px solid #2f855a; height:113px;">
+                    <strong>Estrutura X-barra em sentença natural</strong><br>
+                    CP (pergunta implícita) → IP (sujeito+tempo) <br> → VP (ação+argumentos)
+                </div>
+            </div>
+            
+            <!-- ÁRVORE DE PROCESSOS -->
+            <div class="tree-box">
+                <div class="tree-header" style="background: #4a90e2;">
+                    INDÚSTRIA: ÁRVORE DE PROCESSOS
+                </div>
+                <div class="tree-content" style="padding-left:15px;">
+                    <div class="image-placeholder" style="height: 250px;">
+                        <a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/projecao-arborea-corporativa.png?raw=true" target="_blank"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/projecao-arborea-corporativa.png?raw=true" alt="Projeção arbórea de um processo corporativo" style="height:auto;width:105%;"/></a>
+                    </div>
+                </div>
+<div class="click-hint">
+            <span style="transform: scaleY(-1); vertical-align: middle;"><svg class="hand-icon" viewBox="0 0 24 24" >
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></span>
+            </svg>
+            Clique na imagem para vê-la em maior resolução
+        </div>
+                <div class="tree-caption" style="border-left: 4px solid #4a90e2;">
+                    <strong>Estrutura X-barra em processo corporativo</strong><br>
+                    CP (pergunta-raiz) → IP (decisão RESIDENCIAL/MÓVEL) → VP (ações executáveis)
+                </div>
+            </div>
+        </div>
+        
+        <div class="research-statement" style="background: #e8f0f8; border-left-color: #2c5282;">
+            <strong>Para a Prof. Márcia:</strong> Esta comparação não é metafórica. É a <strong>mesma gramática profunda</strong>. O que muda é o domínio: em vez de organizar palavras, organizamos ações. Em vez de sujeito e predicado, temos contexto e procedimento. A estrutura XP → X' → X é o <strong>modelo universal</strong> para hierarquização de informação complexa.
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: CASO PARADIGMÁTICO -->
+    <section>
+        <h2>CASO PARADIGMÁTICO: TRANSFORMAÇÃO SINTÁTICA EM 3 ATOS</h2>
+        
+        <div class="click-hint">
+            <svg class="hand-icon" viewBox="0 0 24 24">
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/>
+            </svg>
+            Clique em cada aba para ver a transformação completa
+        </div>
+
+        <div class="interactive-rewrite">
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="openTab(event, 'caseBefore')">ANTES: O Caos</button>
+                <button class="tab-btn" onclick="openTab(event, 'caseDuring')">DURANTE: Análise & Protótipo</button>
+                <button class="tab-btn" onclick="openTab(event, 'caseAfter')">DEPOIS: Estrutura Bem-Formada</button>
+            </div>
+
+            <!-- ABA 1: ANTES -->
+            <div id="caseBefore" class="tab-content active">
+                <h4 style="font-size: 10pt; color: var(--danger); text-align: center; margin-bottom: 15pt;">
+                    FLUXO ORIGINAL: TEXTO LINEAR E CONFUSO
+                </h4>
+                
+                <div class="scrolling-container">
+                    <div class="scrolling-text" id="scrollingText">
+                        <strong>Procedimento: Cliente sem áudio no produto Y-Video</strong><br><br>
+                        Passo 1. Pergunte se o cliente consegue escutar outros vídeos.<br><br>
+                        <strong>Cliente consegue escutar outros vídeos?</strong><br><br>
+			<strong>SIM</strong><br>
+			Passo 1. Dizer ao cliente que não tem problema.<br>
+			Passo 2. Agradecer o contato.<br>
+			Passo 3. Encerre o atendimento.<br><br>
+			<strong>NÃO</strong><br>
+			Passo 1. Verifique se os alto-falantes estão conectados. Mas antes confira se o volume está no máximo.<br>
+                        Passo 2. Atualize os <i>drivers</i> se for necessário mas só depois de verificar os passos anteriores.<br>
+                        Passo 3. Abra um protocolo na usando a categoria Reclamação > Banda Larga > Serviços e Produtos > Y-Video.<br><br>
+                        Importante: O retorno será em até 5 dias úteis.<br><br>
+                        <strong>Procedimento Alternativo:</strong><br>
+                        Se o cliente tiver fones de ouvido teste com eles também.<br><br>
+                        <strong>Notas Adicionais:</strong><br>
+                        Para clientes com TV o procedimento é diferente: verifique as configurações de áudio no menu principal.<br><br>
+                        <strong>Fluxo para Reclamação:</strong><br>
+                        1. Acesse o sistema.<br>
+                        2. Selecione "Abrir Caso".<br>
+                        3. Preencha os dados do cliente.<br>
+                        4. Escolha a categoria mencionada acima.<br>
+                        5. Adicione observações se necessário.<br>
+                        6. Envie e anote o número do protocolo.<br><br>
+                        Lembre-se de sempre confirmar o <i>e-mail</i> do cliente para envio do retorno.<br><br>
+                        <strong>Dúvidas Frequentes:</strong><br>
+                        Q: E se o cliente não tiver os <i>drivers</i>?<br>
+                        R: Oriente a acessar o <i>site</i> do fabricante.<br><br>
+                        Q: E se for problema na TV?<br>
+                        R: Encaminhe para o suporte técnico de TV.<br><br>
+                        Continuar rolando para mais informações...
+                    </div>
+                </div>
+                
+                <div class="analysis-box" style="margin-top: 20pt;">
+                    <h4>Problemas Sintáticos Identificados:</h4>
+                    <ul class="analysis-list">
+                        <li><span class="tech-term" data-tooltip="O operador precisa procurar a informação em texto corrido">Estrutura Plana:</span> O texto é uma lista linear sem ramificação lógica, forçando o operador a "parsear" mentalmente.</li>
+                        <li><span class="tech-term" data-tooltip="Gera ambiguidade: operador não sabe se uma informação é obrigatória ou opcional">Complementos e Adjuntos Misturados:</span> Ações essenciais ("verificar alto-falantes") aparecem junto de notas contextuais ("clientes com TV").</li>
+                        <li><span class="tech-term" data-tooltip="Ordem ilógica obriga o operador a refazer mentalmente a sequência canônica"><i>Scrambling</i> Processual:</span> "Atualizar <i>drivers</i>" (ação complexa) vem antes de "verificar volume" (diagnóstico básico), violando a ordem canônica de resolução.</li>
+                        <li><span class="tech-term" data-tooltip="Processo começa sem contexto = operador não sabe por que está executando as ações">Violação do EPP (Princípio da Projeção Estendida):</span> O processo começa com ações sem estabelecer claramente o contexto ("Qual o problema?").</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ABA 2: DURANTE -->
+            <div id="caseDuring" class="tab-content">
+                <h4 style="font-size: 10pt; color: var(--warning); text-align: center; margin-bottom: 15pt;">
+                    ANÁLISE SINTÁTICA & PROTOTIPAGEM
+                </h4>
+                
+                <h5 style="font-size: 9.5pt; color: var(--primary); margin-bottom: 10pt;">Parte 1: Análise Sintática do Processo (Projeção Arbórea)</h5>
+                
+                <div class="tree-diagram">
+                    <center><strong>ÁRVORE DO FLUXO "CLIENTE SEM ÁUDIO NO Y-VIDEO" <br>[CP - Sintagma Complementizador]</strong></center>
+                    
+    ├── PERGUNTA RAIZ: "Cliente sem som no vídeo?" [C°]
+    │
+    ├── RAMO SIM: "Tem som baixo?" [IP[SIM] - Sintagma de Infl]
+    │   ├── AÇÃO 1: Verificar configuração de volume [V°]
+    │   ├── AÇÃO 2: Testar conexão de alto-falantes [Complemento]
+    │   └── AÇÃO 3: Sugerir teste com outros conteúdos [Adjunto]
+    │
+    └── RAMO NÃO: "Não tem som algum?" [IP[NÃO] - Sintagma de Infl]
+        ├── AÇÃO 1: Diagnosticar hardware/software [V°]
+        ├── AÇÃO 2: Abrir protocolo técnico [Complemento]
+        └── AÇÃO 3: Registrar e encerrar [Adjunto]
+                </div>
+                
+                <div style="margin: 10pt 0; text-align: center; font-size: 9pt; color: #666;">
+                    <strong>Análise estrutural:</strong> CP (contexto) → IP (decisão SIM/NÃO) → VP (ações executáveis) = XP → X' → X
+                </div>
+                
+                <h5 style="font-size: 9.5pt; color: var(--primary); margin-top: 20pt; margin-bottom: 10pt;">Parte 2: Materialização da Árvore Sintática em Interface</h5>
+                
+                <div class="prototype-comparison">
+                    <!-- ANTES DO PROTÓTIPO -->
+                    <div class="prototype-box" style="box-sizing: none;">
+                        <div class="prototype-label" style="color: var(--danger);">ANTES: Estrutura Plana</div>
+                        <div class="image-placeholder">
+                            <a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/caso-3-arvore-processo-antes.png?raw=true" target="_blank"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/caso-3-arvore-processo-antes.png?raw=true" alt="Tabela com duas colunas: à esquerda 'CHECKLIST' e à direita 'AÇÃO'" style="width: 100%;height:auto;"/></a></div>
+<div class="click-hint">
+            <span style="transform: scaleY(-1); vertical-align: middle;"><svg class="hand-icon" viewBox="0 0 24 24" >
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></span>
+            </svg>
+            Clique na imagem para vê-la em maior resolução
+        </div>
+                            <div style="font-size: 9pt; color: #666; margin-top: 8pt;">
+                        <br>
+                            <strong>Problemas:</strong>
+<ul><li> Texto linear com SIM/NÃO na mesma célula</li>
+							   <li>Violação de hierarquia</li>
+							   <li>Opções conflitantes (SIM/NÃO) no mesmo <br> nó sintático, forçando leitura linear</li></ul>
+                        </div>
+                    </div>
+                    
+                    <!-- DEPOIS DO PROTÓTIPO -->
+                    <div class="prototype-box">
+                        <div class="prototype-label" style="color: var(--success);">DEPOIS: Protótipo Hierárquico</div>
+                        <div class="image-placeholder" style="height: 200px;">
+                        <a href="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/caso-3-arvore-processo-depois.png?raw=true" target="_blank">   <img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/caso-3-arvore-processo-depois.png?raw=true" alt="Tabela com duas colunas, a primeira mesclada com 'SIGA CONFORME A SITUAÇÃO'; na linha seguinte, também mesclada: 'Cliente está com problema para assistir ao vídeo?'; na linha seguinte: à esquerda 'CHECKLIST', e à direita 'AÇÃO'" style="width: 100%;height:auto;"/></a> </div><div class="click-hint">
+            <span style="transform: scaleY(-1); vertical-align: middle;"><svg class="hand-icon" viewBox="0 0 24 24" >
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/></span>
+            </svg>
+            Clique na imagem para vê-la em maior resolução
+        </div>
+
+                            <div style="font-size: 9pt; color: #666; margin-top: 8pt;"> 
+                       <br>                       
+                            <strong>Solução:</strong> <ul><li> Tabela com pergunta + SIM/NÃO <br>em colunas separadas com <strong><u><span style="font-color:##1502FF;">âncoras (#)</span></u></strong></li>
+							  <li>Estrutura bem-formada</li>
+							  <li>CP (pergunta) projeta dois IPs distintos (SIM/NÃO), cada um com <i>link</i> para ações específicas</li></ul>
+                        </div>
+                    </div>
+                </div>
+                                               
+                <div class="research-statement" style="background: #fffbeb; border-left-color: var(--warning); margin-top: 20pt;">
+                    <strong>Implementação técnica (simplificada):</strong> Usei tabelas do editor de texto com células mescladas para a pergunta (CP) e colunas separadas para SIM/NÃO (IPs). Cada opção tinha uma <strong><u><span style="font-color:##1502FF;">âncora (#)</span></u></strong> que levava diretamente à seção de ações correspondente (VPs). Esta estrutura mínima materializava exatamente a árvore sintática identificada na análise.
+                </div>
+            </div>
+
+            <!-- ABA 3: DEPOIS -->
+            <div id="caseAfter" class="tab-content">
+                <h4 style="font-size: 10pt; color: var(--success); text-align: center; margin-bottom: 15pt;">
+                    ESTRUTURA BEM-FORMADA: FLUXO GUIADO POR SINTAXE
+                </h4>
+                <div class="click-hint">
+            <svg class="hand-icon" viewBox="0 0 24 24">
+                <path d="M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M7,9l1.41,1.41L11,7.83V16h2V7.83l2.59,2.58L17,9l-5-5L7,9z"/>
+            </svg>
+            Clique nos botões SIM e NÃO para interagir com o fluxo e entender as âncoras
+        </div>
+
+                <div class="chatbot-interface">
+                    <div class="chatbot-message chatbot-question" id="initialQuestion">
+                        <strong>Cliente sem áudio no Y-Video</strong><br>
+                        O cliente consegue ouvir o som do vídeo?
+                    </div>
+                    
+                    <div class="chatbot-options" id="initialOptions">
+                        <button class="chatbot-btn" onclick="selectOption('sim')">SIM</button>
+                        <button class="chatbot-btn" onclick="selectOption('nao')">NÃO</button>
+                    </div>
+                    
+                    <div id="instructionSim" class="chatbot-instruction">
+                        <strong>Procedimento para ajuste (IP[SIM]):</strong><br><br>
+                        1. Verificar configuração de volume - orientar cliente a ajustar para máximo<br>
+                        2. Testar conexão de alto-falantes/caixas de som<br>
+                        3. Sugerir teste com outros vídeos/músicas<br>
+                        4. Se necessário, orientar atualização de <i>drivers</i><br><br>
+                        <em>Se resolver, encerre o atendimento. Se não, retorne e selecione NÃO.</em><br>
+                        <button class="back-btn" onclick="resetChatbot()">↩ Reiniciar consulta</button>
+                    </div>
+                    
+                    <div id="instructionNao" class="chatbot-instruction">
+                        <strong>Procedimento para protocolo (IP[NÃO]):</strong><br><br>
+                        1. Informe ao cliente que vai abrir um caso técnico<br>
+                        2. Registre: Reclamação → Banda larga → Serviços → Y-Video<br>
+                        3. Diga que o retorno será em até 5 dias úteis<br>
+                        4. Agradeça o contato e finalize o atendimento<br><br>
+                        <button class="back-btn" onclick="resetChatbot()">↩ Reiniciar consulta</button>
+                    </div>
+                </div>
+                
+                <div class="analysis-box" style="margin-top: 20pt;">
+                    <h4>Princípios Sintáticos Aplicados:</h4>
+                    <ul class="analysis-list">
+                        <li><span class="tech-term" data-tooltip="CP (pergunta) → IP (decisão) → VP (ação): mesma estrutura de sentença">Hierarquia X-barra respeitada:</span> CP (pergunta) → IP (bifurcação SIM/NÃO) → VP (ações).</li>
+                        <li><span class="tech-term" data-tooltip="C° [+pergunta] seleciona exatamente dois complementos [+SIM] e [+NÃO]">Seleção Sintática (C-selection):</span> A pergunta (C°) seleciona exatamente dois complementos (IP[SIM] e IP[NÃO]).</li>
+                        <li><span class="tech-term" data-tooltip="Operador valora traços não interpretáveis, permitindo derivação convergir">Traços [±SIM] valorados:</span> A escolha do operador valora os traços não interpretáveis, permitindo a derivação convergir.</li>
+                        <li><span class="tech-term" data-tooltip="Informações aparecem próximas ao ponto de decisão (sem 'saltos')">Localidade (<i>Minimal Link Condition</i>):</span> Cada decisão leva diretamente às ações relevantes, sem "saltos" cognitivos.</li>
+                        <li><span class="tech-term" data-tooltip="Cada cenário (argumento) recebe uma sequência de ações (papel temático)">Critério Theta satisfeito:</span> Cada cenário (argumento) tem uma sequência de ações (papel temático) definida.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 5: RESULTADOS QUALITATIVOS, QUANTITATIVOS E INSTITUCIONAIS -->
+    <section>
+        <h2>RESULTADOS: QUALITATIVOS, QUANTITATIVOS E INSTITUCIONAIS</h2>
+        
+        <div class="results-triple">
+            
+            <!-- RESULTADOS QUALITATIVOS -->
+            <div class="results-box">
+                <h3 style="border-left:3px; margin-top: 5px; #ffffff">Resultados Qualitativos</h3>
+                <ul>
+                    <li><strong>Redução da fadiga cognitiva:</strong> Operadores relatam menor esforço mental para seguir procedimentos</li>
+                    <li><strong>Clareza processual:</strong> Eliminação de dúvidas sobre "qual o próximo passo" durante atendimentos</li>
+                    <li><strong>Interface percebida como "natural":</strong> Fluxo binário SIM/NÃO alinhado ao pensamento decisório humano</li>
+                    <li><strong>Replicabilidade espontânea:</strong> equipes de outros setores começaram a aplicar a metodologia</li>
+                    <li><strong><i>Feedback</i> positivo:</strong></li><div class="research-statement" style="background: #e8f0f8; border-left-color: #2c5282; style="width: 90%;"><img src="https://github.com/alc-etimo/profa_marcia/blob/main/imagens/comentario-operador-elogio.png?raw=true" style="width: 100%;"/>
+                </ul>
+            </div>
+            
+            <!-- RESULTADOS QUANTITATIVOS -->
+            <div class="results-box">
+                <h3  style="border-left:3px; margin-top: 5px; #ffffff">Resultados Quantitativos</h3>
+                <div class="metrics-box">
+                    <div class="metric-card">
+                        <div class="metric-value">35%</div>
+                        <div class="metric-label">Redução no Tempo Médio<br>de Atendimento (TMA)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">TOP 2%</div>
+                        <div class="metric-label">Conteúdos mais acessados<br>na plataforma</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">87%</div>
+                        <div class="metric-label">Operadores preferem<br>formato guiado</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">42%</div>
+                        <div class="metric-label">Redução de erros<br>operacionais</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RESULTADOS INSTITUCIONAIS -->
+            <div class="results-box">
+                <h3  style="border-left:3px; margin-top: 5px; #ffffff">Resultados Institucionais</h3>
+                <ul>
+                    <li><strong>Metodologia adotada como padrão:</strong> Estratégia aplicada para transformação de 15.000+ artigos</li>
+                    <li><strong>Integração entre departmental:</strong> Trabalho conjunto entre Comunicação e Processos para ampliar a transformação</li>
+                    <li><strong>Documentação e replicabilidade:</strong> Processo documentado e disponível para outras áreas da empresa</li>
+                    <li><strong>Validação técnica externa:</strong> Protótipo validado por engenheiro da IBM, conferindo credibilidade técnica à abordagem</li>
+                    <li><strong>Escalabilidade comprovada:</strong> Metodologia replicada para unificação de múltiplos fluxos fragmentados</li>
+                </ul>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SEÇÃO 6: LIGAÇÃO COM AS DISCIPLINAS -->
+    <section>
+        <h2>LIGAÇÃO COM AS DISCIPLINAS</h2>
+        
+        <div class="research-statement" style="padding: 20pt;">
+            <p style="font-style: normal; margin-bottom: 15pt;">Este caso aplica diretamente os conceitos das suas disciplinas:</p>
+            <div>
+                <ul style="margin-top: 0;">
+                    <li><strong>Teoria X-barra → <i>Template</i> universal:</strong> Usei XP → X' → X como modelo para qualquer procedimento corporativo.</li>
+                    <li><strong>C° (Complementizador) → Pergunta-raiz:</strong> Todo processo começa com uma pergunta que projeta a estrutura inteira.</li>
+                    <li><strong>IP (Sintagma de Infl) → Bifurcação SIM/NÃO:</strong> Ramos de decisão como projeções de um núcleo comum.</li>
+                    <li><strong>Seleção Sintática (C-selection) → Lógica de fluxo:</strong> Relações "pergunta → próxima etapa" são seleção implementada.</li>
+                    <li><strong>Traços [±F] → Valores decisórios:</strong> SIM/NÃO são traços que dirigem a derivação do processo.</li>
+                    <li><strong>Critério Theta → Completude processual:</strong> Garanti que cada cenário (argumento) tem ação (papel temático) definida.</li>
+                    <li><strong>Localidade (<i>Minimal Link</i>) → Navegação eficiente:</strong> Informações aparecem próximas ao ponto de decisão.</li>
+                    <li><strong>EPP (Princípio da Projeção Estendida) → Contexto obrigatório:</strong> Todo processo começa estabelecendo contexto, como toda sentença precisa de sujeito.</li>
+                    <li><strong>Interface Sintaxe-Fonologia → UI:</strong> A árvore abstrata se realiza na "fonologia" da interface (botões, cores, layout).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            <p>"A sintaxe não é apenas sobre frases: é o sistema operacional do pensamento estruturado. Quando aplicamos seus princípios a processos corporativos, não estamos fazendo analogia — estamos usando sua gramática profunda como linguagem de modelagem universal para sistemas complexos."</p>
+            <div class="source">Insight Principal do Caso</div>
+        </div>
+        
+        <div class="research-statement">
+            <p><strong>Implicação teórica mais ampla:</strong> Este caso sugere que a <strong>Teoria X-barra pode ser uma propriedade universal de sistemas cognitivos hierárquicos</strong>, não apenas específica da Faculdade da Linguagem. Se os mesmos princípios que organizam palavras em sentenças também organizam ações em processos com eficiência mensurável, então estamos diante de uma <strong>arquitetura cognitiva geral</strong> para processamento hierárquico de informação.</p>
+            
+            <p style="margin-top: 10pt;"><strong>Para a Prof. Márcia:</strong> Este caso demonstra que a Linguística fornece ferramentas poderosas para engenharia de sistemas e otimização operacional. A estrutura aqui desenvolvido é replicável para qualquer domínio que envolva transformação de <strong>texto linear ambíguo em estrutura decisional clara</strong>. Foi a compreensão profunda dos princípios que você me ensinou que me permitiu enxergar a gramática por trás do caos operacional.</p>
+        </div>
+    </section>
+
+    <script>
+        // Função de Tabs
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Se for a aba "DEPOIS", resetar o chatbot
+            if (tabName === 'caseAfter') {
+                resetChatbot();
+            }
+        }
+
+        // Chatbot Funcional
+        function selectOption(option) {
+            document.getElementById('instructionSim').classList.remove('active');
+            document.getElementById('instructionNao').classList.remove('active');
+            document.getElementById('initialOptions').style.display = 'none';
+            
+            if (option === 'sim') {
+                document.getElementById('instructionSim').classList.add('active');
+            } else {
+                document.getElementById('instructionNao').classList.add('active');
+            }
+        }
+        
+        function resetChatbot() {
+            document.getElementById('instructionSim').classList.remove('active');
+            document.getElementById('instructionNao').classList.remove('active');
+            document.getElementById('initialOptions').style.display = 'flex';
+        }
+
+        // Controle da animação de texto rolante
+        const scrollingText = document.getElementById('scrollingText');
+        let scrollPosition = 0;
+        
+        function updateScroll() {
+            const container = document.querySelector('.scrolling-container');
+            if (!container) return;
+            
+            const contentHeight = scrollingText.scrollHeight;
+            const containerHeight = container.clientHeight;
+            
+            if (scrollPosition > contentHeight) {
+                scrollPosition = -containerHeight;
+            }
+            
+            scrollingText.style.top = `-${scrollPosition}px`;
+            scrollPosition += 0.5;
+            
+            requestAnimationFrame(updateScroll);
+        }
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar a primeira aba como ativa
+            openTab({currentTarget: document.querySelector('.tab-btn.active')}, 'caseBefore');
+            
+            // Iniciar animação do texto rolante
+            if (scrollingText) {
+                updateScroll();
+            }
+            
+            // Inicializar chatbot
+            resetChatbot();
+        });
+    </script>
+
+</body>
+</html>
